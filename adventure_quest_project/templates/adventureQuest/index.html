@@ -6,16 +6,99 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica');
+body,h1,h2,h3,h4,h5,h6 {font-family: "IM Fell DW Pica", serif;}
 body, html {
     height: 100%;
     color: #777;
     line-height: 1.8;
-    background-color: #000000;
+    background-color: #120F00;
 }
+
+/*navigation bar*/
+
+ul {
+	position: fixed;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #120F00;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: #CCC39D;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #120F00;
+}
+
+li.dropdown {
+    display: inline-block;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+
+
+</style>
+
+
+<ul>
+
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">AdventureQuest</a>
+    <div class="dropdown-content">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Quests</a>
+      <a href="#">Hall of Fame</a> 
+      <li style="float:right"><a href="#login">Login</a>  
+    </div>
+  </li>
+ 
+</ul>
+
+
+
+<style>
 
 /* Create a Parallax Effect */
 .bgimg-1, .bgimg-2 {
@@ -153,7 +236,6 @@ body, html {
     <div class="w3-col m8 w3-container w3-section">
       <div class="w3-large w3-margin-bottom">
         <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> GLASGOOOOOW<br>
-        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
         <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
       </div>
       <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
@@ -182,11 +264,8 @@ body, html {
     <i class="fa fa-facebook-official w3-hover-text-indigo"></i>
     <i class="fa fa-instagram w3-hover-text-purple"></i>
     <i class="fa fa-snapchat w3-hover-text-yellow"></i>
-    <i class="fa fa-pinterest-p w3-hover-text-red"></i>
     <i class="fa fa-twitter w3-hover-text-light-blue"></i>
-    <i class="fa fa-linkedin w3-hover-text-indigo"></i>
   </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
  
 <!-- Add Google Maps -->
@@ -244,8 +323,6 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp Toms API 
 
 </body>
 {% endblock %}
-
-
 
 
 
