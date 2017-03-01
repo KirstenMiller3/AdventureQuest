@@ -265,6 +265,16 @@ li.dropdown {
     <i class="fa fa-instagram w3-hover-text-purple"></i>
     <i class="fa fa-snapchat w3-hover-text-yellow"></i>
     <i class="fa fa-twitter w3-hover-text-light-blue"></i>
+    <i class="fa fa-linkedin w3-hover-text-indigo"></i>
+    <li><a href="{% url 'register' %}">Sign Up</a></li>
+    <li><a href="{% url 'login' %}">Login</a><li>
+
+{% if user.is_authenticated %}
+howdy {{ user.username }}!
+{% else %}
+hey there partner!
+{% endif %}
+
   </div>
 </footer>
  
