@@ -13,7 +13,7 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: "IM Fell DW Pica", serif;}
 body, html {
     height: 100%;
-    color: #777;
+    color: #777; /* Main default text color*/
     line-height: 1.8;
     background-color: #120F00; /* Main default BG colour for the entire page*/
 }
@@ -104,13 +104,15 @@ li.dropdown {
 
 /*  image (Contact) */
 .bgimg-2 {
-    background-image: url("{% static "images/old_map_of_glasgow.jpg" %}");
+    background-image: url("{% static "images/names.jpg" %}");
+    background-size: auto;
     min-height: 400px;
 }
 /*  Main wide Titles eg Adventure Quest and Contact */
 .w3-wide {
     letter-spacing: 10px;
     font-family: "IM Fell DW Pica", serif;
+    
     
     
 }
@@ -129,92 +131,89 @@ li.dropdown {
  <body>
      
      <!-- NAV BAR HTML-->
-<div class="w3-top">    
+<div class="w3-top">
+    <div class="w3-bar">
     <ul>
 
       <li class="dropdown">
-        <a href="javascript:void(0)" class="dropbtn">MENU</a>
+        <a href="javascript:void(0)" class="dropbtn"><i class="fa fa-navicon" style="font-size:34px"></i></a>
         <div class="dropdown-content">
           <a href="#">Home</a>
           <a href="#">About</a>
           <a href="#">Quests</a>
           <a href="#">Hall of Fame</a> 
-          <li style="float:right"><a href="{% url 'login' %}">Login</a>  
+          <li style="float:right"><a href="{% url 'login' %}"><i class="fa fa-user-circle" style="font-size:24px"></i> Login</a> 
+              <i class="fa fa-facebook-official w3-hover-text-indigo"style="font-size:24px"></i>
+              <i class="fa fa-instagram w3-hover-text-purple" style="font-size:24px"></i>
+              <i class="fa fa-snapchat w3-hover-text-yellow" style="font-size:24px"></i>
+              <i class="fa fa-twitter w3-hover-text-light-blue" style="font-size:24px"></i>
         </div>
-      </li>
-
+        </li>
     </ul>
+         
+    </div> 
 </div> 
      
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-xlarge w3-black w3-xlarge w3-wide w3-animate-opacity">Adventure Quest </span> 
+    <span class="w3-center w3-padding-xlarge w3-black w3-jumbo w3-wide w3-text-sand w3-hover-opacity w3-hover-shadow">Adventure Quest </span> 
   </div>
 </div>
 
 <!-- Container (About Section) -->
 <div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center">About Questing</h3>
-  <p class="w3-center"><em>I love questing</em></p>
-  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <div class="w3-row">
-    <div class="w3-col m6 w3-center w3-padding-large">
-      
-      
-    </div>
-
-   
+  <h3 class="w3-center">About</h3>
+  <p class="w3-center w3-xlarge"> ADVENTURE QUEST is an interactive treasure hunt game. It allows people to explore the city while also learning and having fun. Each quest has its own unique theme and will take you on a magical journey through the city. The quests are composed of multiple riddles and challenges. Players must solve each clue in order to be given the next riddle and location. This will allow players to discover the hidden gems away from the beaten path.</p>
+  <p class="w3-center w3-large"><em>"The perfect combination of problem solving and the great outdoors" - The Guardian</em></p>
 
 
-
-<!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64" id="portfolio">
-  <h3 class="w3-center">Quests</h3>
-  <p class="w3-center"><em>Here are some of my latest QUESTS lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
+<!-- Container (Quest Gallery Section) -->
+<div class="w3-content w3-container w3-padding-64" id="questgallery">
+  <h3 class="w3-center">Quest Gallery</h3>
+  <p class="w3-center"><br>Top Tip: Click on the images to make them bigger</p><br>
+    
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="{% static "images/old_map_of_glasgow.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 1">
+      <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 1">
     </div>
 
     <div class="w3-col m3">
-      <img src="{% static "images/old_map_of_glasgow.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 2">
+      <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 2">
     </div>
 
     <div class="w3-col m3">
-      <img src="{% static "images/old_map_of_glasgow.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 3">
+      <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 3">
     </div>
 
     <div class="w3-col m3">
-      <img src="{% static "images/old_map_of_glasgow.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 4">
+      <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 4">
     </div>
   </div>
 
   <div class="w3-row-padding w3-center w3-section">
     <div class="w3-col m3">
-      <img src="{% static "images/old_map_of_glasgow.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 5">
+      <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 5">
     </div>
 
     <div class="w3-col m3">
-      <img src="{% static "images/old_map_of_glasgow.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 6">
+      <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 6">
     </div>
 
     <div class="w3-col m3">
-      <img src="{% static "images/old_map_of_glasgow.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 7">
+      <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 7">
     </div>
 
     <div class="w3-col m3">
-      <img src="{% static "images/old_map_of_glasgow.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 8">
+      <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quest 8">
     </div>
     <button class="w3-btn w3-light-grey w3-padding-xlarge" style="margin-top:64px">LOAD MORE</button>
   </div>
 </div>
 
-<!-- Modal for full size images on click-->
+<!-- Modal/POPUP for full size images on click-->
 <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
   <span class="w3-closebtn w3-text-white w3-opacity w3-hover-opacity-off w3-xxlarge w3-container w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
   <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
@@ -223,17 +222,19 @@ li.dropdown {
   </div>
 </div>
 
-<!-- Third Parallax Image with Portfolio Text -->
+<!-- Contact us Parallax Image -->
 <div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-xlarge w3-black w3-xlarge w3-wide w3-animate-opacity">Contact </span> 
+    <span class="w3-center w3-padding-xlarge w3-black w3-xlarge w3-wide w3-text-sand w3-animate-opacity">Contact </span> 
   </div>
 </div>
 
 <!-- Container (Contact Section) -->
 <div class="w3-content w3-container w3-padding-64" id="contact">
-  <h3 class="w3-center">WHERE WE WORK</h3>
-  <p class="w3-center"><em>I'd love your feedback!</em></p>
+  <h3 class="w3-center">About The Team</h3>
+  
+  <p class="w3-center w3-large">gjhgjhgj</p>
+   <p class="w3-center"><em>p.s We'd love your feedback!</em></p>
 
   <div class="w3-row w3-padding-32 w3-section">
     <div class="w3-col m4 w3-container">
@@ -274,7 +275,7 @@ li.dropdown {
     <i class="fa fa-twitter w3-hover-text-light-blue"></i>
     <i class="fa fa-linkedin w3-hover-text-indigo"></i>
     <li><a href="{% url 'register' %}">Sign Up</a></li>
-      <li><a href="{% url 'login' %}">Login</a></li>
+    <li><a href="{% url 'login' %}">Login</a></li>
     <li><a href="{% url 'quest1_about' %}">Quest1</a></li>
 
 {% if user.is_authenticated %}
@@ -292,7 +293,7 @@ hey there partner!
 <script>
 function myMap()
 {
-  myCenter=new google.maps.LatLng(55.850650, -4.243469);
+  myCenter=new google.maps.LatLng(55.8721, -4.2882);
   var mapOptions= {
     center:myCenter,
     zoom:12, scrollwheel: false, draggable: false,
