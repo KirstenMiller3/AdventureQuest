@@ -6,14 +6,36 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from adventureQuest.forms import Riddle
 
 
 # Create your views here.
 
+# The home page
 def index(request):
 	return render(request, 'adventureQuest/index.html')
 
+# About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to
+# make a new one of these for each quest. Same for riddle pages!!!!!!
+def quest1_about(request):
+    return render(request, 'adventureQuest/quest1_about.html')
 
+
+# riddle page
+def answer_riddle(request):
+    form = riddle()
+
+    if request.method == 'POST':
+        form = riddle(request.POST)
+        if form.is_valid():
+            # If valid save to database???? not sure if we should be doing that with riddle answers?
+            form.save(commit=True)
+            # instead of saving we need a check to see if answer was correct
+            return index(request)
+        else:
+            print(form.errors)
+
+    return render(request, 'next_riddle')
 
 
 def register(request):
@@ -75,6 +97,8 @@ def register(request):
                   {'user_form': user_form,
                    'profile_form': profile_form,
                    'registered': registered})
+
+
 
 
 
