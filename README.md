@@ -36,5 +36,15 @@ The format is loosely based on [Keep a Changelog](http://keepachangelog.com/)
 - Took out W3 schools footer 
 - Changed background to deep brown (not sure if this is better or black, opinions pls)
 
+## [Kirsten] - 01-03-2017
+### Added
+- Views, models, urls for registration, login
+- message to check if login works (can be removed later)
+- logout functionality
+- html pages that goes along side that
+
+### Changed
+- fixed conflict between me and holly's commits
+- changed index to add links
 
 
