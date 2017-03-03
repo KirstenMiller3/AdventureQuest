@@ -13,4 +13,5 @@ urlpatterns = [
 	url(r'^restricted/', views.restricted, name='restricted'),
 	# url(r'^logout/$', views.user_logout, name='logout'),
 	url(r'^quest1_about/$', views.quest1_about, name='quest1_about'),
+	url(r'^quest1riddle1/$', views.answer_riddle, name='quest1riddle1'),
 ]

@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
-from adventureQuest.models import UserProfile
+from adventureQuest.models import UserProfile, Riddle
+
 
 
 class UserForm(forms.ModelForm):
@@ -19,10 +20,10 @@ class UserProfileForm(forms.ModelForm):
 
 
 # Obviously riddles coud involve a number or character answer? Maybe always take it as a String to simplify things?
-class Riddle(forms.ModelForm):
-    answer = forms.CharField(max_length=128, help_text="It cannot be seen, cannot be felt, +\n"
-                                                       "Cannot be heard, cannot be smelt.+\n"
-                                                       "It lies behind stars and under hills,+\n"
-                                                       "And empty holes it fills.+\n"
-                                                       "It comes out first and follows after,+\n"
-                                                       "Ends life, kills laughter. ")
+class RiddleForm(forms.ModelForm):
+    riddleOne = forms.CharField(max_length=128, help_text="blablabl")
+    riddleTwo = forms.CharField(max_length=128, help_text="hiya!")
+
+    class Meta:
+        model = Riddle
+        fields = ('riddleOne','riddleTwo',)

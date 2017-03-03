@@ -21,3 +21,15 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return self.user.username
+
+
+class Riddle(models.Model):
+
+    riddleOne = models.CharField(max_length=128)
+    riddleTwo = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.riddleOne
+
+    def __unicode__(self):
+        return self.riddleTwo

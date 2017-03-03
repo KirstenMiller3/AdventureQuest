@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from adventureQuest.forms import Riddle
+from adventureQuest.forms import RiddleForm
 
 
 # Create your views here.
@@ -23,7 +23,7 @@ def quest1_about(request):
 
 # riddle page
 def answer_riddle(request):
-    form = riddle()
+    form = RiddleForm()
 
     if request.method == 'POST':
         form = riddle(request.POST)
@@ -35,7 +35,7 @@ def answer_riddle(request):
         else:
             print(form.errors)
 
-    return render(request, 'next_riddle')
+    return render(request, 'adventureQuest/quest1riddle1.html')
 
 
 def register(request):
