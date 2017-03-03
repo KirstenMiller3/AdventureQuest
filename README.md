@@ -46,5 +46,6 @@ The format is loosely based on [Keep a Changelog](http://keepachangelog.com/)
 ### Changed
 - fixed conflict between me and holly's commits
 - changed index to add links
-
-
+## [Tom] - 03-03-2017
+### Changed
+- started to un-messify the base template
