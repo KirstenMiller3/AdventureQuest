@@ -1,0 +1,26 @@
+{% extends 'adventureQuest/base.html' %}
+{% load staticfiles %}
+<!-- SS and KJ Adding JQuery functionality -->
+
+
+{% block title_block %}
+    Quest 1 - Riddle 1
+{% endblock %}
+
+{% block body_block %}
+        <h1>QUEST!!</h1>
+		<div id="answer">
+			Answer goes here...
+		</div>
+		<hr />
+        <div>
+            <form id="questionform">
+				<input id="question" />
+				<input type="submit" />
+			</form>
+        </div>
+		
+		<!-- fix this -->
+		<script src="{% static 'js/jquery.min.js' %}"> </script>
+		<script src="{% static 'js/adventureQuest-jquery.js' %}"> </script>
+{% endblock %}

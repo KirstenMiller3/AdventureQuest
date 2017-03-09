@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	{{ Pirate Quest }}
+{% endblock %}
+
+{% block body_block %}
+	
+		
+	
+	
+		{% if user.is_authenticated %}
+			<a href="{% url 'add_page' category.slug %}">Add a Page</a>
+		{% endif %}
+	{% else %}
+		The specified category does not exist!
+	{% endif %}
+{% endblock %}
