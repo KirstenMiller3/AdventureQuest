@@ -35,7 +35,7 @@ def answer_riddle(request):
         else:
             print(form.errors)
 
-    return render(request, 'adventureQuest/quest1riddle1.html')
+    return render(request, 'adventureQuest/test_quest.html')
 
 
 def register(request):
@@ -161,3 +161,40 @@ def user_logout(request):
     logout(request)
     # Take the user back to the homepage.
     return HttpResponseRedirect(reverse('adventureQuest./index.html'))
+
+def quest(request):
+	"""
+	This is the view that renders the initial QUEST page
+	"""
+	return render(request, 'adventureQuest/test_quest.html')
+
+import json
+	
+def quest_ajax(request):
+	"""
+	Code for quest AJAX stuff.
+	"""
+	
+	
+	# The code below gets the answer from the user
+	user_answer = request.GET.get('answer')
+	
+	# Some logic here that goes into your DB, pulls out the answer...
+	# And puts it into response_data['answer']
+	
+	
+	
+	response_data = {}
+	response_data['answer'] = 'This is an answer from the server!'
+	response_data['something'] = 12345
+	
+	return HttpResponse(json.dumps(response_data), content_type="application/json")
+	
+	
+	
+	
+	
+	
+	
+	
+	

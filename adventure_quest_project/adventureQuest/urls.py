@@ -13,5 +13,8 @@ urlpatterns = [
 	url(r'^restricted/', views.restricted, name='restricted'),
 	# url(r'^logout/$', views.user_logout, name='logout'),
 	url(r'^quest1_about/$', views.quest1_about, name='quest1_about'),
-	url(r'^quest1riddle1/$', views.answer_riddle, name='quest1riddle1'),
+	url(r'^test_quest/$', views.answer_riddle, name='test_quest'),
+	
+	url(r'^quest/$', views.quest, name='quest'),
+	url(r'^quest_ajax/$', views.quest_ajax, name='quest_ajax'),
 ]
