@@ -176,6 +176,10 @@ def quest_ajax(request):
 	"""
 	
 	
+	
+
+	
+	
 	# The code below gets the answer from the user
 	user_answer = request.GET.get('answer')
 	

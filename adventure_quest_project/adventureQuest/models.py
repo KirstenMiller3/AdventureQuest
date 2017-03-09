@@ -61,7 +61,8 @@ def upload_location(instance, filename):
 #Quest
 class Quest(models.Model):
     #post = models.ForeignKey(Post)
-    description = models.TextField()
+	name = models.CharField(max_length=120)
+    description = models.CharField(max_length=120)
     difficulty = models.CharField(max_length=120)
     age_limit = models.IntegerField()
 
