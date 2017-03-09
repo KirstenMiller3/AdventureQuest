@@ -1,25 +1,251 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 
+<html>
+    <head>
+    
+        <title>{% block title_block %}AdventureQuest{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+<style>
 
- <html>
-	<head lang="en">
-		<meta charset="UTF-8" />
-		<title>
-			Adventure Quest -
-			{% block title_block %}
-				Explore your city!
-			{% endblock %}
-		
-		</title>
-	</head>
-	
-	<body>
-	{% block body_block %}
-        
-    {% endblock %}
-	
-		
-	</body>
-	
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica');
+body,h1,h2,h3,h4,h5,h6 {font-family: "IM Fell DW Pica", serif;}
+body, html {
+    height: 100%;
+    color: #777; /* Main default text color*/
+    line-height: 1.8;
+    background-color: #120F00; /* Main default BG colour for the entire page*/
+}
+    
+
+/*navigation bar CSS*/
+
+ul {
+	position: fixed;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #120F00;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: #CCC39D;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #120F00;
+}
+
+li.dropdown {
+    display: inline-block;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*END OF MENU CSS*/
+
+</style>
+
+<style>
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2 {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+}
+
+/*  image (Logo. Full height) */
+.bgimg-1 {
+    background-image: url("{% static "images/old_map_of_glasgow.jpg" %}");
+    /*margin-top: 48px;*/
+    min-height: 100%;
+    
+}
+
+
+
+/*  image (Contact) */
+.bgimg-2 {
+    background-image: url("{% static "images/names.jpg" %}");
+    background-size: auto;
+    min-height: 400px;
+}
+/*  Main wide Titles eg Adventure Quest and Contact */
+.w3-wide {
+    letter-spacing: 10px;
+    font-family: "IM Fell DW Pica", serif;
+    
+    
+    
+}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1,.bgimg-2 {
+        background-attachment: scroll;
+    }
+}
+</style>
+
+
+
+ <body>
+ 
+     
+     <!-- NAV BAR HTML. PERSISTENT SO EVERYONE INHERITS THIS-->
+<div class="w3-top">
+    <div class="w3-bar">
+    <ul>
+
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn"><i class="fa fa-navicon" style="font-size:34px"></i></a>
+        <div class="dropdown-content">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Quests</a>
+          <a href="#">Hall of Fame</a> 
+          <li style="float:right"><a href="{% url 'login' %}"><i class="fa fa-user-circle" style="font-size:24px"></i> Login</a> 
+              <i class="fa fa-facebook-official w3-hover-text-indigo"style="font-size:24px"></i>
+              <i class="fa fa-instagram w3-hover-text-purple" style="font-size:24px"></i>
+              <i class="fa fa-snapchat w3-hover-text-yellow" style="font-size:24px"></i>
+              <i class="fa fa-twitter w3-hover-text-light-blue" style="font-size:24px"></i>
+        </div>
+        </li>
+    </ul>
+         
+    </div> 
+</div> 
+     
+{% block body_block %}     
+<!--THIS IS WHERE PAGE SPECIFIC BODY CONTENT LIVES-->
+     
+{% endblock %}
+     
+
+ <!-- Footer PERSISTENT SO EVERYONE INHERITS THIS-->
+<footer class="w3-center w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-btn w3-padding w3-light-grey w3-hover-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-text-indigo"></i>
+    <i class="fa fa-instagram w3-hover-text-purple"></i>
+    <i class="fa fa-snapchat w3-hover-text-yellow"></i>
+    <i class="fa fa-twitter w3-hover-text-light-blue"></i>
+    <i class="fa fa-linkedin w3-hover-text-indigo"></i>
+    <li><a href="{% url 'register' %}">Sign Up</a></li>
+    <li><a href="{% url 'login' %}">Login</a></li>
+    <li><a href="{% url 'quest1_about' %}">Quest1</a></li>
+
+{% if user.is_authenticated %}
+howdy {{ user.username }}!
+{% else %}
+hey there partner!
+{% endif %}
+
+  </div>
+</footer>
+
+     
+</body>      
+<!-- JAVASCRIPTS -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+<!-- Add Google Maps -->
+<script>
+function myMap()
+{
+  myCenter=new google.maps.LatLng(55.8721, -4.2882);
+  var mapOptions= {
+    center:myCenter,
+    zoom:12, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-navbar" + " w3-card-2" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card-2 w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0z8juUZWLKkvKq4p8G9ne4Sr8RzB4hMY&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp Toms API is used
+-->
+
 </html>
