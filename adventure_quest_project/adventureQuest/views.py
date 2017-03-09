@@ -35,7 +35,7 @@ def answer_riddle(request):
         else:
             print(form.errors)
 
-    return render(request, 'adventureQuest/quest1riddle1.html')
+    return render(request, 'adventureQuest/test_quest.html')
 
 
 def register(request):
@@ -166,7 +166,7 @@ def quest(request):
 	"""
 	This is the view that renders the initial QUEST page
 	"""
-	return render(request, 'adventureQuest/quest1riddle1.html')
+	return render(request, 'adventureQuest/test_quest.html')
 
 import json
 	
