@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from adventureQuest.models import UserProfile, Riddle
+from adventureQuest.models import UserProfile, Riddle, Post
 
 
 
@@ -27,3 +27,14 @@ class RiddleForm(forms.ModelForm):
     class Meta:
         model = Riddle
         fields = ('riddleOne','riddleTwo',)
+
+
+# Upload pictures to gallery
+class PostForm(forms.ModelForm):
+	class Meta:
+		model = Post
+		fields = [
+			"title",
+			"image",
+			"content",
+		]
