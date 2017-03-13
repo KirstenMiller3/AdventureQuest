@@ -6,16 +6,26 @@
 {% endblock %}
 
 {% block body_block %}
-<h1>Login to AdventureQuest</h1>
-<form id="login_form" method="post" action="{% url 'login' %}">
-    {% if invalid_deets %}
+
+<div class="w3-content w3-container w3-padding-64 w3-center">
+    <h2>Login to AdventureQuest</h2>
+<form class="w3-container w3-card-4 w3-center" id="login_form" method="post" action="{% url 'login' %}">
+ {% if invalid_deets %}
         <strong>Invalid login details supplied.</strong><br>
     {% endif %}
     {% csrf_token %}
-    Username: <input type="text" name="username" value="" size="50" />
-    <br/><br/>
-    Password: <input type="password" name="password" value="" size="50" />
-    <br/>
-    <input type="submit" value="submit" />
+<p>
+    
+    <input class="w3-input w3-center" type="text" name="username" placeholder="e.g. CoolQuester93" required>
+    <label class="w3-label w3-validate">Username</label>
+</p>
+<p>
+    <input class="w3-input w3-center" type="password" placeholder="Your amazingly strong password" required>
+    <label class="w3-label w3-validate">Password</label>
+</p>
+<br/>
+<input type="submit" value="submit" />
 </form>
+</div>
+
 {% endblock %}
