@@ -26,31 +26,10 @@ class UserProfile(models.Model):
 class Riddle(models.Model):
     question = models.CharField(max_length=128)
     answer = models.CharField(max_length = 128)
+    question_id = models.IntegerField()
     quest_name = models.CharField(max_length=128)
-    question_id = models.IntegerField(0)
 
-    def __str__(self):
-        return self.question
-
-    def __unicode__(self):
-        return self.question
-
-    def __str__(self):
-        return self.answer
-
-    def __unicode__(self):
-        return self.answer
-
-    def __str__(self):
-        return self.id
-
-    def __unicode__(self):
-        return self.id
-
-    def __str__(self):
-        return self.question_id
-
-    def __unicode__(self):
+    def __int__(self):
         return self.question_id
 
 
@@ -67,22 +46,11 @@ class Quest(models.Model):
     age_limit = models.IntegerField()
 
     def __str__(self):
-        return self.description
+        return self.name
 
     def __unicode__(self):
-        return self.description
+        return self.name
 
-    def __str__(self):
-        return self.difficulty
-
-    def __unicode__(self):
-        return self.difficulty
-
-    def __str__(self):
-        return self.age_limit
-
-    def __unicode__(self):
-        return self.age_limit
 
 
 

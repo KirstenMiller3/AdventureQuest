@@ -1,11 +1,7 @@
 import os
-import django
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'adventure_quest_project.settings')
-
-
+import django
 django.setup()
-
 from adventureQuest.models import Riddle
 from adventureQuest.models import Quest
 

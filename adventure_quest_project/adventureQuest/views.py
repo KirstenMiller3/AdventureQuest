@@ -170,24 +170,63 @@ def quest(request):
 	return render(request, 'adventureQuest/test_quest.html')
 
 import json
-	
+ridQID = 1
+ridAID = 0
+correct = False
+
 def quest_ajax(request):
 
-    quest = Quest.name
-    riddle = 0
+    #quest = Quest.name
+
 
     user_answer = request.GET.get('answer')
+
+
+
 # Some logic here that goes into your DB, pulls out the answer...
 # And puts it into response_data['answer']
 
-    Riddle.objects
-    r = Riddle(quest_name=quest, question_id=riddle)
-    print r.objects
-    riddle += 1
+# Riddle.objects.all()
+
+    for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridAID):
+        textAnswer = row.answer
+        print(row.answer)
+
+    for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridQID):
+        textQuestion = row.question
+        print(row.question)
+
+
+   # Riddle.objects
+   # r = Riddle(quest_name=quest, question_id=riddle)
+   # print r.objects
+   # riddle += 1
 
     response_data = {}
-    response_data['answer'] = r.question
-    response_data['something'] = 12345
+
+    if user_answer == textAnswer:
+        global ridQID
+        ridQID += 1
+        for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridQID):
+            textQuestion = row.question
+            print(row.question)
+        response_data['answer'] = textQuestion
+        global ridAID
+        ridAID += 1
+        global correct
+        correct = True
+
+    elif correct == False:
+
+        global ridQID
+        ridQID = 0
+        for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridQID):
+            textQuestion = row.question
+        response_data['answer'] = 'try again: '+textQuestion
+
+    elif correct == True:
+        response_data['answer'] = 'try again: ' + textQuestion
+    #response_data['something'] = 12345
 
     # get question where name=quest and riddle_number=riddle+1
     return HttpResponse(json.dumps(response_data), content_type="application/json")
