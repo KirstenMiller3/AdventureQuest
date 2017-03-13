@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from adventureQuest.forms import RiddleForm
+from adventureQuest.models import Quest, Riddle
 
 
 # Create your views here.
@@ -171,32 +172,30 @@ def quest(request):
 import json
 	
 def quest_ajax(request):
-	"""
-	Code for quest AJAX stuff.
-	"""
+
+    quest = Quest.name
+    riddle = 0
+
+    user_answer = request.GET.get('answer')
+# Some logic here that goes into your DB, pulls out the answer...
+# And puts it into response_data['answer']
+
+    Riddle.objects
+    r = Riddle(quest_name=quest, question_id=riddle)
+    print r.objects
+    riddle += 1
+
+    response_data = {}
+    response_data['answer'] = r.question
+    response_data['something'] = 12345
+
+    # get question where name=quest and riddle_number=riddle+1
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
 	
 	
 	
 
-	
-	
-	# The code below gets the answer from the user
-	user_answer = request.GET.get('answer')
-	
-	# Some logic here that goes into your DB, pulls out the answer...
-	# And puts it into response_data['answer']
-	
-	
-	
-	response_data = {}
-	response_data['answer'] = 'This is an answer from the server!'
-	response_data['something'] = 12345
-	
-	return HttpResponse(json.dumps(response_data), content_type="application/json")
-	
-	
-	
-	
+
 	
 	
 	
