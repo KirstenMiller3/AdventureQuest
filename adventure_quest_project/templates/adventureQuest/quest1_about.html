@@ -1,17 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Quest 1 - About </title>
-</head>
-<body>
-<div> Quest 1 is themed as bla
-it's blablabalblablab description</div>
-<div>Starting point:</div>
-<div>Items to collect:</div>
-<div>Difficulty:</div>
-<div>Time to complete:</div>
-<div>Reviews:  link here?</div>
-<div> <a href="{% url 'test_quest' %}">Link to begin quest or redirect if not logged in</a> </div>
-</body>
-</html>
+{% extends "adventureQuest/base.html" %}
+{% load staticfiles %}
+{% block Title %}Quest 1 About{% endblock %}
+{% block body_block %}  
+<div class="w3-content w3-container w3-padding-64 w3-card w3-white" id="aboutquest">
+    
+    <p class="w3-center w3-xlarge ">  Quest 1 is themed as bla it's blablabalblablab description</p>
+    
+    
+    <div class="w3-center w3-ul">
+    
+    <li>Jill</li>
+    <li>Eve</li>
+    
+    </div>
+    
+    
+    
+    
+    
+    <div>Starting point:{{ value}}</div>
+    <div>Items to collect:{{ value}}</div>
+    <div>Difficulty:{{ value}}</div>
+    <div>Time to complete:{{ value}}</div>
+    <div>Reviews:  link here?{{ value}}</div>
+    <div>
+        <ul class="w3-ul">
+        <li>Jill</li>
+        <li>Eve</li>
+        <li>Adam</li>
+        </ul>
+        </div>
+    <a class="w3-btn w3-round-large" href="{% url 'test_quest' %}">Link to begin quest or redirect if not logged in</a>    
+    
+    </div>
+
+
+{% endblock %}

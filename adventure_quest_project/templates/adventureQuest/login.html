@@ -14,18 +14,19 @@
         <strong>Invalid login details supplied.</strong><br>
     {% endif %}
     {% csrf_token %}
-<p>
+
     
-    <input class="w3-input w3-center" type="text" name="username" placeholder="e.g. CoolQuester93" required>
+    <input class="w3-input w3-center" type="text" name="username" value="" size="50" placeholder="e.g. CoolQuester93" required>
     <label class="w3-label w3-validate">Username</label>
-</p>
-<p>
-    <input class="w3-input w3-center" type="password" placeholder="Your amazingly strong password" required>
+
+
+    <input class="w3-input w3-center" type="password" name="password" value="" size="50" placeholder="Your amazingly strong password" required>
     <label class="w3-label w3-validate">Password</label>
-</p>
+
 <br/>
 <input type="submit" value="submit" />
 </form>
+    
 </div>
 
 {% endblock %}

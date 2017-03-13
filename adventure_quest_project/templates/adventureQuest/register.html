@@ -12,6 +12,7 @@
         <a href="{% url 'index' %}">Return to the homepage.</a><br/>
     {% else %}
        AdventureQuest says: <strong>register here!</strong><br />
+
         <form id="user_form" method="post" action="{% url 'register' %}"
               enctype="multipart/form-data">
             {% csrf_token %}
@@ -24,4 +25,38 @@
             <input type="submit" name="submit" value="Register" />
         </form>
         {% endif %}
+<div>
+    
+    {% if registered %}}
+        <h2 class="w3-text-white">Register Here
+        <a href="{% url 'index' %}">Return to the homepage.</a>
+        </h2>    
+        <br/>
+    {% else %}
+        <h2 class="w3-text-white">Register Here</h2>
+    
+    <form class="w3-container w3-card-4" id="user_form" method="post" action="{% url 'register' %}"
+              enctype="multipart/form-data">
+    {% csrf_token %}
+    
+       <!-- Display each form -->
+            <p><label for="id_username">Username:</label> 
+                <input id="id_username" class="w3-input w3-border" maxlength="30" name="username" type="text"> <span class="helptext">Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
+        
+        <p><label for="id_email">Email address:</label> 
+            <input id="id_email" class="w3-input w3-border" maxlength="254" name="email" type="email"></p>
+        
+        <p><label for="id_password">Password:</label> 
+            <input id="id_password" class="w3-input w3-border" name="password" type="password"></p>
+            
+
+            <p><label for="id_picture">Picture:</label> <input id="id_picture" name="picture" type="file"></p><!-- Provide a button to click to submit the form. -->
+        
+       
+    <button class="w3-btn w3-blue" type="submit" name="submit" value="Register">Register</button>
+    </p>
+</form>
+     {% endif %}
+    <br/>
+</div>
 {% endblock %}
