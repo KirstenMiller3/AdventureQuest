@@ -50,3 +50,10 @@ The format is loosely based on [Keep a Changelog](http://keepachangelog.com/)
 ## [Tom] - 03-03-2017
 ### Changed
 - started to un-messify the base template
+
+## [Holly] - 09-03-2017
+### Changed
+- nothing
+
+### Added
+- added content to the social media links so they actually go somewhere {dummy fb, twitter, insta pages feat. kazoo kid}
