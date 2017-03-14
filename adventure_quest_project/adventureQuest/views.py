@@ -163,31 +163,42 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect(reverse('adventureQuest./index.html'))
 
+
+# test_Quest view
 def quest(request):
-	"""
-	This is the view that renders the initial QUEST page
-	"""
-	return render(request, 'adventureQuest/test_quest.html')
+    global name
+    name = 'test_quest'
+    return render(request, 'adventureQuest/test_quest.html')
 
 import json
-ridQID = 1
+ridQID = 0
 ridAID = 0
-correct = False
+correctNo = 0
+name = ''
 
 def quest_ajax(request):
 
+    # Set the global variables
+    global ridAID
+    global ridQID
+    global correct
+    global correctNo
+    global name
+
+
+
     #quest = Quest.name
 
+    # count how many riddles in this quest
+    listRiddles = list(Riddle.objects.filter(quest_name='test_quest'))
+    numberRiddles= len(listRiddles)
+    print('This is the number of riddles'+str(numberRiddles)+' '+name)
+    print(name)
 
+    # Get the user answer
     user_answer = request.GET.get('answer')
 
-
-
-# Some logic here that goes into your DB, pulls out the answer...
-# And puts it into response_data['answer']
-
-# Riddle.objects.all()
-
+    # Set the current question and answer from the database
     for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridAID):
         textAnswer = row.answer
         print(row.answer)
@@ -196,40 +207,36 @@ def quest_ajax(request):
         textQuestion = row.question
         print(row.question)
 
-
-   # Riddle.objects
-   # r = Riddle(quest_name=quest, question_id=riddle)
-   # print r.objects
-   # riddle += 1
-
+    # Create Response data vairable
     response_data = {}
 
-    if user_answer == textAnswer:
-        global ridQID
-        ridQID += 1
-        for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridQID):
-            textQuestion = row.question
-            print(row.question)
-        response_data['answer'] = textQuestion
-        global ridAID
-        ridAID += 1
-        global correct
-        correct = True
+# If the users answer is correct then get the next question from the database unless this is the last question
+    if correctNo < numberRiddles:
+        if user_answer == textAnswer:
+            ridQID += 1
+            correctNo += 1
+            ridAID += 1
+            for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridQID):
+                textQuestion = row.question
+                print(row.question)
+                response_data['answer'] = textQuestion
+            if correctNo == numberRiddles:
+                response_data['answer'] = 'Congratualtions you finished the quest!'
+                ridQID = 0
+                ridAID = 0
+                correctNo = 0
+    # If the user answer is incorrect
+        else:
+            for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridQID):
+                textQuestion = row.question
+            response_data['answer'] = 'try again: '+textQuestion
+    # If the users answer is
+     #   elif correct == True:
+         #   response_data['answer'] = 'try again: ' + textQuestion
 
-    elif correct == False:
-
-        global ridQID
-        ridQID = 0
-        for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridQID):
-            textQuestion = row.question
-        response_data['answer'] = 'try again: '+textQuestion
-
-    elif correct == True:
-        response_data['answer'] = 'try again: ' + textQuestion
-    #response_data['something'] = 12345
-
-    # get question where name=quest and riddle_number=riddle+1
     return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
 	
 	
 	
