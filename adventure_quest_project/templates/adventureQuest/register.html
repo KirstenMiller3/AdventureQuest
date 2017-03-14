@@ -1,47 +1,64 @@
-{% extends 'adventureQuest/base.html' %}}
-{% load staticfiles %}}
+{% extends 'adventureQuest/base.html' %}
+{% load staticfiles %}
 
-{% block title_block %}}
+<style>
+    
+.hide{display:none;}
+.btn {
+display: inline-block;
+padding: 4px 12px;
+margin-bottom: 0;
+font-size: 14px;
+line-height: 20px;
+color: #333333;
+text-align: center;
+vertical-align: middle;
+cursor: pointer;
+border: 1px solid #bbbbbb;
+border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+border-bottom-color: #a2a2a2;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+.btn {
+border-color: #c5c5c5;
+border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+}
+.btn-large {
+padding: 11px 19px;
+font-size: 17.5px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+</style>
+{% block title_block %}
     Register
 {% endblock %}
 
 {% block body_block %}
-    <h1>About Page</h1>
-    {% if registered %}}
-        AdventureQuest says: <strong>thank you for registering!</strong>
-        <a href="{% url 'index' %}">Return to the homepage.</a><br/>
-    {% else %}
-       AdventureQuest says: <strong>register here!</strong><br />
 
-        <form id="user_form" method="post" action="{% url 'register' %}"
-              enctype="multipart/form-data">
-            {% csrf_token %}
-
-            <!-- Display each form -->
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-
-            <!-- Provide a button to click to submit the form. -->
-            <input type="submit" name="submit" value="Register" />
-        </form>
-        {% endif %}
-<div>
-    
-    {% if registered %}}
-        <h2 class="w3-text-white">Register Here
+<div class="w3-content w3-container w3-padding-64 w3-center">
+    {% if registered %}
+        <h2>Thank You!
         <a href="{% url 'index' %}">Return to the homepage.</a>
         </h2>    
         <br/>
     {% else %}
-        <h2 class="w3-text-white">Register Here</h2>
+        <h2>Register Here</h2>
     
     <form class="w3-container w3-card-4" id="user_form" method="post" action="{% url 'register' %}"
               enctype="multipart/form-data">
     {% csrf_token %}
     
        <!-- Display each form -->
-            <p><label for="id_username">Username:</label> 
-                <input id="id_username" class="w3-input w3-border" maxlength="30" name="username" type="text"> <span class="helptext">Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
+            <p><label for="id_username" class="w3-tooltip">Username:
+                <span class="w3-text">Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.</span></label> 
+                <input id="id_username" class="w3-input w3-border" maxlength="30" name="username" type="text"></p>
+  
         
         <p><label for="id_email">Email address:</label> 
             <input id="id_email" class="w3-input w3-border" maxlength="254" name="email" type="email"></p>
@@ -50,11 +67,17 @@
             <input id="id_password" class="w3-input w3-border" name="password" type="password"></p>
             
 
-            <p><label for="id_picture">Picture:</label> <input id="id_picture" name="picture" type="file"></p><!-- Provide a button to click to submit the form. -->
+            <!--<p><label for="id_picture" class="w3-btn w3-white w3-circle">Add a picture</label> 
+                
+                <input id="id_picture" name="picture" type="file" style="display: none;"></p>--><!-- Provide a *proper* button to click to submit the form. -->
         
-       
-    <button class="w3-btn w3-blue" type="submit" name="submit" value="Register">Register</button>
-    </p>
+            <p><img id="preview" alt="Optionally: Upload a pic" width="100" height="100" /><br/>
+                <label for="id_picture" class="w3-button w3-white w3-hover-red">Upload</label>
+                <input id=id_picture type="file" style="display: none;" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])"></p>
+        
+        
+    <button class="w3-btn w3-white" type="submit" name="submit" value="Register">Register</button>
+    
 </form>
      {% endif %}
     <br/>

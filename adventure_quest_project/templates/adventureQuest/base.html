@@ -24,7 +24,7 @@ body, html {
 
 /*navigation bar CSS*/
 
-ul {
+.menu {
 	position: fixed;
     top: 0;
     width: 100%;
@@ -135,7 +135,7 @@ li.dropdown {
      <!-- NAV BAR HTML. PERSISTENT SO EVERYONE INHERITS THIS-->
 <div class="w3-top">
     <div class="w3-bar">
-    <ul>
+    <div class="menu">
       <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn"><i class="fa fa-navicon" style="font-size:34px"></i></a>
         <div class="dropdown-content">
@@ -143,19 +143,26 @@ li.dropdown {
           <a href="#">About</a>
           <a href="#">Quests</a>
           <a href="#">Hall of Fame</a> 
-          <li style="float:right"><a href="{% url 'login' %}"><i class="fa fa-user-circle" style="font-size:24px"></i> Login</a> 
-	      <a href=https://www.facebook.com/adventurequestglasgow/><i class="fa fa-facebook-official w3-hover-text-indigo"style="font-size:24px"></i></a>
-	      <a href=https://www.instagram.com/adventurequestglasgow/><i class="fa fa-instagram w3-hover-text-purple" style="font-size:24px"></i></a>
-              <i class="fa fa-snapchat w3-hover-text-yellow" style="font-size:24px"></i>
+          </div>    
+          
+          <li style="float:right">
+              <a href="{% url 'login' %}"><i class="fa fa-user-circle" style="font-size:24px"></i> 
+              {% if user.is_authenticated %}
+              Hello, {{ user.username }}!
+              {% else %}
+              Login
+              {% endif %}
+              </a> 
+	      <a href=https://www.facebook.com/adventurequestglasgow/><i class="fa fa-facebook-official w3-hover-text-indigo"style="font-size:24px"></i>
+	      <a href=https://www.instagram.com/adventurequestglasgow/><i class="fa fa-instagram w3-hover-text-purple" style="font-size:24px"></i>
+          <a href=https://www.instagram.com/adventurequestglasgow/><i class="fa fa-snapchat w3-hover-text-yellow" style="font-size:24px"></i>
 	      <a href=https://twitter.com/AQ_GLA><i class="fa fa-twitter w3-hover-text-light-blue" style="font-size:24px"></i></a>
            </li>
-    </ul>
-        </div>
-     
-         
+    </div>
     </div> 
 </div> 
-     
+
+
 {% block body_block %}     
 <!--THIS IS WHERE PAGE SPECIFIC BODY CONTENT LIVES-->
      
@@ -163,7 +170,7 @@ li.dropdown {
      
 
  <!-- Footer PERSISTENT SO EVERYONE INHERITS THIS-->
-<footer class="w3-center w3-padding-64 w3-opacity w3-hover-opacity-off">
+<footer class="w3-container w3-center w3-padding-64 w3-opacity w3-hover-opacity-off">
   <a href="#home" class="w3-btn w3-padding w3-light-grey w3-hover-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
   <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-text-indigo"></i>
@@ -171,7 +178,7 @@ li.dropdown {
     <i class="fa fa-snapchat w3-hover-text-yellow"></i>
     <i class="fa fa-twitter w3-hover-text-light-blue"></i>
     <i class="fa fa-linkedin w3-hover-text-indigo"></i>
-    <li><a href="{% url 'register' %}">Sign Up</a></li>
+    <li><a href="{% url 'register' %}">Register</a></li>
     <li><a href="{% url 'login' %}">Login</a></li>
     <li><a href="{% url 'quest1_about' %}">Quest1</a></li>
 
