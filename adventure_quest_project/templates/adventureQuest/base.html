@@ -125,6 +125,14 @@ li.dropdown {
         background-attachment: scroll;
     }
 }
+
+    /* CSS picture grid photo resize */
+    .img-responsive {
+        width: 70%;
+        height: 400px;
+        padding: 10px 10px;
+    }
+
 </style>
 
 
@@ -142,7 +150,7 @@ li.dropdown {
           <a href="#">Home</a>
           <a href="#">About</a>
           <a href="#">Quests</a>
-          <a href="#">Hall of Fame</a> 
+          <a href="#">Hall of Fame</a>
           </div>    
           
           <li style="float:right">
@@ -181,6 +189,7 @@ li.dropdown {
     <li><a href="{% url 'register' %}">Register</a></li>
     <li><a href="{% url 'login' %}">Login</a></li>
     <li><a href="{% url 'quest1_about' %}">Quest1</a></li>
+    <li><a href="{% url 'my_account' %}">My Account</a></li>
 
 {% if user.is_authenticated %}
 howdy {{ user.username }}!

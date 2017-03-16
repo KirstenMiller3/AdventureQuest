@@ -42,8 +42,13 @@ def upload_location(instance, filename):
 #Quest
 class Quest(models.Model):
     #post = models.ForeignKey(Post)
+<<<<<<< Updated upstream
+    name = models.CharField(max_length=120)
+    description = models.CharField(max_length=120)
+=======
     name = models.CharField(max_length=200, default='new Quest')
     description = models.TextField()
+>>>>>>> Stashed changes
     difficulty = models.CharField(max_length=120)
     age_limit = models.IntegerField()
 
@@ -60,7 +65,7 @@ class Quest(models.Model):
         return self.name
 
     def __str__(self):
-        return self.description
+        return self.name
 
     def __unicode__(self):
         return self.name

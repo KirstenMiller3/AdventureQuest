@@ -1,0 +1,22 @@
+from django.contrib import admin
+<<<<<<< Updated upstream
+from adventureQuest.models import UserProfile, Comment, Riddle, Quest
+=======
+from adventureQuest.models import UserProfile, Comment, Post, Quest
+>>>>>>> Stashed changes
+
+
+
+
+# Register your models here.
+admin.site.register(UserProfile)
+
+admin.site.register(Comment)
+
+<<<<<<< Updated upstream
+admin.site.register(Riddle)
+=======
+admin.site.register(Post)
+>>>>>>> Stashed changes
+
+admin.site.register(Quest)
