@@ -1,20 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from adventureQuest.forms import UserForm, UserProfileForm
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from adventureQuest.forms import RiddleForm
-from adventureQuest.models import Quest, Riddle, UserProfile
-
-
+from .forms import RiddleForm, PostForm
+from .models import Quest, Riddle, UserProfile, Post
+# Set the global variables
+global ridAID
+global ridQID
+global correct
+global correctNo
+global name
 # Create your views here.
 
 # The home page
 def index(request):
-	return render(request, 'adventureQuest/index.html')
+    return render(request, 'adventureQuest/index.html')
 
 # About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to
 # make a new one of these for each quest. Same for riddle pages!!!!!!
@@ -27,7 +32,7 @@ def answer_riddle(request):
     form = RiddleForm()
 
     if request.method == 'POST':
-        form = riddle(request.POST)
+        form = RiddleForm(request.POST)
         if form.is_valid():
             # If valid save to database???? not sure if we should be doing that with riddle answers?
             form.save(commit=True)
@@ -176,7 +181,7 @@ def user_logout(request):
 
 #Hall of Fame view from which quest can be selected
 def hall_of_fame(request):
-	return render(request, 'adventureQuest/hall_of_fame.html')
+    return render(request, 'adventureQuest/hall_of_fame.html')
 
 
 #add login_required
@@ -199,11 +204,8 @@ def quest(request):
     name = 'test_quest'
     return render(request, 'adventureQuest/test_quest.html')
 
-import json
-ridQID = 0
-ridAID = 0
-correctNo = 0
-name = ''
+
+
 def post_list(request):
     objects_post = Post.objects.all()
     print(objects_post[0].title)
@@ -219,7 +221,7 @@ def post_list(request):
     #         # If page is out of range, deliver last page
     #         queryset = paginator.page(paginator.num_pages)
 
-def quest_ajax(request):
+
     context = {
         "object_list": objects_post,
         "title": "List",
@@ -227,14 +229,12 @@ def quest_ajax(request):
     }
     return render(request, 'adventureQuest/post_list.html', context)
 
-    # Set the global variables
-    global ridAID
-    global ridQID
-    global correct
-    global correctNo
-    global name
-
-
+import json
+def quest_ajax(request):
+    ridQID = 0
+    ridAID = 0
+    correctNo = 0
+    name = ''
 
     #quest = Quest.name
 
@@ -286,13 +286,12 @@ def quest_ajax(request):
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
-	
-	
-	
 
 
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
