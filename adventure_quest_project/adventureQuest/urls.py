@@ -17,4 +17,5 @@ urlpatterns = [
 	
 	url(r'^quest/$', views.quest, name='quest'),
 	url(r'^quest_ajax/$', views.quest_ajax, name='quest_ajax'),
+	url(r'^my_account/$', views.my_account, name='my_account'),
 ]

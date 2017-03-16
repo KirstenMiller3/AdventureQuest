@@ -1,0 +1,18 @@
+{% extends 'adventureQuest/base.html' %}
+
+{% block title_block %}
+    My Account
+{% endblock %}
+
+{% block body_block %}
+
+    {% if user.is_authenticated %}
+              Hello, {{ user.username }}
+    {% else %}
+        redirect
+    {% endif %}
+
+
+
+
+{% endblock %}

@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from adventureQuest.forms import RiddleForm
-from adventureQuest.models import Quest, Riddle
+from adventureQuest.models import Quest, Riddle, UserProfile
 
 
 # Create your views here.
@@ -99,6 +99,17 @@ def register(request):
                    'profile_form': profile_form,
                    'registered': registered})
 
+
+
+
+def my_account(request):
+    context_dict = {'hi'}
+    if request.user.is_authenticated():
+        name = request.user.username
+        #pic = request.user.picture
+
+
+    return render(request, 'adventureQuest/my_account.html',context_dict)
 
 
 
