@@ -174,24 +174,7 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect(reverse('adventureQuest./index.html'))
 
-#Hall of Fame view from which quest can be selected
-def hall_of_fame(request):
-	return render(request, 'adventureQuest/hall_of_fame.html')
-
-
-#add login_required
-def post_create(request):
-    form = PostForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
-        # message success
-        messages.success(request, "Post was created")
-        return HttpResponseRedirect(instance.get_absolute_url())
-    context = {
-        "form": form,
-    }
-    return render(request, 'adventureQuest/post_form.html', context)
+<<<<<<< Updated upstream
 
 # test_Quest view
 def quest(request):
@@ -204,28 +187,8 @@ ridQID = 0
 ridAID = 0
 correctNo = 0
 name = ''
-def post_list(request):
-    objects_post = Post.objects.all()
-    print(objects_post[0].title)
-    # paginator = Paginator(queryset_list, 10)
-    # page_request_var = "page"
-    # page = request.GET(page_request_var)
-    # try:
-    #         queryset = paginator.page(page)
-    # except PageNotAnInteger:
-    #         # If not an int, deliver first page
-    #         queryset = paginator.page(1)
-    # except EmptyPage:
-    #         # If page is out of range, deliver last page
-    #         queryset = paginator.page(paginator.num_pages)
 
 def quest_ajax(request):
-    context = {
-        "object_list": objects_post,
-        "title": "List",
-       # "page_request_var": page_request_var
-    }
-    return render(request, 'adventureQuest/post_list.html', context)
 
     # Set the global variables
     global ridAID
@@ -296,3 +259,61 @@ def quest_ajax(request):
 	
 	
 	
+=======
+#Hall of Fame view from which quest can be selected
+def hall_of_fame(request):
+	return render(request, 'adventureQuest/hall_of_fame.html')
+
+
+#add login_required
+def post_create(request):
+    form = PostForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        # message success
+        messages.success(request, "Post was created")
+        return HttpResponseRedirect(instance.get_absolute_url())
+    context = {
+        "form": form,
+    }
+    return render(request, 'adventureQuest/post_form.html', context)
+
+def post_detail(request, id=None):
+    instance = get_object_or_404(Post, id=id)
+    context = {
+        "title": instance.title,
+        "instance": instance,
+    }
+    return render(request, 'adventureQuest/post_detail.html', context)
+
+def post_list(request):
+    objects_post = Post.objects.all()
+    print(objects_post[0].title)
+    # paginator = Paginator(queryset_list, 10)
+    # page_request_var = "page"
+    # page = request.GET(page_request_var)
+    # try:
+    #         queryset = paginator.page(page)
+    # except PageNotAnInteger:
+    #         # If not an int, deliver first page
+    #         queryset = paginator.page(1)
+    # except EmptyPage:
+    #         # If page is out of range, deliver last page
+    #         queryset = paginator.page(paginator.num_pages)
+
+    context = {
+        "object_list": objects_post,
+        "title": "List",
+       # "page_request_var": page_request_var
+    }
+    return render(request, 'adventureQuest/post_list.html', context)
+
+
+
+def post_delete(request, id=None):
+    instance = get_object_or_404(Post, id=id)
+    instance.delete()
+    messages.success(request, "Successfully deleted")
+    return redirect("posts:list")
+>>>>>>> Stashed changes
