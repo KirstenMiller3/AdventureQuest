@@ -8,22 +8,24 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from adventureQuest.forms import RiddleForm
 from adventureQuest.models import Quest, Riddle
+from django.core.signals import request_finished
 
 
 # Create your views here.
 
 # The home page
 def index(request):
-	return render(request, 'adventureQuest/index.html')
+    return render(request, 'adventureQuest/index.html')
 
 # About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to
 # make a new one of these for each quest. Same for riddle pages!!!!!!
 def quest1_about(request):
+    check_url(request)
     return render(request, 'adventureQuest/quest1_about.html')
 
 
 # riddle page
-def answer_riddle(request):
+"""def answer_riddle(request):
     form = RiddleForm()
 
     if request.method == 'POST':
@@ -37,6 +39,7 @@ def answer_riddle(request):
             print(form.errors)
 
     return render(request, 'adventureQuest/test_quest.html')
+"""
 
 
 def register(request):
@@ -165,25 +168,59 @@ def user_logout(request):
 
 
 # test_Quest view
-def quest(request):
-    global name
-    name = 'test_quest'
+def test_quest(request):
+   # check_url(request)
+    # Set up session variables
+    questName = str(get_server_side_cookie(request, 'questName', 'test_quest'))
+    request.session['questName'] = questName
     return render(request, 'adventureQuest/test_quest.html')
 
-import json
-ridQID = 0
-ridAID = 0
-correctNo = 0
-name = ''
+# Method that would reset the quest if the user leaves half way through...not working, maybe need a quit button
+def check_url(request):
+    original_path = '/adventureQuest/quest_ajax/'
+    print('This is the url that is compared too' + request.get_full_path(request))
+    if original_path not in request.get_full_path(request):
+        print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        request.session.flush()
 
+# incrementors
+def quest_cookies(request, inc):
+    riddleQuestionID = int(get_server_side_cookie(request,  'riddleQuestionID', '0'))
+    if inc == True:
+        riddleQuestionID +=1
+    request.session['riddleQuestionID'] = riddleQuestionID
+
+    riddleAnswerID = int(get_server_side_cookie(request, 'riddleAnswerID', '0'))
+    if inc == True:
+        riddleAnswerID += 1
+    request.session['riddleAnswerID'] = riddleAnswerID
+
+    riddleCorrectNo = int(get_server_side_cookie(request, 'riddleCorrectNo', '0'))
+    if inc == True:
+        riddleCorrectNo += 1
+    request.session['riddleCorrectNo'] = riddleCorrectNo
+
+# server side cookie
+def get_server_side_cookie(request, cookie, default_val = None):
+    val = request.session.get(cookie)
+    if not val:
+        val = default_val
+    return val
+
+
+
+import json
 def quest_ajax(request):
 
-    # Set the global variables
-    global ridAID
-    global ridQID
-    global correct
-    global correctNo
-    global name
+
+    test_quest(request)
+    questName = request.session['questName']
+    # Set session variables
+    quest_cookies(request, False)
+    ridQID = request.session['riddleQuestionID']
+    ridAID = request.session['riddleAnswerID']
+    correctNo = request.session['riddleCorrectNo']
+
 
 
 
@@ -192,18 +229,19 @@ def quest_ajax(request):
     # count how many riddles in this quest
     listRiddles = list(Riddle.objects.filter(quest_name='test_quest'))
     numberRiddles= len(listRiddles)
-    print('This is the number of riddles'+str(numberRiddles)+' '+name)
-    print(name)
+    print('This is the number of riddles'+str(numberRiddles))
+    print('This is the question ID' + str(ridQID) + 'This is the answer ID' + str(ridAID))
+    print('this is the quest name: '+questName)
 
     # Get the user answer
     user_answer = request.GET.get('answer')
 
     # Set the current question and answer from the database
-    for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridAID):
+    for row in Riddle.objects.filter(quest_name=questName, question_id=ridAID):
         textAnswer = row.answer
         print(row.answer)
 
-    for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridQID):
+    for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
         textQuestion = row.question
         print(row.question)
 
@@ -213,26 +251,26 @@ def quest_ajax(request):
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo < numberRiddles:
         if user_answer == textAnswer:
-            ridQID += 1
-            correctNo += 1
-            ridAID += 1
-            for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridQID):
+
+            quest_cookies(request, True)
+            ridQID = request.session['riddleQuestionID']
+            ridAID = request.session['riddleAnswerID']
+            correctNo = request.session['riddleCorrectNo']
+
+            for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question
+                textAnswer = row.answer
                 print(row.question)
+                print(row.answer)
                 response_data['answer'] = textQuestion
             if correctNo == numberRiddles:
                 response_data['answer'] = 'Congratualtions you finished the quest!'
-                ridQID = 0
-                ridAID = 0
-                correctNo = 0
+                request.session.flush()
     # If the user answer is incorrect
         else:
-            for row in Riddle.objects.filter(quest_name='test_quest', question_id=ridQID):
+            for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question
             response_data['answer'] = 'try again: '+textQuestion
-    # If the users answer is
-     #   elif correct == True:
-         #   response_data['answer'] = 'try again: ' + textQuestion
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
