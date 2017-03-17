@@ -17,8 +17,29 @@ $('#questionform').submit(function(e) {
 			
 			answerDiv.text(answerFromServer);
 			questionBox.val('');
+			var hintDiv = $('#hint');
+			var hintFromServer = response['hint'];
+			hintDiv.text(hintFromServer);
 		},
 	});
 	
+});
+
+$('#hintform').click(function(e) {
+	e.preventDefault();
+
+
+
+	$.ajax({
+		type: 'GET',
+		url: '/adventureQuest/quest_ajax/',
+		data: {click: true},
+		success: function(response) {
+			var hintDiv = $('#hint');
+			var hintFromServer = response['hint'];
+			hintDiv.text(hintFromServer);
+		},
+	});
+
 });
 

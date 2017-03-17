@@ -27,7 +27,10 @@ class UserProfile(models.Model):
 
 class Riddle(models.Model):
     question = models.CharField(max_length=128)
-    answer = models.CharField(max_length = 128)
+    answer = models.CharField(max_length=128)
+    instruction = models.CharField(max_length=128, default='No specific instructions available')
+    hint = models.CharField(max_length=128, default='No hint available')
+    score = models.IntegerField(default=100)
     question_id = models.IntegerField()
     quest_name = models.CharField(max_length=128)
 

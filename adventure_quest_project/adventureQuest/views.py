@@ -7,7 +7,6 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-<<<<<<< HEAD
 from adventureQuest.forms import RiddleForm
 from adventureQuest.models import Quest, Riddle
 from django.core.signals import request_finished
@@ -296,15 +295,21 @@ def quest_ajax(request):
 
     for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
         textQuestion = row.question
+        textHint = row.hint
         print(row.question)
 
     # Create Response data vairable
     response_data = {}
+    # Hint file
+    if request.GET.get('click', False):
+        print('testing button')
+        response_data['hint'] = textHint
+
 
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo < numberRiddles:
         if user_answer == textAnswer:
-
+            response_data['hint'] = 'Your hint will appear here....but remember you will loose 5 points for each hint!'
             quest_cookies(request, True)
             ridQID = request.session['riddleQuestionID']
             ridAID = request.session['riddleAnswerID']
