@@ -37,4 +37,3 @@ def add_quest(name, description, difficulty, age_limit):
 if __name__ == '__main__':
 	print("Starting AdventureQuest population script...")
 	populate()
-	

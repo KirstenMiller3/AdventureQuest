@@ -241,7 +241,7 @@ def check_url(request):
         request.session.flush()
 
 # incrementors
-def quest_cookies(request, inc):
+def quest_cookies(request, inc, hint):
     riddleQuestionID = int(get_server_side_cookie(request,  'riddleQuestionID', '0'))
     if inc == True:
         riddleQuestionID +=1
@@ -256,6 +256,13 @@ def quest_cookies(request, inc):
     if inc == True:
         riddleCorrectNo += 1
     request.session['riddleCorrectNo'] = riddleCorrectNo
+
+    numberHint = int(get_server_side_cookie(request, 'numberHint', '0'))
+    if hint == True:
+        numberHint += 1
+    request.session['numberHint'] = numberHint
+
+
 
 # server side cookie
 def get_server_side_cookie(request, cookie, default_val = None):
@@ -273,10 +280,11 @@ def quest_ajax(request):
     test_quest(request)
     questName = request.session['questName']
     # Set session variables
-    quest_cookies(request, False)
+    quest_cookies(request, False, False)
     ridQID = request.session['riddleQuestionID']
     ridAID = request.session['riddleAnswerID']
     correctNo = request.session['riddleCorrectNo']
+
 
     # count how many riddles in this quest
     listRiddles = list(Riddle.objects.filter(quest_name='test_quest'))
@@ -304,16 +312,22 @@ def quest_ajax(request):
     if request.GET.get('click', False):
         print('testing button')
         response_data['hint'] = textHint
+        quest_cookies(request, False, True)
+        no_hints = request.session['numberHint']
+        response_data['hintNo'] = no_hints
+        response_data['hint_available'] = 'false'
+        print(no_hints)
 
 
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo < numberRiddles:
         if user_answer == textAnswer:
             response_data['hint'] = 'Your hint will appear here....but remember you will loose 5 points for each hint!'
-            quest_cookies(request, True)
+            quest_cookies(request, True, False)
             ridQID = request.session['riddleQuestionID']
             ridAID = request.session['riddleAnswerID']
             correctNo = request.session['riddleCorrectNo']
+            response_data['hint_available'] = 'true'
 
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question

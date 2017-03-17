@@ -14,12 +14,13 @@ $('#questionform').submit(function(e) {
 		success: function(response) {
 			var answerDiv = $('#answer');
 			var answerFromServer = response['answer'];
-			
 			answerDiv.text(answerFromServer);
 			questionBox.val('');
+
 			var hintDiv = $('#hint');
 			var hintFromServer = response['hint'];
 			hintDiv.text(hintFromServer);
+
 		},
 	});
 	
@@ -27,9 +28,6 @@ $('#questionform').submit(function(e) {
 
 $('#hintform').click(function(e) {
 	e.preventDefault();
-
-
-
 	$.ajax({
 		type: 'GET',
 		url: '/adventureQuest/quest_ajax/',
@@ -38,6 +36,20 @@ $('#hintform').click(function(e) {
 			var hintDiv = $('#hint');
 			var hintFromServer = response['hint'];
 			hintDiv.text(hintFromServer);
+
+			var hintNoDiv = $('#hintNo');
+			var x = response['hintNo'];
+			hintNoDiv.text(x);
+
+			var available = response['hint_available'];
+
+			if (available === "true"){
+
+				$('#hintform').click('disabled', false)
+			}
+			else{
+				$('#hintform').click('disabled', true)
+			}
 		},
 	});
 
