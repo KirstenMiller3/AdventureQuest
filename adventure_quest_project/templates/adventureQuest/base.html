@@ -34,7 +34,7 @@ body, html {
     background-color: #120F00;
 }
 
-li {
+li.horizontal{
     float: left;
 }
 
@@ -186,10 +186,10 @@ li.dropdown {
     <i class="fa fa-snapchat w3-hover-text-yellow"></i>
     <i class="fa fa-twitter w3-hover-text-light-blue"></i>
     <i class="fa fa-linkedin w3-hover-text-indigo"></i>
-    <li><a href="{% url 'register' %}">Register</a></li>
-    <li><a href="{% url 'login' %}">Login</a></li>
-    <li><a href="{% url 'quest1_about' %}">Quest1</a></li>
-    <li><a href="{% url 'my_account' %}">My Account</a></li>
+    <li class="horizontal"><a href="{% url 'register' %}">Register</a></li>
+    <li class="horizontal"><a href="{% url 'login' %}">Login</a></li>
+    <li class="horizontal"><a href="{% url 'quest1_about' %}">Quest1</a></li>
+    <li class="horizontal"><a href="{% url 'my_account' %}">My Account</a></li>
 
 {% if user.is_authenticated %}
 howdy {{ user.username }}!
