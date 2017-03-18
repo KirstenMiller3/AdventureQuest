@@ -48,6 +48,8 @@ class Quest(models.Model):
     description = models.TextField()
     difficulty = models.CharField(max_length=120)
     age_limit = models.IntegerField()
+    start_point = models.CharField(max_length=120, default = 'here')
+
 
     # slug = models.SlugField(unique=True)
     # def save(self, *args, **kwargs):

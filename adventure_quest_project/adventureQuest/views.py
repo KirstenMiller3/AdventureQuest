@@ -29,19 +29,22 @@ def finnieston_about(request):
 
 
 def glasgow_uni_about(request):
-    #check_url(request)
+    check_url(request)
     return render(request, 'adventureQuest/glasgow_uni_about.html')
 
 
 def southside_about(request):
+    check_url(request)
     return render(request, 'adventureQuest/southside_about.html')
 
 
 def city_centre_about(request):
+    check_url(request)
     return render(request, 'adventureQuest/city_centre_about.html')
 
 
 def kids_about(request):
+    check_url(request)
     return render(request, 'adventureQuest/kids_about.html')
 
 # About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to

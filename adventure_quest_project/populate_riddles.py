@@ -10,14 +10,34 @@ def populate():
 	# Test_Quest Riddle
 	add_riddle(question="When you have me you want to share me, if you share me you no longer have me.....what am I?",answer="secret",instruction="This question is just a fun riddle to do while you have your first drink",hint="You might want to whisper me...",quest_name="test_quest",question_id=0)
 
+
 	add_riddle(question="What gets wetter as it dries.....?", answer="towel",instruction="This question is just a fun riddle to do while you have your first drink",hint="Starts with 'T'", quest_name="test_quest", question_id=1)
 
 	add_riddle(question="When I am born, I fly, When I am alive, I lie, When I die I run....what am I?", answer="snowflake",instruction="This question is just a fun riddle to do while you have your first drink",hint="I usually only seen in the winter",  quest_name="test_quest", question_id=2)
 
-	add_quest(name="test_quest", description = "Fun quest", difficulty = 5, age_limit = 10 )
+	add_quest(name="test_quest", description = "Fun quest", difficulty = 5, age_limit = 10, start_point="yer ma" )
 
-	add_quest(name="Finnieston_Quest", description="Fun quest starting in Finnieston that takes you through some of the 'trendiest' bars in Glasgow.", difficulty=3, age_limit=18)
+	add_quest(name="finnieston_quest", description="Fun quest starting in Finnieston that takes you through some of the 'trendiest' bars in Glasgow.", difficulty=3, age_limit=18, start_point="brew dog")
 
+	add_quest(name="southside_quest", description="...", difficulty=6, age_limit=18, start_point='Somewhere in southside')
+	add_quest(name="glasgow_uni_quest", description="A real university challenge around some of the most historic buildings in Glasgow", difficulty=9, age_limit=16, start_point="Glasgow University Main Building")
+	add_quest(name='kids_quest', description="A fun, child friendly quest with suitable questions", difficulty=3, age_limit=8, start_point="Kelvingrove Museum")
+
+	add_riddle(question="Which famous inventor studied at Glasgow University in 1914?", answer="John Logie Baird",
+			   instruction="This is an easy one to get you going!", hint="TV", quest_name="glasgow_uni_quest",question_id=0)
+
+	add_riddle(question="Something about southside?", answer="north",
+			   instruction="This is an easy one to get you going!", hint="?", quest_name="southside_quest",
+			   question_id=0)
+
+	add_riddle(question="I am a boot that wears a hat. When was I born?", answer="1 May 1769",
+			   instruction="You'll have to use your mind and your legs to solve this one!", hint="wellies", quest_name="city_centre_quest",
+			   question_id=0)
+
+	add_riddle(question="What has a face and two hands but no arms or legs?", answer="clock",
+			   instruction="Riddle me this!", hint="tick tock",
+			   quest_name="kids_quest",
+			   question_id=0)
 	add_riddle(
 		question="What is greater than God, more evil than the devil, the poor have it, the rich need it, and if you eat it, you'll die?",
 			   answer="nothing", instruction="This question is just a fun riddle to do while you have your first drink",
@@ -196,8 +216,8 @@ def add_riddle(question, answer, instruction, hint, quest_name, question_id):
 	return r
 	
 	
-def add_quest(name, description, difficulty, age_limit):
-	q=Quest.objects.get_or_create(name=name, description=description, difficulty=difficulty, age_limit=age_limit)[0]
+def add_quest(name, description, difficulty, age_limit, start_point):
+	q=Quest.objects.get_or_create(name=name, description=description, difficulty=difficulty, age_limit=age_limit, start_point=start_point)[0]
 	q.save()
 	return q
 
