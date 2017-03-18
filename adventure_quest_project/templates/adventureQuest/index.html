@@ -36,14 +36,14 @@
 <!-- Container (Quest Gallery Section) -->
 <div class="w3-content w3-container w3-padding-64" id="questgallery">
     <h3 class="w3-center">Quest Gallery</h3>
-    <p class="w3-center">
-        <br>Top Tip: Click on the images to make them bigger</p>
     <br>
     <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
     <!--   First Row -->
     <div class="w3-row-padding w3-center w3-section">
         <div class="w3-col m4">
-            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 1">
+            <div class="w3-display-container"> 
+            <a href="{% url 'quest1_about' %}">
+            <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" alt=Quest 1"></a>
                 <div class="w3-display-topleft w3-display-hover w3-large">
                     <button type="button" class="w3-white w3-animate-opacity w3-btn w3-margin w3-round" title="Save"><i class="fa fa-heart w3-text-red"></i></button>
                 </div>
@@ -53,7 +53,9 @@
             </div>
         </div>
         <div class="w3-col m4">
-            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 1">
+            <div class="w3-display-container"> 
+            <a href="{% url 'finnieston_about' %}">
+            <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" alt="Finnieston: Quest 2"></a>
                 <div class="w3-display-topleft w3-display-hover w3-large">
                     <button type="button" class="w3-white w3-animate-opacity w3-btn w3-margin w3-round" title="Save"><i class="fa fa-heart w3-text-red"></i></button>
                 </div>
@@ -63,7 +65,9 @@
             </div>
         </div>
         <div class="w3-col m4">
-            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 1">
+            <div class="w3-display-container">
+            <a href="{% url 'glasgow_uni_about' %}">
+             <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" alt="Glasgow Uni: Quest 3"></a>
                 <div class="w3-display-topleft w3-display-hover w3-large">
                     <button type="button" class="w3-white w3-animate-opacity w3-btn w3-margin w3-round" title="Save"><i class="fa fa-heart w3-text-red"></i></button>
                 </div>
@@ -76,7 +80,9 @@
     <!--   Second Row -->
      <div class="w3-row-padding w3-center w3-section">
         <div class="w3-col m4">
-            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 1">
+            <div class="w3-display-container"> 
+            <a href="{% url 'southside_about' %}">
+            <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" alt="South Side: Quest 4"></a>
                 <div class="w3-display-topleft w3-display-hover w3-large">
                     <button type="button" class="w3-white w3-animate-opacity w3-btn w3-margin w3-round" title="Save"><i class="fa fa-heart w3-text-red"></i></button>
                 </div>
@@ -86,7 +92,9 @@
             </div>
         </div>
         <div class="w3-col m4">
-            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 1">
+            <div class="w3-display-container"> 
+            <a href="{% url 'city_centre_about' %}">
+            <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" alt="City Centre: Quest 5"></a>
                 <div class="w3-display-topleft w3-display-hover w3-large">
                     <button type="button" class="w3-white w3-animate-opacity w3-btn w3-margin w3-round" title="Save"><i class="fa fa-heart w3-text-red"></i></button>
                 </div>
@@ -96,7 +104,9 @@
             </div>
         </div>
         <div class="w3-col m4">
-            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 1">
+        <a href="{% url 'kids_about' %}">
+            <div class="w3-display-container">
+            <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" alt="Kids Quest: Quest 6"></a>
                 <div class="w3-display-topleft w3-display-hover w3-large">
                     <button type="button" class="w3-white w3-animate-opacity w3-btn w3-margin w3-round" title="Save"><i class="fa fa-heart w3-text-red"></i></button>
                 </div>
@@ -109,7 +119,7 @@
     <!--   Third Row -->
      <div class="w3-row-padding w3-center w3-section">
         <div class="w3-col m4">
-            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 1">
+            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 7">
                 <div class="w3-display-topleft w3-display-hover w3-large">
                     <button type="button" class="w3-white w3-animate-opacity w3-btn w3-margin w3-round" title="Save"><i class="fa fa-heart w3-text-red"></i></button>
                 </div>
@@ -119,7 +129,7 @@
             </div>
         </div>
         <div class="w3-col m4">
-            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 1">
+            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 8"> 
                 <div class="w3-display-topleft w3-display-hover w3-large">
                     <button type="button" class="w3-white w3-animate-opacity w3-btn w3-margin w3-round" title="Save"><i class="fa fa-heart w3-text-red"></i></button>
                 </div>
@@ -129,7 +139,7 @@
             </div>
         </div>
         <div class="w3-col m4">
-            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 1">
+            <div class="w3-display-container"> <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" onclick="onClick(this)" alt="Quest 9">
                 <div class="w3-display-topleft w3-display-hover w3-large">
                     <button type="button" class="w3-white w3-animate-opacity w3-btn w3-margin w3-round" title="Save"><i class="fa fa-heart w3-text-red"></i></button>
                 </div>
