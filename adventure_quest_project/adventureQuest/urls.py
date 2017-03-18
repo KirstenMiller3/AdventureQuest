@@ -13,6 +13,7 @@ urlpatterns = [
 	url(r'^restricted/', views.restricted, name='restricted'),
 	# url(r'^logout/$', views.user_logout, name='logout'),
 	url(r'^quest1_about/$', views.quest1_about, name='quest1_about'),
+	url(r'^finnieston_quest/$', views.finnieston_quest, name='finnieston_quest'),
 	#url(r'^test_quest/$', views.answer_riddle, name='test_quest'),
 	
 	url(r'^quest/$', views.test_quest, name='test_quest'),
@@ -21,4 +22,5 @@ urlpatterns = [
 	url(r'^post_list/$', views.post_list, name='post_list'),
 	url(r'^post_form/$', views.post_create, name='post_form'),
 	url(r'^hall_of_fame/$', views.hall_of_fame, name='hall_of_fame'),
+
 ]
