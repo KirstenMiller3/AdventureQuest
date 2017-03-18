@@ -9,28 +9,18 @@
     
     <div class="w3-center w3-ul">
     
-    <li>Jill</li>
-    <li>Eve</li>
     
-    </div>
-    
-    
-    
-    
-    
-    <div>Starting point:{{ value}}</div>
-    <div>Items to collect:{{ value}}</div>
-    <div>Difficulty:{{ value}}</div>
-    <div>Time to complete:{{ value}}</div>
-    <div>Reviews:  link here?{{ value}}</div>
-    <div>
         <ul class="w3-ul">
-        <li>Jill</li>
-        <li>Eve</li>
-        <li>Adam</li>
+        <li>Starting point:{{ value}}</li>
+        <li>Items to collect:{{ value}}</li>
+        <li>Difficulty:{{ value}}</li>
+        <li>Time to complete:{{ value}}</li>
+        <li>Reviews:  link here?{{ value}}</li>
         </ul>
+
+         <a class="w3-btn w3-round-large" href="{% url 'test_quest' %}">Link to begin quest or redirect if not logged in</a>
         </div>
-    <a class="w3-btn w3-round-large" href="{% url 'test_quest' %}">Link to begin quest or redirect if not logged in</a>    
+       
     
     </div>
 

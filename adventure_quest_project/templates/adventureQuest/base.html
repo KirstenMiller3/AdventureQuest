@@ -6,169 +6,51 @@
     
         <title>{% block title_block %}AdventureQuest{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+        <link rel="stylesheet" href="{% static 'css/w3.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'css/adventureQuest.css' %}">
+            
+            <style>
+            {% block page_style_block %}
+            /*  This is where inpage css styles can be added */
+            {% endblock %}
+            </style>
+
     </head>
     
-<style>
-
-@import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica');
-body,h1,h2,h3,h4,h5,h6 {font-family: "IM Fell DW Pica", serif;}
-body, html {
-    height: 100%;
-    color: #777; /* Main default text color*/
-    line-height: 1.8;
-    background-color: #120F00; /* Main default BG colour for the entire page*/
-}
-    
-
-/*navigation bar CSS*/
-
-.menu {
-	position: fixed;
-    top: 0;
-    width: 100%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #120F00;
-}
-
-li.horizontal{
-    float: left;
-}
-
-li a, .dropbtn {
-    display: inline-block;
-    color: #CCC39D;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: #120F00;
-}
-
-li.dropdown {
-    display: inline-block;
-
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-/*END OF MENU CSS*/
-
-</style>
-
-<style>
-
-/* Create a Parallax Effect */
-.bgimg-1, .bgimg-2 {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    
-}
-
-/*  image (Logo. Full height) */
-.bgimg-1 {
-    background-image: url("{% static "images/old_map_of_glasgow.jpg" %}");
-    /*margin-top: 48px;*/
-    min-height: 100%;
-    
-}
-
-
-
-/*  image (Contact) */
-.bgimg-2 {
-    background-image: url("{% static "images/names.jpg" %}");
-    background-size: auto;
-    min-height: 400px;
-}
-/*  Main wide Titles eg Adventure Quest and Contact */
-.w3-wide {
-    letter-spacing: 10px;
-    font-family: "IM Fell DW Pica", serif;
-    
-    
-    
-}
-.w3-hover-opacity {cursor: pointer;}
-
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1024px) {
-    .bgimg-1,.bgimg-2 {
-        background-attachment: scroll;
-    }
-}
-
-    /* CSS picture grid photo resize */
-    .img-responsive {
-        width: 70%;
-        height: 400px;
-        padding: 10px 10px;
-    }
-
-</style>
-
-
 
  <body>
  
      
      <!-- NAV BAR HTML. PERSISTENT SO EVERYONE INHERITS THIS-->
-<div class="w3-top">
-    <div class="w3-bar">
-    <div class="menu">
-      <li class="dropdown">
-        <a href="javascript:void(0)" class="dropbtn"><i class="fa fa-navicon" style="font-size:34px"></i></a>
-        <div class="dropdown-content">
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Quests</a>
-          <a href="#">Hall of Fame</a>
-          </div>    
-          
-          <li style="float:right">
-              <a href="{% url 'login' %}"><i class="fa fa-user-circle" style="font-size:24px"></i> 
-              {% if user.is_authenticated %}
-              Hello, {{ user.username }}!
-              {% else %}
-              Login
-              {% endif %}
-              </a> 
-	      <a href=https://www.facebook.com/adventurequestglasgow/><i class="fa fa-facebook-official w3-hover-text-indigo"style="font-size:24px"></i>
-	      <a href=https://www.instagram.com/adventurequestglasgow/><i class="fa fa-instagram w3-hover-text-purple" style="font-size:24px"></i>
-          <a href=https://www.instagram.com/adventurequestglasgow/><i class="fa fa-snapchat w3-hover-text-yellow" style="font-size:24px"></i>
-	      <a href=https://twitter.com/AQ_GLA><i class="fa fa-twitter w3-hover-text-light-blue" style="font-size:24px"></i></a>
-           </li>
-    </div>
+    <div class="w3-top">
+        <div class="w3-bar">
+        <div class="menu">
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn"><i class="fa fa-navicon" style="font-size:34px"></i></a>
+            <div class="dropdown-content">
+            <a href="{% url 'index' %}">Home</a>
+            <a href=#about>About</a>
+            <a href="{% url 'quest1_about' %}">Quests</a>
+            <a href=#>Hall of Fame</a>
+            </div>    
+            
+            <li style="float:right">
+                <a href="{% url 'login' %}"><i class="fa fa-user-circle" style="font-size:24px"></i> 
+                {% if user.is_authenticated %}
+                Hello, {{ user.username }}!
+                {% else %}
+                Login
+                {% endif %}
+                </a> 
+            <a href=https://www.facebook.com/adventurequestglasgow/><i class="fa fa-facebook-official w3-hover-text-indigo"style="font-size:24px"></i>
+            <a href=https://www.instagram.com/adventurequestglasgow/><i class="fa fa-instagram w3-hover-text-purple" style="font-size:24px"></i>
+            <a href=https://www.instagram.com/adventurequestglasgow/><i class="fa fa-snapchat w3-hover-text-yellow" style="font-size:24px"></i>
+            <a href=https://twitter.com/AQ_GLA><i class="fa fa-twitter w3-hover-text-light-blue" style="font-size:24px"></i></a>
+            </li>
+        </div>
+        </div> 
     </div> 
-</div> 
 
 
 {% block body_block %}     

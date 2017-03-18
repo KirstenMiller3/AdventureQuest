@@ -1,0 +1,105 @@
+
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica');
+body,h1,h2,h3,h4,h5,h6 {font-family: "IM Fell DW Pica", serif;}
+body, html {
+    height: 100%;
+    color: #777; /* Main default text color*/
+    line-height: 1.8;
+    background-color: #120F00; /* Main default BG colour for the entire page*/
+}
+    
+
+/*navigation bar CSS*/
+
+.menu {
+	position: fixed;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #120F00;
+}
+
+li.horizontal{
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: #CCC39D;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #120F00;
+}
+
+li.dropdown {
+    display: inline-block;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*END OF MENU CSS*/
+
+
+
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2 {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+}
+
+
+/*  Main wide Titles eg Adventure Quest and Contact */
+.w3-wide {
+    letter-spacing: 10px;
+    font-family: "IM Fell DW Pica", serif;
+    
+    
+    
+}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1,.bgimg-2 {
+        background-attachment: scroll;
+    }
+}
+
+    /* CSS picture grid photo resize */
+    .img-responsive {
+        width: 70%;
+        height: 400px;
+        padding: 10px 10px;
+    }

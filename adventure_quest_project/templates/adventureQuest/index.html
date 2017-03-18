@@ -2,6 +2,21 @@
 {% load staticfiles %}
 {% block Title %}AdventureQuest Home{% endblock %}
 
+ {% block page_style_block %}
+
+    .bgimg-1 {
+        background-image: url("{% static "images/old_map_of_glasgow.jpg" %}");
+        /*margin-top: 48px;*/
+        min-height: 100%;
+        }
+        /*  image (Contact) */
+    .bgimg-2 {
+        background-image: url("{% static "images/names.jpg" %}");
+        background-size: auto;
+        min-height: 400px;
+    }
+{% endblock %}
+
 
 {% block body_block %}  
 <!-- First Parallax Image with Logo Text -->
