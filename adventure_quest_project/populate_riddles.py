@@ -53,10 +53,6 @@ def populate():
 		answer="21", instruction="You will have to explore to find the answer",
 		hint="It's a number", quest_name="finnieston_quest", question_id=6)
 
-	add_riddle(
-		question="Count how many people are in the paintings",
-		answer="21", instruction="You will have to explore to find the answer",
-		hint="It's a number", quest_name="finnieston_quest", question_id=6)
 
 	add_riddle(
 		question="The name of the next bar is an anagram of a supermarket and what you do on a chair",
