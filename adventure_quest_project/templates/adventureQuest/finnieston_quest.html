@@ -1,28 +1,37 @@
-{% extends "adventureQuest/base.html" %}
+
 {% load staticfiles %}
-{% block Title %}Finnieston Quest About{% endblock %}
-{% block body_block %}  
-<div class="w3-content w3-container w3-padding-64 w3-card w3-white" id="aboutquest">
-    
-    <p class="w3-center w3-xlarge ">  The finnieston quest is a bla bla should be getting this from the database</p>
-    
-    
-    <div class="w3-center w3-ul">
-    
-    
-        <ul class="w3-ul">
-        <li>Starting point:{{ value}}</li>
-        <li>Items to collect:{{ value}}</li>
-        <li>Difficulty:{{ value}}</li>
-        <li>Time to complete:{{ value}}</li>
-        <li>Reviews:  link here?{{ value}}</li>
-        </ul>
+<!-- SS and KJ Adding JQuery functionality -->
 
-         <a class="w3-btn w3-round-large" href="{% url 'test_quest' %}">Link to begin quest or redirect if not logged in</a>
+
+{% block title_block %}
+    Finnieston Quest - Riddle (get no. from database)
+{% endblock %}
+
+{% block body_block %}
+        <h1>QUEST!!</h1>
+		<div>
+			Type your answer below and press submit:
+		</div>
+		<div id="answer">
+			What is greater than God, more evil than the devil, the poor have it, the rich need it, and if you eat it, you'll die?
+		</div>
+		<hr />
+        <div>
+            <form id="questionform">
+				<input id="question" />
+				<input type="submit" />
+			</form>
         </div>
-       
-    
-    </div>
+		<div id="hint">
+			Your hint will appear here....but remember you will loose 5 points for each hint!
+		</div>
+        <div>
+            <form id="hintform">
+				<input type="button" id = "hint_button" value = "Hint"/>
+			</form>
+        </div>
 
-
+		<!-- fix this -->
+		<script src="{% static 'js/jquery.min.js' %}"> </script>
+		<script src="{% static 'js/adventureQuest-jquery.js' %}"> </script>
 {% endblock %}

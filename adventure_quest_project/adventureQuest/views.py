@@ -23,10 +23,10 @@ def index(request):
     return render(request, 'adventureQuest/index.html')
 
 
-def finnieston_quest(request):
+def finnieston_about(request):
     # Not totally sure what this does but just copying it in
     #check_url(request)
-    return render(request, 'adventureQuest/finnieston_quest.html')
+    return render(request, 'adventureQuest/finnieston_about.html')
 
 
 
@@ -238,9 +238,13 @@ def post_list(request):
 def test_quest(request):
    # check_url(request)
     # Set up session variables
-    questName = str(get_server_side_cookie(request, 'questName', 'test_quest'))
-    request.session['questName'] = questName
+    get_current_quest(request)
     return render(request, 'adventureQuest/test_quest.html')
+
+
+def finnieston_quest(request):
+    get_current_quest(request)
+    return render(request, 'adventureQuest/finnieston_quest.html')
 
 # Method that would reset the quest if the user leaves half way through...not working, maybe need a quit button
 def check_url(request):
@@ -267,6 +271,7 @@ def quest_cookies(request, inc):
         riddleCorrectNo += 1
     request.session['riddleCorrectNo'] = riddleCorrectNo
 
+
 # server side cookie
 def get_server_side_cookie(request, cookie, default_val = None):
     val = request.session.get(cookie)
@@ -275,13 +280,20 @@ def get_server_side_cookie(request, cookie, default_val = None):
     return val
 
 
+def get_current_quest(request):
+    current_path = request.get_full_path()
+    questName ="".join(current_path.split('/')[2:])
+    trimmed = questName
+    print("HEEEEEELOOOOOO" + trimmed)
+    quest_name = str(get_server_side_cookie(request, 'questName', trimmed))
+    request.session['questName'] = quest_name
 
 import json
 def quest_ajax(request):
 
 
-    test_quest(request)
     questName = request.session['questName']
+    print("HEY" + questName)
     # Set session variables
     quest_cookies(request, False)
     ridQID = request.session['riddleQuestionID']
@@ -289,7 +301,7 @@ def quest_ajax(request):
     correctNo = request.session['riddleCorrectNo']
 
     # count how many riddles in this quest
-    listRiddles = list(Riddle.objects.filter(quest_name='test_quest'))
+    listRiddles = list(Riddle.objects.filter(quest_name=questName))
     numberRiddles= len(listRiddles)
     print('This is the number of riddles'+str(numberRiddles))
     print('This is the question ID' + str(ridQID) + 'This is the answer ID' + str(ridAID))
