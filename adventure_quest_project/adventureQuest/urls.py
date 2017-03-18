@@ -18,7 +18,7 @@ urlpatterns = [
 
 	url(r'^congratulations/$', views.congratulations, name='congratulations'),
 
-	url(r'^quest/$', views.test_quest, name='test_quest'),
+	url(r'^test_quest/$', views.test_quest, name='test_quest'),
 	url(r'^finnieston_quest/$', views.finnieston_quest, name='finnieston_quest'),
 
 	url(r'^quest_ajax/$', views.quest_ajax, name='quest_ajax'),
