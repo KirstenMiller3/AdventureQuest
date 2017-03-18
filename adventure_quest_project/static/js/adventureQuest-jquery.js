@@ -21,6 +21,10 @@ $('#questionform').submit(function(e) {
 			var hintFromServer = response['hint'];
 			hintDiv.text(hintFromServer);
 
+			var instNoDiv = $('#instruction');
+			var y = response['instruction'];
+			instNoDiv.text(y);
+
 			var available = response['hint_available'];
 
 			console.log('woooooooooooooooooooooooooo', available);
@@ -57,6 +61,7 @@ $('#hintform').click(function(e) {
 			var hintNoDiv = $('#hintNo');
 			var x = response['hintNo'];
 			hintNoDiv.text(x);
+
 
 			var available = response['hint_available'];
 
