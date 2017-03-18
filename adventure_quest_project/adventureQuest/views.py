@@ -55,6 +55,7 @@ def quest1_about(request):
 
 
 def congratulations(request):
+    # In this view we need to add their high score to the correct user field!!
     return render(request, 'adventureQuest/congratulations.html')
 
 
