@@ -304,6 +304,7 @@ def quest_ajax(request):
     correctNo = request.session['riddleCorrectNo']
 
 
+
     # count how many riddles in this quest
     listRiddles = list(Riddle.objects.filter(quest_name=questName))
     numberRiddles= len(listRiddles)
@@ -322,8 +323,8 @@ def quest_ajax(request):
     for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
         textQuestion = row.question
         textHint = row.hint
+        textInstruction = row.instruction
         print(row.question)
-        print('SUSUSUSUSUSUSU'+row.hint)
 
     # Create Response data vairable
     response_data = {}
@@ -337,6 +338,9 @@ def quest_ajax(request):
         response_data['hint_available'] = 'false'
         print(no_hints)
 
+    response_data['instruction'] = textInstruction
+
+
 
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo < numberRiddles:
@@ -347,6 +351,7 @@ def quest_ajax(request):
             ridAID = request.session['riddleAnswerID']
             correctNo = request.session['riddleCorrectNo']
             response_data['hint_available'] = 'true'
+            response_data['instruction']=textInstruction
 
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question
