@@ -9,23 +9,27 @@
 
 <div class="w3-content w3-container w3-padding-64 w3-center">
     <h2>Login to AdventureQuest</h2>
-<form class="w3-container w3-card-4 w3-center" id="login_form" method="post" action="{% url 'login' %}">
+<form class="w3-container w3-center w3-card-16" id="login_form" method="post" action="{% url 'login' %}">
  {% if invalid_deets %}
-        <strong>Invalid login details supplied.</strong><br>
+        <strong class="w3-text-red">Invalid login details supplied.</strong><br>
     {% endif %}
     {% csrf_token %}
+<div class="w3-center" style="width: 50%; display: inline-block"
+    <p>Username:</p>
+    <input class="w3-input w3-center" type="text" name="username" value="" size="30" placeholder="e.g. CoolQuester93" required>
 
-    
-    <input class="w3-input w3-center" type="text" name="username" value="" size="50" placeholder="e.g. CoolQuester93" required>
-    <label class="w3-label w3-validate">Username</label>
+    <p>Password:</p>
+    <input class="w3-input w3-center" type="password" name="password" value="" size="30" placeholder="Your amazingly strong password" required>
+    <br/>
 
 
-    <input class="w3-input w3-center" type="password" name="password" value="" size="50" placeholder="Your amazingly strong password" required>
-    <label class="w3-label w3-validate">Password</label>
 
-<br/>
 
 <button class="w3-btn w3-white" type="submit" name="submit" value="submit">Login</button>
+<br>
+<label class="w3-label w3-validate"><i class="fa fa-circle" aria-hidden="true"></i></label>
+</div>
+
 </form>
     
 </div>
