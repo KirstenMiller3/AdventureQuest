@@ -24,8 +24,7 @@ def index(request):
 
 
 def finnieston_about(request):
-    # Not totally sure what this does but just copying it in
-    #check_url(request)
+    check_url(request)
     return render(request, 'adventureQuest/finnieston_about.html')
 
 
@@ -324,6 +323,7 @@ def quest_ajax(request):
         textQuestion = row.question
         textHint = row.hint
         print(row.question)
+        print('SUSUSUSUSUSUSU'+row.hint)
 
     # Create Response data vairable
     response_data = {}
