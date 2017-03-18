@@ -37,6 +37,8 @@ def quest1_about(request):
     return render(request, 'adventureQuest/quest1_about.html')
 
 
+def congratulations(request):
+    return render(request, 'adventureQuest/congratulations.html')
 # riddle page
 """def answer_riddle(request):
     form = RiddleForm()
