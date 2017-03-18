@@ -2,6 +2,21 @@
 {% load staticfiles %}
 {% block Title %}AdventureQuest Home{% endblock %}
 
+ {% block page_style_block %}
+
+    .bgimg-1 {
+        background-image: url("{% static "images/old_map_of_glasgow.jpg" %}");
+        /*margin-top: 48px;*/
+        min-height: 100%;
+        }
+        /*  image (Contact) */
+    .bgimg-2 {
+        background-image: url("{% static "images/names.jpg" %}");
+        background-size: auto;
+        min-height: 400px;
+    }
+{% endblock %}
+
 
 {% block body_block %}  
 <!-- First Parallax Image with Logo Text -->
@@ -14,7 +29,7 @@
 <!-- Container (About Section) -->
 <div class="w3-content w3-container w3-padding-64" id="about">
   <h3 class="w3-center">About</h3>
-  <p class="w3-center w3-xlarge"> ADVENTURE QUEST !!!!!!!is an interactive treasure hunt game. It allows people to explore the city while also learning and having fun. Each quest has its own unique theme and will take you on a magical journey through the city. The quests are composed of multiple riddles and challenges. Players must solve each clue in order to be given the next riddle and location. This will allow players to discover the hidden gems away from the beaten path.</p>
+  <p class="w3-center w3-xlarge"> ADVENTURE QUEST is an interactive treasure hunt game. It allows people to explore the city while also learning and having fun. Each quest has its own unique theme and will take you on a magical journey through the city. The quests are composed of multiple riddles and challenges. Players must solve each clue in order to be given the next riddle and location. This will allow players to discover the hidden gems away from the beaten path.</p>
   <p class="w3-center w3-large"><em>"The perfect combination of problem solving and the great outdoors" - The Guardian</em></p>
 
 
@@ -122,10 +137,15 @@
                     <div class="w3-padding w3-animate-opacity">Rating: Hard</div>
                 </div>
             </div>
-        </div>
-         <button class="w3-btn w3-light-grey w3-padding-xlarge" style="margin-top:64px">LOAD MORE</button>
+        </div>     
     </div>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
     
 <!-- Modal/POPUP for full size images on click-->
 <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
@@ -139,7 +159,7 @@
 <!-- Contact us Parallax Image -->
 <div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-xlarge w3-black w3-xlarge w3-wide w3-text-sand w3-animate-opacity">Contact </span> 
+    <span class="w3-center w3-padding-xlarge w3-black w3-xlarge w3-wide w3-text-sand w3-animate-opacity"><a href="{% url 'hall_of_fame' %}">Hall of Fame</a></span> 
   </div>
 </div>
 
@@ -147,8 +167,9 @@
 <div class="w3-content w3-container w3-padding-64" id="contact">
   <h3 class="w3-center">About The Team</h3>
   
-  <p class="w3-center w3-large">gjhgjhgj</p>
-   <p class="w3-center"><em>p.s We'd love your feedback!</em></p>
+  <p class="w3-center w3-large">Adventure Quest was created at the University of Glasgow by students of MSc Software Development, as part of a project for the Internet Technology course. The students involved were Tom Esparon, Holly Maxwell Pringle, Kirsten Millar, Susie Smart and Hannah Pankow. 
+  The site is built using Python, HTML, CSS, Ajax and JavaScript (??if i missed any out add them in) and the aim was for us to create a site using the Django framework. Ideally this project would work best as an app and if given the opportunity to develop it, we think it could be quite successful. 
+  </p>
 
   <div class="w3-row w3-padding-32 w3-section">
     <div class="w3-col m4 w3-container">
@@ -158,22 +179,11 @@
     <div class="w3-col m8 w3-container w3-section">
       <div class="w3-large w3-margin-bottom">
         <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> GLASGOOOOOW<br>
-        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
+        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: 1105443P@student.gla.ac.uk<br>
       </div>
-      <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
       <form action="/action_page.php" target="_blank">
         <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-          <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
-          </div>
-          <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
-          </div>
-        </div>
-        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-        <button class="w3-btn w3-black w3-right w3-padding w3-section" type="submit">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
-        </button>
+        
       </form>
     </div>
   </div>
@@ -181,7 +191,7 @@
         <!--    FB COMMENTS-->
 <div class="w3-content w3-center" style="max-width:600px">
     <div class=" w3-card-4 w3-white">
-        <div class="fb-comments" data-href="https://www.facebook.com/AQWorldsMMO/?fref=ts" data-numposts="5" data-colorscheme="light"></div>
+        <div class="fb-comments" data-href="https://www.facebook.com/pg/adventurequestglasgow/posts/?ref=page_internal" data-numposts="5"></div>
     </div>    
 </div>    
 

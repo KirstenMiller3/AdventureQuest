@@ -22,6 +22,14 @@ from .models import Quest, Riddle, UserProfile, Post
 def index(request):
     return render(request, 'adventureQuest/index.html')
 
+
+def finnieston_quest(request):
+    # Not totally sure what this does but just copying it in
+    #check_url(request)
+    return render(request, 'adventureQuest/finnieston_quest.html')
+
+
+
 # About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to
 # make a new one of these for each quest. Same for riddle pages!!!!!!
 def quest1_about(request):
@@ -29,6 +37,8 @@ def quest1_about(request):
     return render(request, 'adventureQuest/quest1_about.html')
 
 
+def congratulations(request):
+    return render(request, 'adventureQuest/congratulations.html')
 # riddle page
 """def answer_riddle(request):
     form = RiddleForm()
@@ -277,7 +287,6 @@ import json
 def quest_ajax(request):
 
 
-    test_quest(request)
     questName = request.session['questName']
     # Set session variables
     quest_cookies(request, False, False)

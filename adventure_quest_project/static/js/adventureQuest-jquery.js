@@ -21,13 +21,30 @@ $('#questionform').submit(function(e) {
 			var hintFromServer = response['hint'];
 			hintDiv.text(hintFromServer);
 
+			var available = response['hint_available'];
+
+			console.log('woooooooooooooooooooooooooo', available);
+
+			if (available === 'false'){
+				var button = $('#hintform')
+					button.hide();
+				console.log('testing if', available);
+			}
+			else if (available === 'true'){
+				var button = $('#hintform')
+					button.show();
+				console.log('testing if', available);
+			}
+
 		},
 	});
 	
 });
 
 $('#hintform').click(function(e) {
+	$('#hintform').click('disabled', false)
 	e.preventDefault();
+
 	$.ajax({
 		type: 'GET',
 		url: '/adventureQuest/quest_ajax/',
@@ -43,13 +60,21 @@ $('#hintform').click(function(e) {
 
 			var available = response['hint_available'];
 
-			if (available === "true"){
+			console.log('woooooooooooooooooooooooooo', available);
+			if (available === 'false'){
+				var button = $('#hintform')
+					button.hide();
+				console.log('testing if', available);
+			}
+			else if (available === 'true'){
+				var button = $('#hintform')
+					button.show();
+				console.log('testing if', available);
+			}
 
-				$('#hintform').click('disabled', false)
-			}
-			else{
-				$('#hintform').click('disabled', true)
-			}
+
+
+
 		},
 	});
 
