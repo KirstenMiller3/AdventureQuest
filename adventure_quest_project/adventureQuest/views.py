@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from adventureQuest.forms import UserForm, UserProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -24,34 +23,70 @@ def index(request):
 
 
 def finnieston_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="finnieston_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/finnieston_about.html')
+    return render(request, 'adventureQuest/finnieston_about.html', context_dict)
 
 
 def glasgow_uni_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="glasgow_uni_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/glasgow_uni_about.html')
+    return render(request, 'adventureQuest/glasgow_uni_about.html', context_dict)
 
 
 def southside_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="southside_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/southside_about.html')
+    return render(request, 'adventureQuest/southside_about.html', context_dict)
 
 
 def city_centre_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="city_centre_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/city_centre_about.html')
+    return render(request, 'adventureQuest/city_centre_about.html', context_dict)
 
 
 def kids_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="kids_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/kids_about.html')
+    return render(request, 'adventureQuest/kids_about.html', context_dict)
 
 # About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to
 # make a new one of these for each quest. Same for riddle pages!!!!!!
 def quest1_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="test_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/quest1_about.html')
+    return render(request, 'adventureQuest/quest1_about.html', context_dict)
 
 
 def congratulations(request):
