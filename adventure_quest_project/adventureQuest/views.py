@@ -331,10 +331,12 @@ def kids_quest(request):
 def check_url(request):
     request.session['riddleQuestionID'] = 0
     request.session['riddleAnswerID'] = 0
-    request.session['riddleCorrectNo'] =  0
+    request.session['riddleCorrectNo'] = 0
+    request.session['riddleCorrectNo'] = 0
     request.session['numberHint'] = 0
     request.session['questName'] = 0
     original_path = '/adventureQuest/quest_ajax/'
+
     print('This is the url that is compared too' + request.get_full_path(request))
     if original_path not in request.get_full_path(request):
         print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
@@ -382,9 +384,6 @@ def get_current_quest(request):
     quest_name = str(get_server_side_cookie(request, 'questName', trimmed))
     request.session['questName'] = quest_name
 
-def redirect_ajax(request):
-    print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    return redirect('adventureQuest/congratulations.html')
 
 
 import json
@@ -403,15 +402,18 @@ def quest_ajax(request):
 
     # count how many riddles in this quest
     listRiddles = list(Riddle.objects.filter(quest_name=questName))
+    numberRiddles = len(listRiddles)
     numberRiddles= len(listRiddles)
     response_data['noRiddles'] = numberRiddles
-
     print('This is the number of riddles'+str(numberRiddles))
     print('This is the question ID' + str(ridQID) + 'This is the answer ID' + str(ridAID))
     print('this is the quest name: '+questName)
 
     # Get the user answer
-    user_answer = request.GET.get('answer')
+
+    input_answer = request.GET.get('answer')
+    user_answer = input_answer.lower()
+    print('this should be the answer in lower case'+user_answer)
 
     # Set the current question and answer from the database
     for row in Riddle.objects.filter(quest_name=questName, question_id=ridAID):
@@ -436,11 +438,15 @@ def quest_ajax(request):
         response_data['hint_available'] = 'false'
         print(no_hints)
 
+    response_data['instruction'] = textInstruction
+
+
 
 
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo < numberRiddles:
-        if user_answer == textAnswer:
+
+        if textAnswer in user_answer:
             response_data['hint'] = 'Your hint will appear here....but remember you will loose 5 points for each hint!'
             quest_cookies(request, True, False)
             ridQID = request.session['riddleQuestionID']
@@ -456,9 +462,6 @@ def quest_ajax(request):
                 print(row.answer)
                 response_data['answer'] = textQuestion
                 response_data['instruction'] = textInstruction
-           # if correctNo == numberRiddles:
-           #     print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-            #    return HttpResponseRedirect(reverse('congratulations'))
 
 
         # If the user answer is incorrect

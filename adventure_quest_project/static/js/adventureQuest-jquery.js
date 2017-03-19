@@ -35,27 +35,16 @@ $('#questionform').submit(function(e) {
 			//var lastQuestion = response['noRiddles']
 
 			var available = response['hint_available'];
-			var correct = response['correctNo'];
-			var numberRiddles = response['correctNo'];
-			console.log(available, correct, numberRiddles)
-
-
-			if (correct === 3){
-				console.log('testing if statement', correct, numberRiddles)
-				$(this).unbind().submit()
-			}
-
-
 
 			if (available === 'false'){
 				var button = $('#hintform')
 					button.hide();
-				console.log('testing if', available);
+
 			}
 			else if (available === 'true'){
 				var button = $('#hintform')
 					button.show();
-				console.log('testing if', available);
+
 			}
 			if(currentQ === lastQ)
 			{
