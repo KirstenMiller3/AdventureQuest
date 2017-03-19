@@ -57,7 +57,7 @@ $('#questionform').submit(function(e) {
 					button.show();
 				console.log('testing if', available);
 			}
-			if(currentQ === lastQ -1)
+			if(currentQ === lastQ)
 			{
 				console.log("ENTERED")
 				$(this).unbind('submit').submit()

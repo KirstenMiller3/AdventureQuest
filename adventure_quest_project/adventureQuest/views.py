@@ -456,9 +456,9 @@ def quest_ajax(request):
                 print(row.answer)
                 response_data['answer'] = textQuestion
                 response_data['instruction'] = textInstruction
-            if correctNo == numberRiddles:
-                print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-                return HttpResponseRedirect(reverse('congratulations'))
+           # if correctNo == numberRiddles:
+           #     print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            #    return HttpResponseRedirect(reverse('congratulations'))
 
 
         # If the user answer is incorrect
