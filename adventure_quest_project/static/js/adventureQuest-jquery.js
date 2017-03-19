@@ -25,6 +25,15 @@ $('#questionform').submit(function(e) {
 			var y = response['instruction'];
 			instNoDiv.text(y);
 
+			var lastQ = response['noRiddles']
+			var currentQ = response['currentQ']
+			console.log("no of Q " + lastQ)
+			console.log("currentQ " + currentQ)
+
+			// Trying to get the congratulations pop-up to work
+			//var questionNo = response['riddleQuestionID']
+			//var lastQuestion = response['noRiddles']
+
 			var available = response['hint_available'];
 
 			if (available === 'false'){
@@ -37,6 +46,16 @@ $('#questionform').submit(function(e) {
 					button.show();
 
 			}
+			if(currentQ === lastQ -1)
+			{
+				console.log("ENTERED")
+				$(this).unbind('submit').submit()
+				location.href = "http://127.0.0.1:8000/adventureQuest/congratulations/"
+			}
+			//if (questionNo === lastQuestion - 1){
+			//	console.log("!!!!!!!!!!!!!!!!!!!!")
+				//$(this).unbind('submit').submit()
+			//}
 
 		},
 	});
@@ -73,9 +92,6 @@ $('#hintform').click(function(e) {
 					button.show();
 				console.log('testing if', available);
 			}
-
-
-
 
 		},
 	});

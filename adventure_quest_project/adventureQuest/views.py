@@ -332,6 +332,7 @@ def check_url(request):
     request.session['riddleQuestionID'] = 0
     request.session['riddleAnswerID'] = 0
     request.session['riddleCorrectNo'] = 0
+    request.session['riddleCorrectNo'] = 0
     request.session['numberHint'] = 0
     request.session['questName'] = 0
     original_path = '/adventureQuest/quest_ajax/'
@@ -387,7 +388,7 @@ def get_current_quest(request):
 
 import json
 def quest_ajax(request):
-
+    response_data = {}
 
     questName = request.session['questName']
     print("HEY" + questName)
@@ -397,12 +398,14 @@ def quest_ajax(request):
     ridAID = request.session['riddleAnswerID']
     correctNo = request.session['riddleCorrectNo']
 
-
+    response_data['currentQ'] = ridQID
 
     # count how many riddles in this quest
     listRiddles = list(Riddle.objects.filter(quest_name=questName))
     numberRiddles = len(listRiddles)
-    print('This is the number of riddles'+str(numberRiddles)+ 'This is the correct no '+str(correctNo))
+    numberRiddles= len(listRiddles)
+    response_data['noRiddles'] = numberRiddles
+    print('This is the number of riddles'+str(numberRiddles))
     print('This is the question ID' + str(ridQID) + 'This is the answer ID' + str(ridAID))
     print('this is the quest name: '+questName)
 
@@ -424,7 +427,7 @@ def quest_ajax(request):
         print(row.question)
 
     # Create Response data vairable
-    response_data = {}
+
     # Hint file
     if request.GET.get('click', False):
         print('testing button')
@@ -439,8 +442,10 @@ def quest_ajax(request):
 
 
 
+
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo < numberRiddles:
+
         if textAnswer in user_answer:
             response_data['hint'] = 'Your hint will appear here....but remember you will loose 5 points for each hint!'
             quest_cookies(request, True, False)
@@ -457,8 +462,7 @@ def quest_ajax(request):
                 print(row.answer)
                 response_data['answer'] = textQuestion
                 response_data['instruction'] = textInstruction
-            print('This is the number of riddles' + str(request.session['numberRiddles']) + 'This is the correct no ' + str(correctNo))
-            if correctNo == request.session['numberRiddles']:
+            if correctNo == numberRiddles:
                 print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
                 #
                 # return HttpResponseRedirect(reverse('congratulations'))
