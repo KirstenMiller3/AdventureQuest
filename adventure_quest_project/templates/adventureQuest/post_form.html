@@ -1,6 +1,7 @@
 {% extends 'adventureQuest/base.html' %}
 
 {% block title_block  %}
+Upload to Gallery
 {% endblock  %}
 
 {% block body_block %}
@@ -8,9 +9,14 @@
 <h1>Upload Picture</h1>
     <h1>Upload Picture</h1>
 
-<form method = 'POST' action= ' '  enctype='multipart/form-data' >{% csrf_token	%}
-{{ form.as_p }}
+<form method = 'POST' action= ' '  enctype='multipart/form-data' >
+    {% csrf_token	%}
+    {{ form.as_p }}
 <input type = 'submit' class='btn btn-default' value='Create Post' />
+
 </form>
+    <div>
+       <p> <a href="/adventureQuest/post_list/">Return</a> to Gallery</p>
+    </div>
 </div>
 {% endblock  %}

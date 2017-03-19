@@ -1,11 +1,10 @@
-{% extends "base.html" %}
+{% extends 'adventureQuest/base.html' %}
 
-{% block head_title %}
-{{ instance.title }} | {{ block.super }}
-{% endblock head_title %}
+{% block title_block  %}
+Upload to Gallery
+{% endblock  %}
 
-
-{% block content %}
+{% block body_block %}
 <div class='col-sm-6 col-sm-offset-3'>
     {% if instance.image %}
     <img src ='{{   instance.image.url  }}' class='img-responsive' />

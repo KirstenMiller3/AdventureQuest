@@ -1,3 +1,7 @@
+
+from django.shortcuts import render, render_to_response, redirect
+from django.http import HttpResponse
+
 from django.shortcuts import render
 from adventureQuest.forms import UserForm, UserProfileForm
 from django.contrib import messages
@@ -244,14 +248,17 @@ def hall_of_fame(request):
 
 
 #add login_required
+@login_required
 def post_create(request):
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         instance = form.save(commit=False)
+        instance.user = request.user
         instance.save()
         # message success
         messages.success(request, "Post was created")
-        return HttpResponseRedirect(instance.get_absolute_url())
+        return HttpResponseRedirect('adventureQuest:post_form')
+
     context = {
         "form": form,
     }
@@ -260,18 +267,6 @@ def post_create(request):
 def post_list(request):
     objects_post = Post.objects.all()
     print(objects_post[0].title)
-    # paginator = Paginator(queryset_list, 10)
-    # page_request_var = "page"
-    # page = request.GET(page_request_var)
-    # try:
-    #         queryset = paginator.page(page)
-    # except PageNotAnInteger:
-    #         # If not an int, deliver first page
-    #         queryset = paginator.page(1)
-    # except EmptyPage:
-    #         # If page is out of range, deliver last page
-    #         queryset = paginator.page(paginator.num_pages)
-
 
     context = {
         "object_list": objects_post,
@@ -279,6 +274,7 @@ def post_list(request):
        # "page_request_var": page_request_var
     }
     return render(request, 'adventureQuest/post_list.html', context)
+
 
 # test_Quest view
 def mystery_quest(request):
