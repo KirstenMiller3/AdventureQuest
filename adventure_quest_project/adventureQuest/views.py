@@ -7,6 +7,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from adventureQuest.forms import RiddleForm
+from adventureQuest.models import Quest, Riddle
+from django.shortcuts import redirect
 from adventureQuest.models import Quest, Riddle, UserProfile
 from django.core.signals import request_finished
 
@@ -361,6 +363,9 @@ def quest_cookies(request, inc, hint):
         numberHint += 1
     request.session['numberHint'] = numberHint
 
+    numberRiddles = int(get_server_side_cookie(request, 'numberRiddles', '0'))
+    request.session['numberRiddles'] = numberRiddles
+
 # server side cookie
 def get_server_side_cookie(request, cookie, default_val = None):
     val = request.session.get(cookie)
@@ -376,6 +381,11 @@ def get_current_quest(request):
     print("HEEEEEELOOOOOO" + trimmed)
     quest_name = str(get_server_side_cookie(request, 'questName', trimmed))
     request.session['questName'] = quest_name
+
+def redirect_ajax(request):
+    print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    return redirect('adventureQuest/congratulations.html')
+
 
 import json
 def quest_ajax(request):
@@ -395,6 +405,7 @@ def quest_ajax(request):
     listRiddles = list(Riddle.objects.filter(quest_name=questName))
     numberRiddles= len(listRiddles)
     response_data['noRiddles'] = numberRiddles
+
     print('This is the number of riddles'+str(numberRiddles))
     print('This is the question ID' + str(ridQID) + 'This is the answer ID' + str(ridAID))
     print('this is the quest name: '+questName)
@@ -427,8 +438,6 @@ def quest_ajax(request):
 
 
 
-
-
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo < numberRiddles:
         if user_answer == textAnswer:
@@ -436,20 +445,23 @@ def quest_ajax(request):
             quest_cookies(request, True, False)
             ridQID = request.session['riddleQuestionID']
             ridAID = request.session['riddleAnswerID']
-            correctNo = request.session['riddleCorrectNo']
             response_data['hint_available'] = 'true'
-            response_data['instruction']=textInstruction
+            correctNo = request.session['riddleCorrectNo']
 
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question
                 textAnswer = row.answer
+                textInstruction = row.instruction
                 print(row.question)
                 print(row.answer)
                 response_data['answer'] = textQuestion
+                response_data['instruction'] = textInstruction
             if correctNo == numberRiddles:
-                response_data['answer'] = 'Congratualtions you finished the quest!'
-                request.session.flush()
-    # If the user answer is incorrect
+                print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+                return HttpResponseRedirect(reverse('congratulations'))
+
+
+        # If the user answer is incorrect
         else:
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question

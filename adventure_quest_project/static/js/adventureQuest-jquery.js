@@ -35,8 +35,17 @@ $('#questionform').submit(function(e) {
 			//var lastQuestion = response['noRiddles']
 
 			var available = response['hint_available'];
+			var correct = response['correctNo'];
+			var numberRiddles = response['correctNo'];
+			console.log(available, correct, numberRiddles)
 
-			console.log('woooooooooooooooooooooooooo', available);
+
+			if (correct === 3){
+				console.log('testing if statement', correct, numberRiddles)
+				$(this).unbind().submit()
+			}
+
+
 
 			if (available === 'false'){
 				var button = $('#hintform')
@@ -84,7 +93,6 @@ $('#hintform').click(function(e) {
 
 			var available = response['hint_available'];
 
-			console.log('woooooooooooooooooooooooooo', available);
 			if (available === 'false'){
 				var button = $('#hintform')
 					button.hide();
@@ -100,4 +108,5 @@ $('#hintform').click(function(e) {
 	});
 
 });
+
 
