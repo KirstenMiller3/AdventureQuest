@@ -25,20 +25,37 @@ $('#questionform').submit(function(e) {
 			var y = response['instruction'];
 			instNoDiv.text(y);
 
-			var available = response['hint_available'];
+			var lastQ = response['noRiddles']
+			var currentQ = response['currentQ']
+			console.log("no of Q " + lastQ)
+			console.log("currentQ " + currentQ)
 
-			console.log('woooooooooooooooooooooooooo', available);
+			// Trying to get the congratulations pop-up to work
+			//var questionNo = response['riddleQuestionID']
+			//var lastQuestion = response['noRiddles']
+
+			var available = response['hint_available'];
 
 			if (available === 'false'){
 				var button = $('#hintform')
 					button.hide();
-				console.log('testing if', available);
+
 			}
 			else if (available === 'true'){
 				var button = $('#hintform')
 					button.show();
-				console.log('testing if', available);
+
 			}
+			if(currentQ === lastQ -1)
+			{
+				console.log("ENTERED")
+				$(this).unbind('submit').submit()
+				location.href = "http://127.0.0.1:8000/adventureQuest/congratulations/"
+			}
+			//if (questionNo === lastQuestion - 1){
+			//	console.log("!!!!!!!!!!!!!!!!!!!!")
+				//$(this).unbind('submit').submit()
+			//}
 
 		},
 	});
@@ -65,7 +82,6 @@ $('#hintform').click(function(e) {
 
 			var available = response['hint_available'];
 
-			console.log('woooooooooooooooooooooooooo', available);
 			if (available === 'false'){
 				var button = $('#hintform')
 					button.hide();
@@ -77,11 +93,9 @@ $('#hintform').click(function(e) {
 				console.log('testing if', available);
 			}
 
-
-
-
 		},
 	});
 
 });
+
 
