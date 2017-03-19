@@ -17,12 +17,36 @@
         <li>Time to complete:{{ value}}</li>
         <li>Reviews:  link here?{{ value}}</li>
         </ul>
-
+        
          <a class="w3-btn w3-round-large" href="{% url 'city_centre_quest' %}">Link to begin quest or redirect if not logged in</a>
         </div>
+
        
-    
     </div>
+<div class="w3-content w3-container w3-padding-64">
+        <!-- Add Google Maps -->
+        <div id="CityCenterMap" class="w3-round-large w3-greyscale" style="width:100%;height:400px;"></div>
 
 
+{% endblock %}
+
+{% block questmap_block %} 
+<script>
+function myCityCenter()
+{
+  myCenter=new google.maps.LatLng(55.863422, -4.252970);
+  var mapOptions= {
+    center:myCenter,
+    zoom:19, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("CityCenterMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0z8juUZWLKkvKq4p8G9ne4Sr8RzB4hMY&callback=myCityCenter"></script>
 {% endblock %}
