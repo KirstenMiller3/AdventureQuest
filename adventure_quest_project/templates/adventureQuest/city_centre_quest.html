@@ -1,0 +1,46 @@
+{% load staticfiles %}
+<!-- SS and KJ Adding JQuery functionality -->
+
+
+{% block title_block %}
+    City Centre Quest - Riddle (get no. from database)
+{% endblock %}
+
+{% block body_block %}
+        <h1>QUEST!!</h1>
+		<div>
+			Type your answer below and press submit:
+		</div>
+		<br/>
+		<div id="instruction">
+			This is just a fun riddle to complete while you have a drink
+		</div>
+		<div id="answer">
+			I am a boot that wears a hat. When was I born?
+		</div>
+		<hr />
+        <div>
+            <form id="questionform">
+				<input id="question" />
+				<input type="submit" />
+			</form>
+        </div>
+		<div id="hint">
+			Your hint will appear here....but remember you will loose 5 points for each hint!
+		</div>
+        <div>
+            <form id="hintform">
+				<input type="button" id = "hint_button" value = "Hint"/>
+			</form>
+        </div>
+        <div>
+          	Number of hints used:
+        </div>
+		<div id="hintNo">
+			0
+		</div>
+
+		<!-- fix this -->
+		<script src="{% static 'js/jquery.min.js' %}"> </script>
+		<script src="{% static 'js/adventureQuest-jquery.js' %}"> </script>
+{% endblock %}

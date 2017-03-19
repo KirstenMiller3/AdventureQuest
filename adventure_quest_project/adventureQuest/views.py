@@ -28,6 +28,24 @@ def finnieston_about(request):
     return render(request, 'adventureQuest/finnieston_about.html')
 
 
+def glasgow_uni_about(request):
+    check_url(request)
+    return render(request, 'adventureQuest/glasgow_uni_about.html')
+
+
+def southside_about(request):
+    check_url(request)
+    return render(request, 'adventureQuest/southside_about.html')
+
+
+def city_centre_about(request):
+    check_url(request)
+    return render(request, 'adventureQuest/city_centre_about.html')
+
+
+def kids_about(request):
+    check_url(request)
+    return render(request, 'adventureQuest/kids_about.html')
 
 # About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to
 # make a new one of these for each quest. Same for riddle pages!!!!!!
@@ -37,23 +55,9 @@ def quest1_about(request):
 
 
 def congratulations(request):
+    # In this view we need to add their high score to the correct user field!!
     return render(request, 'adventureQuest/congratulations.html')
-# riddle page
-"""def answer_riddle(request):
-    form = RiddleForm()
 
-    if request.method == 'POST':
-        form = RiddleForm(request.POST)
-        if form.is_valid():
-            # If valid save to database???? not sure if we should be doing that with riddle answers?
-            form.save(commit=True)
-            # instead of saving we need a check to see if answer was correct
-            return index(request)
-        else:
-            print(form.errors)
-
-    return render(request, 'adventureQuest/test_quest.html')
-"""
 
 
 def register(request):
@@ -124,7 +128,6 @@ def my_account(request):
     if request.user.is_authenticated():
         name = request.user.username
         #pic = request.user.picture
-
 
     return render(request, 'adventureQuest/my_account.html',context_dict)
 
@@ -244,6 +247,25 @@ def test_quest(request):
 def finnieston_quest(request):
     get_current_quest(request)
     return render(request, 'adventureQuest/finnieston_quest.html')
+
+def glasgow_uni_quest(request):
+    get_current_quest(request)
+    return render(request, 'adventureQuest/glasgow_uni_quest.html')
+
+
+def southside_quest(request):
+    get_current_quest(request)
+    return render(request, 'adventureQuest/southside_quest.html')
+
+
+def city_centre_quest(request):
+    get_current_quest(request)
+    return render(request, 'adventureQuest/city_centre_quest.html')
+
+
+def kids_quest(request):
+    get_current_quest(request)
+    return render(request, 'adventureQuest/kids_quest.html')
 
 # Method that would reset the quest if the user leaves half way through...not working, maybe need a quit button
 def check_url(request):

@@ -1,0 +1,28 @@
+{% extends "adventureQuest/base.html" %}
+{% load staticfiles %}
+{% block Title %}Glasgow University Quest About{% endblock %}
+{% block body_block %}  
+<div class="w3-content w3-container w3-padding-64 w3-card w3-white" id="aboutquest">
+    
+    <p class="w3-center w3-xlarge ">  The Glasgow University quest is a bla bla should be getting this from the database</p>
+    
+    
+    <div class="w3-center w3-ul">
+    
+    
+        <ul class="w3-ul">
+        <li>Starting point:{{ value}}</li>
+        <li>Items to collect:{{ value}}</li>
+        <li>Difficulty:{{ value}}</li>
+        <li>Time to complete:{{ value}}</li>
+        <li>Reviews:  link here?{{ value}}</li>
+        </ul>
+
+         <a class="w3-btn w3-round-large" href="{% url 'glasgow_uni_quest' %}">Link to begin quest or redirect if not logged in</a>
+        </div>
+       
+    
+    </div>
+
+
+{% endblock %}
