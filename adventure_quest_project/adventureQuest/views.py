@@ -398,7 +398,6 @@ def quest_ajax(request):
 
     # count how many riddles in this quest
     listRiddles = list(Riddle.objects.filter(quest_name=questName))
-    numberRiddles = len(listRiddles)
     numberRiddles= len(listRiddles)
     response_data['noRiddles'] = numberRiddles
     print('This is the number of riddles'+str(numberRiddles))

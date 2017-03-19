@@ -6,20 +6,9 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/quest1_about.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/test_quest.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-<<<<<<< HEAD
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py" afterPath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py" />
-=======
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/models.py" afterPath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/urls.py" afterPath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py" afterPath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py" />
-<<<<<<< HEAD
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/static/css/adventureQuest.css" afterPath="$PROJECT_DIR$/adventure_quest_project/static/css/adventureQuest.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html" afterPath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_detail.html" afterPath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_form.html" afterPath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_list.html" afterPath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_list.html" />
-=======
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js" afterPath="$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html" afterPath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/city_centre_about.html" afterPath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/city_centre_about.html" />
@@ -29,7 +18,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/kids_about.html" afterPath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/kids_about.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/my_account.html" afterPath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/my_account.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/southside_about.html" afterPath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/southside_about.html" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
     </list>
     <ignored path="AdventureQuest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,27 +38,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-<<<<<<< HEAD
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-=======
-<<<<<<< HEAD
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="623">
-              <caret line="115" column="24" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-=======
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="282" column="6" selection-start-line="282" selection-start-column="2" selection-end-line="282" selection-end-column="6" />
+            <state relative-caret-position="702">
+              <caret line="427" column="31" selection-start-line="427" selection-start-column="31" selection-end-line="427" selection-end-column="31" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#1#66#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,192 +66,75 @@
             <state relative-caret-position="612">
               <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="southside_about.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/southside_about.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
               <folding />
-=======
-<<<<<<< HEAD
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#65#0" expanded="true" />
-=======
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-              </folding>
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="glasgow_uni_about.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/glasgow_uni_about.html">
-=======
-      <file leaf-file-name="post_detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_detail.html">
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="102">
-              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-=======
             <state relative-caret-position="306">
               <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="76" column="30" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="30" />
-=======
-<<<<<<< HEAD
-      <file leaf-file-name="post_form.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="8" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="8" />
-=======
-      <file leaf-file-name="city_centre_about.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/city_centre_about.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
+            <state relative-caret-position="388">
+              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/index.html">
-=======
-<<<<<<< HEAD
-      <file leaf-file-name="post_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-              </folding>
-=======
-      <file leaf-file-name="glasgow_uni_about.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/glasgow_uni_about.html">
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
               <caret line="21" column="38" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="38" />
               <folding />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="mystery_about.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mystery_about.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/mystery_about.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-=======
-<<<<<<< HEAD
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="51" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="51" />
-=======
-      <file leaf-file-name="kids_about.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/kids_about.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
+            <state relative-caret-position="442">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="mystery_quest.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/mystery_quest.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
               <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
-=======
-<<<<<<< HEAD
-      <file leaf-file-name="adventureQuest.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/static/css/adventureQuest.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="734">
-              <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-=======
-      <file leaf-file-name="quest1_about.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/quest1_about.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-=======
       <file leaf-file-name="adventureQuest-jquery.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="697">
               <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
-              <folding />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -285,27 +142,21 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/admin.py" />
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/test_quest.html" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/populate_riddles.py" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/adventure_quest_project/urls.py" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/urls.py" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_detail.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/static/css/adventureQuest.css" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_list.html" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_form.html" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/models.py" />
-=======
+        <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/admin.py" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/congratulations.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/finnieston_riddle.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/finneston_about.html" />
@@ -316,7 +167,6 @@
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/southside_quest.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/city_centre_quest.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/kids_quest.html" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/populate_riddles.py" />
         <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/models.py" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/my_account.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/finnieston_about.html" />
@@ -326,12 +176,12 @@
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/kids_about.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/quest1_about.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-        <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py" />
         <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/urls.py" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/index.html" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/mystery_about.html" />
+        <option value="$PROJECT_DIR$/adventure_quest_project/populate_riddles.py" />
+        <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html" />
+        <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py" />
       </list>
     </option>
   </component>
@@ -342,15 +192,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-<<<<<<< HEAD
-=======
     <option name="x" value="960" />
-<<<<<<< HEAD
     <option name="width" value="961" />
-=======
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-    <option name="width" value="960" />
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -378,10 +221,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
-=======
       <pane id="Scratches" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -414,72 +254,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-<<<<<<< HEAD
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdventureQuest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdventureQuest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adventure_quest_project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdventureQuest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdventureQuest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adventure_quest_project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdventureQuest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdventureQuest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adventure_quest_project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adventure_quest_project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-=======
-        </subPane>
-      </pane>
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
       <pane id="Scope" />
     </panes>
   </component>
@@ -488,7 +264,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AdventureQuest_new" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
@@ -717,24 +493,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
     <frame x="960" y="0" width="961" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.011640212" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-=======
-<<<<<<< HEAD
-    <frame x="0" y="0" width="960" height="1050" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25635594" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-=======
-    <frame x="960" y="0" width="960" height="1050" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.011652542" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -766,59 +528,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-<<<<<<< HEAD
-    <breakpoint-manager />
-    <watches-manager />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventure_quest_project/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
-          <folding>
-            <element signature="e#656#688#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="63" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-=======
     <breakpoint-manager>
       <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
-=======
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -831,21 +546,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventure_quest_project/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="1190">
-          <caret line="70" column="59" selection-start-line="70" selection-start-column="59" selection-end-line="70" selection-end-column="59" />
+        <state relative-caret-position="1088">
+          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/populate_riddles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
           <folding />
-=======
-        <state relative-caret-position="1088">
-          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/populate_riddles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -854,94 +564,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/test_quest.html">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="391">
-          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-=======
-        <state relative-caret-position="374">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3604">
-          <caret line="212" column="43" selection-start-line="212" selection-start-column="43" selection-end-line="212" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventure_quest_project/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#656#688#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventure_quest_project/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/populate_riddles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
+            <element signature="e#1#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -957,6 +580,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3604">
           <caret line="212" column="43" selection-start-line="212" selection-start-column="43" selection-end-line="212" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -964,9 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#656#688#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -981,9 +602,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1001,7 +619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
           <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1009,6 +626,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1017,7 +635,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#65#0" expanded="true" />
+            <element signature="e#1#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1033,6 +651,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3281">
           <caret line="193" column="11" selection-start-line="193" selection-start-column="11" selection-end-line="193" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1040,16 +659,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#656#688#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/congratulations.html">
-=======
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1058,13 +670,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py">
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1078,60 +686,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="85">
           <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-=======
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventure_quest_project/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/congratulations.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="183" selection-start-line="16" selection-start-column="183" selection-end-line="16" selection-end-column="183" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/finnieston_riddle.html" />
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/finneston_about.html" />
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/test_quest.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/manage.py">
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/finnieston_quest.html">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="153">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-=======
         <state relative-caret-position="697">
           <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="17">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/test_quest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/populate_riddles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventure_quest_project/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="59" selection-start-line="70" selection-start-column="59" selection-end-line="70" selection-end-column="59" />
-=======
         <state relative-caret-position="272">
           <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
         </state>
@@ -1156,37 +763,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="14" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-          <folding>
-            <marker date="1489930518126" expanded="true" signature="11215:11307" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventure_quest_project/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#656#688#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/riddle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-=======
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/kids_quest.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1206,61 +786,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-          <folding />
-=======
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="629">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-=======
-        <state relative-caret-position="561">
-          <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="4" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="51" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/static/css/adventureQuest.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="734">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-=======
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-136">
@@ -1275,61 +804,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/city_centre_about.html">
-=======
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_detail.html">
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="102">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-=======
         <state relative-caret-position="306">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/kids_about.html">
-=======
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/post_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="8" />
-=======
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/city_centre_about.html">
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/populate_riddles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="29" column="107" selection-start-line="29" selection-start-column="107" selection-end-line="29" selection-end-column="107" />
           <folding />
         </state>
       </provider>
@@ -1352,39 +842,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/quest1_about.html">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="623">
-          <caret line="115" column="24" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-=======
         <state relative-caret-position="357">
           <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-          <folding />
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="612">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-=======
-<<<<<<< HEAD
-        <state relative-caret-position="515">
-          <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-=======
-        <state relative-caret-position="12">
-          <caret line="29" column="107" selection-start-line="29" selection-start-column="107" selection-end-line="29" selection-end-column="107" />
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
           <folding />
         </state>
       </provider>
@@ -1405,14 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="76" column="30" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -1421,27 +872,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="282" column="6" selection-start-line="282" selection-start-column="2" selection-end-line="282" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/mystery_about.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="442">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-=======
->>>>>>> fb6679f7c829e8d4705b0850e1316a9883516198
->>>>>>> 1f7b0e3e19a431de8f71fcfc989f44bfe97304a0
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/populate_riddles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="29" column="107" selection-start-line="29" selection-start-column="107" selection-end-line="29" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="427" column="31" selection-start-line="427" selection-start-column="31" selection-end-line="427" selection-end-column="31" />
+          <folding>
+            <element signature="e#1#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
