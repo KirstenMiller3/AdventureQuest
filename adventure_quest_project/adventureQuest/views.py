@@ -80,7 +80,7 @@ def kids_about(request):
 
 # About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to
 # make a new one of these for each quest. Same for riddle pages!!!!!!
-def quest1_about(request):
+def mystery_about(request):
     context_dict = {}
     for row in Quest.objects.filter(name="test_quest"):
         context_dict['descr'] = row.description
@@ -88,7 +88,7 @@ def quest1_about(request):
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/quest1_about.html', context_dict)
+    return render(request, 'adventureQuest/mystery_about.html', context_dict)
 
 
 def congratulations(request):
@@ -281,12 +281,12 @@ def post_list(request):
     return render(request, 'adventureQuest/post_list.html', context)
 
 # test_Quest view
-def test_quest(request):
+def mystery_quest(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     else:
         get_current_quest(request)
-        return render(request, 'adventureQuest/test_quest.html')
+        return render(request, 'adventureQuest/mystery_quest.html')
 
 
 def finnieston_quest(request):

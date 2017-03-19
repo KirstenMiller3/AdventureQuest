@@ -12,7 +12,7 @@ urlpatterns = [
 	url(r'^login/$', views.user_login, name='login'),
 	url(r'^restricted/', views.restricted, name='restricted'),
 	url(r'^logout/$', views.user_logout, name='logout'),
-	url(r'^quest1_about/$', views.quest1_about, name='quest1_about'),
+	url(r'^mystery_about/$', views.mystery_about, name='mystery_about'),
 	url(r'^finnieston_about/$', views.finnieston_about, name='finnieston_about'),
 	#url(r'^test_quest/$', views.answer_riddle, name='test_quest'),
 	url(r'^glasgow_uni_about/$', views.glasgow_uni_about, name='glasgow_uni_about'),
@@ -21,7 +21,7 @@ urlpatterns = [
 	url(r'^kids_about/$', views.kids_about, name='kids_about'),
 	url(r'^congratulations/$', views.congratulations, name='congratulations'),
 
-	url(r'^test_quest/$', views.test_quest, name='test_quest'),
+	url(r'^mystery_quest/$', views.mystery_quest, name='mystery_quest'),
 	url(r'^finnieston_quest/$', views.finnieston_quest, name='finnieston_quest'),
 	url(r'^glasgow_uni_quest/$', views.glasgow_uni_quest, name='glasgow_uni_quest'),
 	url(r'^southside_quest/$', views.southside_quest, name='southside_quest'),
