@@ -246,53 +246,63 @@ def post_list(request):
 # test_Quest view
 def test_quest(request):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
-   # check_url(request)
-    # Set up session variables
-    get_current_quest(request)
-    return render(request, 'adventureQuest/test_quest.html')
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/test_quest.html')
 
 
 def finnieston_quest(request):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
-    get_current_quest(request)
-    return render(request, 'adventureQuest/finnieston_quest.html')
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/finnieston_quest.html')
 
 def glasgow_uni_quest(request):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
-    get_current_quest(request)
-    return render(request, 'adventureQuest/glasgow_uni_quest.html')
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/glasgow_uni_quest.html')
 
 
 def southside_quest(request):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
-    get_current_quest(request)
-    return render(request, 'adventureQuest/southside_quest.html')
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/southside_quest.html')
 
 
 def city_centre_quest(request):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
-    get_current_quest(request)
-    return render(request, 'adventureQuest/city_centre_quest.html')
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/city_centre_quest.html')
 
 
 def kids_quest(request):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
-    get_current_quest(request)
-    return render(request, 'adventureQuest/kids_quest.html')
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/kids__quest.html')
 
 # Method that would reset the quest if the user leaves half way through...not working, maybe need a quit button
 def check_url(request):
+    request.session['riddleAnswerID'] = 0
+    request.session['riddleAnswerID'] = 0
+    request.session['riddleCorrectNo'] =  0
+    request.session['numberHint'] = 0
+    request.session['questName'] = 0
     original_path = '/adventureQuest/quest_ajax/'
     print('This is the url that is compared too' + request.get_full_path(request))
     if original_path not in request.get_full_path(request):
         print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-        request.session.flush()
+
+
 
 # incrementors
 def quest_cookies(request, inc, hint):
