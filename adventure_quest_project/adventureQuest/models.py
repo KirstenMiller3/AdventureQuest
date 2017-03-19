@@ -25,6 +25,12 @@ class UserProfile(models.Model):
     quest8Score = models.IntegerField(default=0)
     # Override the __unicode__() method to return out something meaningful!
     # Remember if you use Python 2.7.x, define unicode too!
+    def __str(self):
+        return self.quest1Score
+
+    def __unicode(self):
+        return self.quest1Score
+
     def __str__(self):
         return self.user.username
 

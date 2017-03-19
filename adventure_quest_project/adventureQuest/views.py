@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from adventureQuest.forms import RiddleForm
-from adventureQuest.models import Quest, Riddle
+from adventureQuest.models import Quest, Riddle, UserProfile
 from django.core.signals import request_finished
 
 
@@ -124,10 +124,17 @@ def register(request):
 
 
 def my_account(request):
-    context_dict = {'hi'}
+    context_dict = {}
     if request.user.is_authenticated():
         name = request.user.username
         #pic = request.user.picture
+
+    for row in UserProfile.objects.all():
+        context_dict['score1'] = row.quest1Score
+        context_dict['score2'] = row.quest2Score
+        context_dict['score3'] = row.quest3Score
+        context_dict['score4'] = row.quest4Score
+        context_dict['score5'] = row.quest5Score
 
     return render(request, 'adventureQuest/my_account.html',context_dict)
 
@@ -192,7 +199,7 @@ def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
     logout(request)
     # Take the user back to the homepage.
-    return HttpResponseRedirect(reverse('adventureQuest./index.html'))
+    return HttpResponseRedirect(reverse('index'))
 
 #Hall of Fame view from which quest can be selected
 def hall_of_fame(request):
@@ -238,6 +245,8 @@ def post_list(request):
 
 # test_Quest view
 def test_quest(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
    # check_url(request)
     # Set up session variables
     get_current_quest(request)
@@ -245,25 +254,35 @@ def test_quest(request):
 
 
 def finnieston_quest(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
     get_current_quest(request)
     return render(request, 'adventureQuest/finnieston_quest.html')
 
 def glasgow_uni_quest(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
     get_current_quest(request)
     return render(request, 'adventureQuest/glasgow_uni_quest.html')
 
 
 def southside_quest(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
     get_current_quest(request)
     return render(request, 'adventureQuest/southside_quest.html')
 
 
 def city_centre_quest(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
     get_current_quest(request)
     return render(request, 'adventureQuest/city_centre_quest.html')
 
 
 def kids_quest(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('adventureQuest/login.html'))
     get_current_quest(request)
     return render(request, 'adventureQuest/kids_quest.html')
 
