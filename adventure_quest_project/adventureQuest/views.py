@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from adventureQuest.forms import UserForm, UserProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -10,6 +9,7 @@ from django.contrib.auth import logout
 from adventureQuest.forms import RiddleForm
 from adventureQuest.models import Quest, Riddle
 from django.shortcuts import redirect
+from adventureQuest.models import Quest, Riddle, UserProfile
 from django.core.signals import request_finished
 
 
@@ -25,34 +25,70 @@ def index(request):
 
 
 def finnieston_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="finnieston_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/finnieston_about.html')
+    return render(request, 'adventureQuest/finnieston_about.html', context_dict)
 
 
 def glasgow_uni_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="glasgow_uni_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/glasgow_uni_about.html')
+    return render(request, 'adventureQuest/glasgow_uni_about.html', context_dict)
 
 
 def southside_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="southside_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/southside_about.html')
+    return render(request, 'adventureQuest/southside_about.html', context_dict)
 
 
 def city_centre_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="city_centre_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/city_centre_about.html')
+    return render(request, 'adventureQuest/city_centre_about.html', context_dict)
 
 
 def kids_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="kids_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/kids_about.html')
+    return render(request, 'adventureQuest/kids_about.html', context_dict)
 
 # About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to
 # make a new one of these for each quest. Same for riddle pages!!!!!!
 def quest1_about(request):
+    context_dict = {}
+    for row in Quest.objects.filter(name="test_quest"):
+        context_dict['descr'] = row.description
+        context_dict['age_limit'] = row.age_limit
+        context_dict['difficulty'] = row.difficulty
+        context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/quest1_about.html')
+    return render(request, 'adventureQuest/quest1_about.html', context_dict)
 
 
 def congratulations(request):
@@ -125,10 +161,17 @@ def register(request):
 
 
 def my_account(request):
-    context_dict = {'hi'}
+    context_dict = {}
     if request.user.is_authenticated():
         name = request.user.username
         #pic = request.user.picture
+
+    for row in UserProfile.objects.all():
+        context_dict['score1'] = row.quest1Score
+        context_dict['score2'] = row.quest2Score
+        context_dict['score3'] = row.quest3Score
+        context_dict['score4'] = row.quest4Score
+        context_dict['score5'] = row.quest5Score
 
     return render(request, 'adventureQuest/my_account.html',context_dict)
 
@@ -193,7 +236,7 @@ def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
     logout(request)
     # Take the user back to the homepage.
-    return HttpResponseRedirect(reverse('adventureQuest./index.html'))
+    return HttpResponseRedirect(reverse('index'))
 
 #Hall of Fame view from which quest can be selected
 def hall_of_fame(request):
@@ -239,42 +282,64 @@ def post_list(request):
 
 # test_Quest view
 def test_quest(request):
-   # check_url(request)
-    # Set up session variables
-    get_current_quest(request)
-    return render(request, 'adventureQuest/test_quest.html')
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/test_quest.html')
 
 
 def finnieston_quest(request):
-    get_current_quest(request)
-    return render(request, 'adventureQuest/finnieston_quest.html')
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/finnieston_quest.html')
 
 def glasgow_uni_quest(request):
-    get_current_quest(request)
-    return render(request, 'adventureQuest/glasgow_uni_quest.html')
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/glasgow_uni_quest.html')
 
 
 def southside_quest(request):
-    get_current_quest(request)
-    return render(request, 'adventureQuest/southside_quest.html')
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/southside_quest.html')
 
 
 def city_centre_quest(request):
-    get_current_quest(request)
-    return render(request, 'adventureQuest/city_centre_quest.html')
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/city_centre_quest.html')
 
 
 def kids_quest(request):
-    get_current_quest(request)
-    return render(request, 'adventureQuest/kids_quest.html')
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        get_current_quest(request)
+        return render(request, 'adventureQuest/kids__quest.html')
 
 # Method that would reset the quest if the user leaves half way through...not working, maybe need a quit button
 def check_url(request):
+    request.session['riddleAnswerID'] = 0
+    request.session['riddleAnswerID'] = 0
+    request.session['riddleCorrectNo'] =  0
+    request.session['numberHint'] = 0
+    request.session['questName'] = 0
     original_path = '/adventureQuest/quest_ajax/'
     print('This is the url that is compared too' + request.get_full_path(request))
     if original_path not in request.get_full_path(request):
         print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-        request.session.flush()
+
+
 
 # incrementors
 def quest_cookies(request, inc, hint):
