@@ -327,7 +327,7 @@ def kids_quest(request):
 
 # Method that would reset the quest if the user leaves half way through...not working, maybe need a quit button
 def check_url(request):
-    request.session['riddleAnswerID'] = 0
+    request.session['riddleQuestionID'] = 0
     request.session['riddleAnswerID'] = 0
     request.session['riddleCorrectNo'] =  0
     request.session['numberHint'] = 0
@@ -379,7 +379,7 @@ def get_current_quest(request):
 
 import json
 def quest_ajax(request):
-
+    response_data = {}
 
     questName = request.session['questName']
     print("HEY" + questName)
@@ -389,11 +389,12 @@ def quest_ajax(request):
     ridAID = request.session['riddleAnswerID']
     correctNo = request.session['riddleCorrectNo']
 
-
+    response_data['currentQ'] = ridQID
 
     # count how many riddles in this quest
     listRiddles = list(Riddle.objects.filter(quest_name=questName))
     numberRiddles= len(listRiddles)
+    response_data['noRiddles'] = numberRiddles
     print('This is the number of riddles'+str(numberRiddles))
     print('This is the question ID' + str(ridQID) + 'This is the answer ID' + str(ridAID))
     print('this is the quest name: '+questName)
@@ -413,7 +414,7 @@ def quest_ajax(request):
         print(row.question)
 
     # Create Response data vairable
-    response_data = {}
+
     # Hint file
     if request.GET.get('click', False):
         print('testing button')
@@ -424,7 +425,7 @@ def quest_ajax(request):
         response_data['hint_available'] = 'false'
         print(no_hints)
 
-    response_data['instruction'] = textInstruction
+
 
 
 
