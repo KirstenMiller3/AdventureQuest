@@ -308,7 +308,7 @@ def quest_ajax(request):
     # count how many riddles in this quest
     listRiddles = list(Riddle.objects.filter(quest_name=questName))
     numberRiddles= len(listRiddles)
-    print('This is the number of riddles'+str(numberRiddles))
+    print('This is the number of riddles'+str(numberRiddles)+ 'This is the correct no '+str(correctNo))
     print('This is the question ID' + str(ridQID) + 'This is the answer ID' + str(ridAID))
     print('this is the quest name: '+questName)
 
@@ -338,9 +338,6 @@ def quest_ajax(request):
         response_data['hint_available'] = 'false'
         print(no_hints)
 
-    response_data['instruction'] = textInstruction
-
-
 
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo < numberRiddles:
@@ -349,20 +346,24 @@ def quest_ajax(request):
             quest_cookies(request, True, False)
             ridQID = request.session['riddleQuestionID']
             ridAID = request.session['riddleAnswerID']
-            correctNo = request.session['riddleCorrectNo']
             response_data['hint_available'] = 'true'
-            response_data['instruction']=textInstruction
+            correctNo = request.session['riddleCorrectNo']
 
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question
                 textAnswer = row.answer
+                textInstruction = row.instruction
                 print(row.question)
                 print(row.answer)
                 response_data['answer'] = textQuestion
+                response_data['instruction'] = textInstruction
             if correctNo == numberRiddles:
                 response_data['answer'] = 'Congratualtions you finished the quest!'
                 request.session.flush()
-    # If the user answer is incorrect
+                return render(request, 'adventureQuest/congratulations.html')
+
+
+        # If the user answer is incorrect
         else:
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question

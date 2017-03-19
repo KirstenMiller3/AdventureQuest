@@ -27,7 +27,6 @@ $('#questionform').submit(function(e) {
 
 			var available = response['hint_available'];
 
-			console.log('woooooooooooooooooooooooooo', available);
 
 			if (available === 'false'){
 				var button = $('#hintform')
@@ -65,7 +64,6 @@ $('#hintform').click(function(e) {
 
 			var available = response['hint_available'];
 
-			console.log('woooooooooooooooooooooooooo', available);
 			if (available === 'false'){
 				var button = $('#hintform')
 					button.hide();
