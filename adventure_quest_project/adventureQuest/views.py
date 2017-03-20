@@ -389,7 +389,6 @@ def get_current_quest(request):
 import json
 def quest_ajax(request):
     response_data = {}
-
     questName = request.session['questName']
     print("HEY" + questName)
     # Set session variables
@@ -412,8 +411,12 @@ def quest_ajax(request):
     # Get the user answer
 
     input_answer = request.GET.get('answer')
-    user_answer = input_answer.lower()
-    print('this should be the answer in lower case'+user_answer)
+
+    if input_answer != None:
+        user_answer = input_answer.lower()
+        print('this should be the answer in lower case'+user_answer)
+    else:
+        user_answer = ''
 
     # Set the current question and answer from the database
     for row in Riddle.objects.filter(quest_name=questName, question_id=ridAID):
@@ -438,14 +441,14 @@ def quest_ajax(request):
         response_data['hint_available'] = 'false'
         print(no_hints)
 
-    response_data['instruction'] = textInstruction
+    #response_data['instruction'] = textInstruction
 
 
 
 
 # If the users answer is correct then get the next question from the database unless this is the last question
-    if correctNo < numberRiddles:
-
+    if correctNo <= numberRiddles:
+        print('************** '+str(correctNo))
         if textAnswer in user_answer:
             response_data['hint'] = 'Your hint will appear here....but remember you will loose 5 points for each hint!'
             quest_cookies(request, True, False)
@@ -453,6 +456,8 @@ def quest_ajax(request):
             ridAID = request.session['riddleAnswerID']
             response_data['hint_available'] = 'true'
             correctNo = request.session['riddleCorrectNo']
+            response_data['correct'] = True
+            print('This should be True' + str(response_data['correct']))
 
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question
@@ -462,10 +467,9 @@ def quest_ajax(request):
                 print(row.answer)
                 response_data['answer'] = textQuestion
                 response_data['instruction'] = textInstruction
-            if correctNo == numberRiddles:
-                print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-                #
-                # return HttpResponseRedirect(reverse('congratulations'))
+
+
+
 
 
         # If the user answer is incorrect
@@ -473,6 +477,8 @@ def quest_ajax(request):
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question
             response_data['answer'] = 'try again: '+textQuestion
+            response_data['correct'] = False
+            print('This should be false'+str(response_data['correct']))
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
