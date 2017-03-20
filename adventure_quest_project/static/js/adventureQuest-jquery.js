@@ -30,6 +30,7 @@ $('#questionform').submit(function(e) {
 			console.log("no of Q " + lastQ)
 			console.log("currentQ " + currentQ)
 
+			var blergh = response['correct']
 			// Trying to get the congratulations pop-up to work
 			//var questionNo = response['riddleQuestionID']
 			//var lastQuestion = response['noRiddles']
@@ -46,8 +47,8 @@ $('#questionform').submit(function(e) {
 					button.show();
 
 			}
-			console.log("HIYA"+currentQ === lastQ-1)
-			if(currentQ === lastQ-1)
+
+			if(currentQ === lastQ-1 && blergh)
 			{
 				console.log("ENTERED")
 				$(this).unbind('submit').submit()
