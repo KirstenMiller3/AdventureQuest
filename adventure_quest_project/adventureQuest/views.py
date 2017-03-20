@@ -33,6 +33,8 @@ def finnieston_about(request):
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
+        context_dict['questurl'] = reverse(finnieston_quest)
+        context_dict['questmappos'] = "55.868273, -4.292110" 
     check_url(request)
     return render(request, 'adventureQuest/finnieston_about.html', context_dict)
 
@@ -45,6 +47,9 @@ def glasgow_uni_about(request):
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
+        context_dict['questurl'] = reverse(glasgow_uni_quest)
+        context_dict['questmappos'] = "55.871950, -4.288233"
+        
     check_url(request)
     return render(request, 'adventureQuest/glasgow_uni_about.html', context_dict)
 
@@ -57,6 +62,8 @@ def southside_about(request):
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
+        context_dict['questurl'] = reverse(southside_quest)
+        context_dict['questmappos'] = "55.850538, -4.259042"
     check_url(request)
     return render(request, 'adventureQuest/southside_about.html', context_dict)
 
@@ -69,6 +76,8 @@ def city_centre_about(request):
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
+        context_dict['questurl'] = reverse(city_centre_quest)
+        context_dict['questmappos'] = "55.863422, -4.252970"
     check_url(request)
     return render(request, 'adventureQuest/city_centre_about.html', context_dict)
 
@@ -81,6 +90,8 @@ def kids_about(request):
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
+        context_dict['questurl'] = reverse(kids_quest)
+        context_dict['questmappos'] = "55.868786, -4.290196"
     check_url(request)
     return render(request, 'adventureQuest/kids_about.html', context_dict)
 
@@ -93,6 +104,8 @@ def mystery_about(request):
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
+        context_dict['questurl'] = reverse(mystery_quest)
+        context_dict['questmappos'] = "55.874692, -4.292962"
     check_url(request)
     return render(request, 'adventureQuest/mystery_about.html', context_dict)
 
@@ -317,7 +330,7 @@ def kids_quest(request):
         return HttpResponseRedirect(reverse('login'))
     else:
         get_current_quest(request)
-        return render(request, 'adventureQuest/kids__quest.html')
+        return render(request, 'adventureQuest/kids_quest.html')
 
 # Method that would reset the quest if the user leaves half way through...not working, maybe need a quit button
 def check_url(request):

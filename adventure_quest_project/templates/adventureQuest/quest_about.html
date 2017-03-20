@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+<div class="w3-content w3-container w3-padding-64" id="aboutquest">
+    
+   
+    
+    <div class="quest_scroll">
+    <img src="{% static "images/scroll.jpg" %}" style="width:100%"></a>
+    <div class="quest_text">
+   
+     <li>Starting point:{{ start }}</li>
+        <li>Difficulty:{{ difficulty }}</li>
+        <li>Minimum age: {{ age_limit }}</li>
+        <li>Time to complete:{{ value}}</li>
+        <li>Reviews:  link here?{{ value}}</li>
+    </div>
+    </div>
+ 
+
+         <a class="w3-btn w3-round-large" href="{{questurl}}">Link to begin quest or redirect if not logged in</a>
+        </div>
+        <li>Reviews: link to fb comments?</li>
+    </div>
+
+<div class="w3-content w3-container w3-padding-64">
+        <!-- Add Google Maps -->
+        <div id="Map" class="w3-round-large w3-greyscale" style="width:100%;height:400px;"></div>
