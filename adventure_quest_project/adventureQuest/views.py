@@ -28,6 +28,7 @@ def index(request):
     return render(request, 'adventureQuest/index.html')
 
 
+# The about page for the Finnieston Quest.
 def finnieston_about(request):
     context_dict = {}
     for row in Quest.objects.filter(name="finnieston_quest"):
@@ -39,6 +40,7 @@ def finnieston_about(request):
     return render(request, 'adventureQuest/finnieston_about.html', context_dict)
 
 
+# The about page for the Glasgow University quest.
 def glasgow_uni_about(request):
     context_dict = {}
     for row in Quest.objects.filter(name="glasgow_uni_quest"):
@@ -50,6 +52,7 @@ def glasgow_uni_about(request):
     return render(request, 'adventureQuest/glasgow_uni_about.html', context_dict)
 
 
+# The about page for the Southside quest.
 def southside_about(request):
     context_dict = {}
     for row in Quest.objects.filter(name="southside_quest"):
@@ -61,6 +64,7 @@ def southside_about(request):
     return render(request, 'adventureQuest/southside_about.html', context_dict)
 
 
+# The about page for the City Centre quest.
 def city_centre_about(request):
     context_dict = {}
     for row in Quest.objects.filter(name="city_centre_quest"):
@@ -72,6 +76,7 @@ def city_centre_about(request):
     return render(request, 'adventureQuest/city_centre_about.html', context_dict)
 
 
+# The about page for the Kids quest.
 def kids_about(request):
     context_dict = {}
     for row in Quest.objects.filter(name="kids_quest"):
@@ -82,8 +87,8 @@ def kids_about(request):
     check_url(request)
     return render(request, 'adventureQuest/kids_about.html', context_dict)
 
-# About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to
-# make a new one of these for each quest. Same for riddle pages!!!!!!
+
+# The about page for the ?MyStErY? quest.
 def mystery_about(request):
     context_dict = {}
     for row in Quest.objects.filter(name="test_quest"):
@@ -95,33 +100,29 @@ def mystery_about(request):
     return render(request, 'adventureQuest/mystery_about.html', context_dict)
 
 
+# The view for the congratulations page
 def congratulations(request):
     # In this view we need to add their high score to the correct user field!!
     return render(request, 'adventureQuest/congratulations.html')
 
 
-
+# The view for the registration page.
 def register(request):
-    # A boolean value for telling the template
-    # whether the registration was successful.
-    # Set to False initially. Code changes value to
-    # True when registration succeeds.
+    # Tells us if registration was successful or not.
     registered = False
 
-    # If it's a HTTP POST, we're interested in processing form data.
+    # It's a form so POST
     if request.method == 'POST':
-        # Attempt to grab information from the raw form information.
-        # Note that we make use of both UserForm and UserProfileForm.
+        # Try to get form data from users
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileForm(data=request.POST)
 
-        # If the two forms are valid...
+        # If the two forms are valid:
         if user_form.is_valid() and profile_form.is_valid():
             # Save the user's form data to the database.
             user = user_form.save()
 
-            # Now we hash the password with the set_password method.
-            # Once hashed, we can update the user object.
+            # Hash the users password and then update the user object.
             user.set_password(user.password)
             user.save()
 
@@ -163,7 +164,7 @@ def register(request):
 
 
 
-
+# The view for the users profile page.
 def my_account(request):
     context_dict = {}
     if request.user.is_authenticated():
@@ -180,9 +181,7 @@ def my_account(request):
     return render(request, 'adventureQuest/my_account.html',context_dict)
 
 
-
-
-
+# The view for login page.
 def user_login(request):
     context_dict = {}
     # If the request is a HTTP POST, try to pull out the relevant information.
@@ -228,7 +227,7 @@ def user_login(request):
         return render(request, 'adventureQuest/login.html', {})
 
 
-
+# THINK THIS CAN BE DELETED
 @login_required
 def restricted(request):
     return render(request, 'adventureQuest/restricted.html')

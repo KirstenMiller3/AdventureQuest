@@ -46,7 +46,8 @@ $('#questionform').submit(function(e) {
 					button.show();
 
 			}
-			if(currentQ === lastQ)
+			console.log("HIYA"+currentQ === lastQ-1)
+			if(currentQ === lastQ-1)
 			{
 				console.log("ENTERED")
 				$(this).unbind('submit').submit()
