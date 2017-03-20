@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py" line="472" />
+    <bookmark url="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py" line="469" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4240c60-850f-4cf9-bc4d-03f2359d3a9f" name="Default" comment="">
@@ -29,6 +29,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/migrations/0001_initial.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py" afterPath="$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/populate_riddles.py" afterPath="$PROJECT_DIR$/adventure_quest_project/populate_riddles.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/static/css/adventureQuest.css" afterPath="$PROJECT_DIR$/adventure_quest_project/static/css/adventureQuest.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js" afterPath="$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/city_centre_about.html" afterPath="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/city_centre_about.html" />
@@ -60,8 +61,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="280" column="41" selection-start-line="280" selection-start-column="41" selection-end-line="280" selection-end-column="41" />
+            <state relative-caret-position="459">
+              <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
               <folding>
                 <element signature="e#1#66#0" expanded="true" />
               </folding>
@@ -69,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="populate_riddles.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="populate_riddles.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/populate_riddles.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="107" selection-start-line="29" selection-start-column="107" selection-end-line="29" selection-end-column="107" />
+            <state relative-caret-position="136">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -82,30 +83,28 @@
       <file leaf-file-name="finnieston_about.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/finnieston_about.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+            <state relative-caret-position="54">
+              <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/models.py">
+      <file leaf-file-name="mystery_about.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/mystery_about.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="southside_about.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/southside_about.html">
+      <file leaf-file-name="glasgow_uni_quest.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/glasgow_uni_quest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="170">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -141,12 +140,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adventureQuest-jquery.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="adventureQuest-jquery.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+            <state relative-caret-position="391">
+              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -188,9 +199,9 @@
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/glasgow_uni_about.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/kids_about.html" />
         <option value="$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/quest1_about.html" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/populate_riddles.py" />
-        <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py" />
         <option value="$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js" />
+        <option value="$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py" />
+        <option value="$PROJECT_DIR$/adventure_quest_project/populate_riddles.py" />
       </list>
     </option>
   </component>
@@ -543,13 +554,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -711,13 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventure_quest_project/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -757,13 +754,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/glasow_uni_about.html" />
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/glasgow_uni_quest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/city_centre_quest.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -804,14 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/finnieston_about.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,28 +840,62 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/quest1_about.html" />
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/populate_riddles.py">
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="107" selection-start-line="29" selection-start-column="107" selection-end-line="29" selection-end-column="107" />
+        <state relative-caret-position="391">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adventure_quest_project/adventureQuest/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="280" column="41" selection-start-line="280" selection-start-column="41" selection-end-line="280" selection-end-column="41" />
+        <state relative-caret-position="459">
+          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
           <folding>
             <element signature="e#1#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adventure_quest_project/static/js/adventureQuest-jquery.js">
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/glasgow_uni_quest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/finnieston_about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/templates/adventureQuest/mystery_about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adventure_quest_project/populate_riddles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>

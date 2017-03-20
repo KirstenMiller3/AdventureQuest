@@ -10,14 +10,11 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from adventureQuest.forms import RiddleForm
 from adventureQuest.models import Quest, Riddle
 from django.shortcuts import redirect
 from adventureQuest.models import Quest, Riddle, UserProfile
 from django.core.signals import request_finished
-
-
-from .forms import RiddleForm, PostForm
+from .forms import PostForm
 from .models import Quest, Riddle, UserProfile, Post
 
 
