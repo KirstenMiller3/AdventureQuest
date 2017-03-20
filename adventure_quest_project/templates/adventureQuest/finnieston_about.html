@@ -9,19 +9,19 @@
     <div class="quest_scroll">
     <img src="{% static "images/scroll.jpg" %}" style="width:100%"></a>
     <div class="quest_text">
-    <p>Starting point</p>
+   
+     <li>Starting point:{{ start }}</li>
+        <li>Difficulty:{{ difficulty }}</li>
+        <li>Minimum age: {{ age_limit }}</li>
+        <li>Time to complete:{{ value}}</li>
+        <li>Reviews:  link here?{{ value}}</li>
     </div>
     </div>
-
-
-    
-
-       
+ 
 
          <a class="w3-btn w3-round-large" href="{% url 'finnieston_quest' %}">Link to begin quest or redirect if not logged in</a>
         </div>
         <li>Reviews: link to fb comments?</li>
-       
     
     </div>
 
