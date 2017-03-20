@@ -1,27 +1,26 @@
 {% extends "adventureQuest/base.html" %}
 {% load staticfiles %}
-{% block Title %}Finnieston Quest About{% endblock %}
+{% block Title %}Quest 1 About{% endblock %}
 {% block body_block %}  
-<div class="w3-content w3-container w3-padding-64" id="aboutquest">
+<div class="w3-content w3-container w3-padding-64 w3-card w3-white" id="aboutquest">
     
-   
-    
-    <div class="quest_scroll">
-    <img src="{% static "images/scroll.jpg" %}" style="width:100%"></a>
-    <div class="quest_text">
-   
-     <li>Starting point:{{ start }}</li>
+<p class="w3-center w3-xlarge ">  {{ descr }}</p>
+
+
+    <div class="w3-center w3-ul">
+
+
+        <ul class="w3-ul">
+        <li>Starting point:{{ start }}</li>
         <li>Difficulty:{{ difficulty }}</li>
         <li>Minimum age: {{ age_limit }}</li>
         <li>Time to complete:{{ value}}</li>
         <li>Reviews:  link here?{{ value}}</li>
-    </div>
-    </div>
- 
+        </ul>
 
-         <a class="w3-btn w3-round-large" href="{% url 'finnieston_quest' %}">Link to begin quest or redirect if not logged in</a>
+         <a class="w3-btn w3-round-large" href="{% url 'mystery_quest' %}">Link to begin quest or redirect if not logged in</a>
         </div>
-        <li>Reviews: link to fb comments?</li>
+       
     
     </div>
 
@@ -34,9 +33,9 @@
 
 {% block questmap_block %} 
 <script>
-function mapFinnieston()
+function mapMystery()
 {
-  myCenter=new google.maps.LatLng(55.868273, -4.292110);
+  myCenter=new google.maps.LatLng(55.874692, -4.292962);
   var mapOptions= {
     center:myCenter,
     zoom:19, scrollwheel: false, draggable: false,
@@ -50,5 +49,5 @@ function mapFinnieston()
   marker.setMap(map);
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0z8juUZWLKkvKq4p8G9ne4Sr8RzB4hMY&callback=mapFinnieston"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0z8juUZWLKkvKq4p8G9ne4Sr8RzB4hMY&callback=mapMystery"></script>
 {% endblock %}

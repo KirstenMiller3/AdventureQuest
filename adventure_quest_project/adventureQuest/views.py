@@ -1,3 +1,7 @@
+
+from django.shortcuts import render, render_to_response, redirect
+from django.http import HttpResponse
+
 from django.shortcuts import render
 from adventureQuest.forms import UserForm, UserProfileForm
 from django.contrib import messages
@@ -80,7 +84,7 @@ def kids_about(request):
 
 # About page for one quest maybe we should make this generalizable the way pages were in rango as seems silly to have to
 # make a new one of these for each quest. Same for riddle pages!!!!!!
-def quest1_about(request):
+def mystery_about(request):
     context_dict = {}
     for row in Quest.objects.filter(name="test_quest"):
         context_dict['descr'] = row.description
@@ -88,7 +92,7 @@ def quest1_about(request):
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
     check_url(request)
-    return render(request, 'adventureQuest/quest1_about.html', context_dict)
+    return render(request, 'adventureQuest/mystery_about.html', context_dict)
 
 
 def congratulations(request):
@@ -244,14 +248,17 @@ def hall_of_fame(request):
 
 
 #add login_required
+@login_required
 def post_create(request):
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         instance = form.save(commit=False)
+        instance.user = request.user
         instance.save()
         # message success
         messages.success(request, "Post was created")
-        return HttpResponseRedirect(instance.get_absolute_url())
+        return HttpResponseRedirect('adventureQuest:post_form')
+
     context = {
         "form": form,
     }
@@ -260,18 +267,6 @@ def post_create(request):
 def post_list(request):
     objects_post = Post.objects.all()
     print(objects_post[0].title)
-    # paginator = Paginator(queryset_list, 10)
-    # page_request_var = "page"
-    # page = request.GET(page_request_var)
-    # try:
-    #         queryset = paginator.page(page)
-    # except PageNotAnInteger:
-    #         # If not an int, deliver first page
-    #         queryset = paginator.page(1)
-    # except EmptyPage:
-    #         # If page is out of range, deliver last page
-    #         queryset = paginator.page(paginator.num_pages)
-
 
     context = {
         "object_list": objects_post,
@@ -280,13 +275,14 @@ def post_list(request):
     }
     return render(request, 'adventureQuest/post_list.html', context)
 
+
 # test_Quest view
-def test_quest(request):
+def mystery_quest(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     else:
         get_current_quest(request)
-        return render(request, 'adventureQuest/test_quest.html')
+        return render(request, 'adventureQuest/mystery_quest.html')
 
 
 def finnieston_quest(request):
@@ -401,7 +397,6 @@ def quest_ajax(request):
 
     # count how many riddles in this quest
     listRiddles = list(Riddle.objects.filter(quest_name=questName))
-    numberRiddles = len(listRiddles)
     numberRiddles= len(listRiddles)
     response_data['noRiddles'] = numberRiddles
     print('This is the number of riddles'+str(numberRiddles))
@@ -467,9 +462,6 @@ def quest_ajax(request):
                 print(row.answer)
                 response_data['answer'] = textQuestion
                 response_data['instruction'] = textInstruction
-
-
-
 
 
         # If the user answer is incorrect

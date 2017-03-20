@@ -1,42 +1,38 @@
 {% extends 'adventureQuest/base.html' %}
+
+{% block title_block  %}
+Photo Gallery
+{% endblock  %}
+
 {% block body_block %}
 
-<div class='col-sm-6 col-sm-offset-3'>
-    <h1>Photo Gallery</h1>
-
-{% for obj in object_list	%}
-<div class="row">
-    <div class="col-sm-12">
-        <div class="thumbnail">
-            {% if obj.image %}
-            <img src ='{{ obj.image.url }}' class='img-responsive' />
-            {% endif %}
-           <div class="caption">
-               <!-- ajax view populate with post attributes instead of those three lines -->
-
-           </div>
-        </div>
+<div class = 'w3-content w3-center'>
+    <div>
+        <h1>Hall of Fame Gallery</h1>
+        <h1>Hall of Fame Gallery</h1>
     </div>
-<hr/>
-</div>
+
+    <div>
+        <p> <a href="/adventureQuest/post_form/">Upload</a> a picture to the Gallery</p>
+        <br><br><br><br>
+    </div>
+ </div>
+    {% for obj in object_list %}
+        {% if obj.image %}
+        <div class = 'w3-content w3-center'>
+            <div style="display:inline; text-align:left;"><img src='{{ obj.image.url }}' class='img-responsive'/></div>
+            <div style="float: right"><ul>
+               <ul>Title: {{obj.title}}</ul>
+                   <ul>Uploaded by: {{obj.user}}</ul>
+                   <ul>Comment: {{obj.content}}</ul>
+                   <ul>Quest: {{obj.quest}}</ul>
+                   <ul>Hints used:</ul>
+                   <ul>Date: {{obj.timestamp}}</ul>
+            </ul></div>
+            <br><br><br><br>
+        </div>
+        {% endif %}
 {% endfor %}
 
-<div class="pagination">
-    <span class="step-links">
-        {% if  object_list.has_previous %}
-            <a href=""?{{ page_request_var }}="{{ object_list.previous_page_number }}">previous</a>
-        {% endif %}
 
-        <span class="current">
-            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
-        </span>
-
-        {% if object_list.has_next %}
-            <a href=""?{{ page_request_var }}="{{ object_list.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-</div>
-
-</div>
-
-{%	endblock   %}
+{% endblock %}}

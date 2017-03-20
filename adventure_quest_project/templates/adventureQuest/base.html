@@ -31,8 +31,8 @@
             <div class="dropdown-content">
             <a href="{% url 'index' %}">Home</a>
             <a href=#about>About</a>
-            <a href="{% url 'quest1_about' %}">Quests</a>
-            <a href="{% url 'hall_of_fame' %}">Hall of Fame</a>
+            <a href="{% url 'mystery_about' %}">Quests</a>
+            <a href="{% url 'post_list' %}">Hall of Fame</a>
             <a href="{% url 'my_account' %}">My Account</a>
             </div>    
             
@@ -59,6 +59,8 @@
      
 {% endblock %}
      
+     
+</body>  
 
  <!-- Footer PERSISTENT SO EVERYONE INHERITS THIS-->
 <footer class="w3-container w3-center w3-padding-64 w3-opacity w3-hover-opacity-off">
@@ -67,7 +69,7 @@
    
     <li class="horizontal"><a href="{% url 'register' %}">Register</a></li>
     <li class="horizontal"><a href="{% url 'login' %}">Login</a></li>
-    <li class="horizontal"><a href="{% url 'quest1_about' %}">Quest1</a></li>
+    <li class="horizontal"><a href="{% url 'mystery_about' %}">Mystery Quest</a></li>
     <li class="horizontal"><a href="{% url 'finnieston_about' %}">Finnieston Quest</a></li>
     <li class="horizontal"><a href="{% url 'glasgow_uni_about' %}">Glasgow Uni Quest</a></li>
     <li class="horizontal"><a href="{% url 'southside_about' %}">Southside Quest</a></li>
@@ -98,8 +100,7 @@
     </div>
 </footer>
 
-     
-</body>      
+    
 <!-- JAVASCRIPTS -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -161,5 +162,6 @@ function toggleFunction() {
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp Toms API is used
 -->
-
+{% block questmap_block %}
+{% endblock %}
 </html>
