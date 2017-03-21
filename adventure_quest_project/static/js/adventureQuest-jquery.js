@@ -47,7 +47,7 @@ $('#questionform').submit(function(e) {
 					button.show();
 
 			}
-			console.log(blergh)
+
 			if(currentQ === lastQ-1 && blergh)
 			{
 				console.log("ENTERED")

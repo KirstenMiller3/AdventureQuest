@@ -30,7 +30,7 @@
             <a href="javascript:void(0)" class="dropbtn"><i class="fa fa-navicon" style="font-size:34px"></i></a>
             <div class="dropdown-content">
             <a href="{% url 'index' %}">Home</a>
-            <a href=#about>About</a>
+            <a href="../#about">About</a> <!-- Slightly hacky way of always going to about-->
             <a href="{% url 'mystery_about' %}">Quests</a>
             <a href="{% url 'post_list' %}">Hall of Fame</a>
             <a href="{% url 'my_account' %}">My Account</a>
@@ -59,8 +59,6 @@
      
 {% endblock %}
      
-     
-</body>  
 
  <!-- Footer PERSISTENT SO EVERYONE INHERITS THIS-->
 <footer class="w3-container w3-center w3-padding-64 w3-opacity w3-hover-opacity-off">
@@ -81,11 +79,6 @@
     <li class="horizontal"><a href="{% url 'logout' %}">Logout</a></li>
           <!--  <li class="horizontal"><a href="{% url 'logout' %}">Logout</a></li> -->
 
-    
-
-    howdy {{ user.username }}!
-    {% else %}
-    hey there partner!
     {% endif %}
 
   </div>
@@ -100,7 +93,8 @@
     </div>
 </footer>
 
-    
+     
+</body>      
 <!-- JAVASCRIPTS -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -162,6 +156,25 @@ function toggleFunction() {
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp Toms API is used
 -->
-{% block questmap_block %}
-{% endblock %}
+
+<!-- MAPS FOR QUESTS consider wrapping in tags??-->
+<script>
+function mapQuest()
+{
+  myCenter=new google.maps.LatLng({{questmappos}});
+  var mapOptions= {
+    center:myCenter,
+    zoom:19, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("Map"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0z8juUZWLKkvKq4p8G9ne4Sr8RzB4hMY&callback=mapQuest"></script>
+
 </html>

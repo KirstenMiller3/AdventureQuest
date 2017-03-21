@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from adventureQuest.models import UserProfile, Riddle, Post
 
 
-
+# This is the form to get details when users register.
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
@@ -11,22 +11,12 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password')
 
-
+# This form allows us to get a profile picture for a user when they register.
 class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
         fields = ('picture',)
-
-
-# Obviously riddles coud involve a number or character answer? Maybe always take it as a String to simplify things?
-class RiddleForm(forms.ModelForm):
-    riddleOne = forms.CharField(max_length=128, help_text="blablabl")
-    riddleTwo = forms.CharField(max_length=128, help_text="hiya!")
-
-    class Meta:
-        model = Riddle
-        fields = ('riddleOne','riddleTwo',)
 
 
 # Upload pictures to gallery

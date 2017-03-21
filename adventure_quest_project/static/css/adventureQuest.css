@@ -108,15 +108,22 @@ li.dropdown {
 
 /* Positioning for quest about pages*/
 
-    .quest_scroll{
+    .quest_scroll {
     position:relative;
-    float:center; /* optional */
+    float:center; 
 }
-.quest_scroll .quest_text {
+    .quest_scroll .quest_text {
     position:absolute;
     top:100px; 
     left:150px;
     width:300px; 
     font-size: 20px;
+}
+
+    .quest_button {
+        position:relative;
+        float:center;
+        top: -80px;
+        left: 310px;
 }
 
