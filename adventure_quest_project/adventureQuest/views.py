@@ -174,12 +174,18 @@ def register(request):
 
 
 
-# The view for the users profile page.
+
 def my_account(request):
     context_dict = {}
-    if request.user.is_authenticated():
-        name = request.user.username
-        #pic = request.user.picture
+    user = request.user
+    #if request.user.is_authenticated():
+    #name = request.user.username
+    #pic = request.user.picture
+    for row in UserProfile.objects.filter(user=user):
+        context_dict['user'] = row.picture
+        context_dict['pic'] = str(row.picture)
+
+
 
     for row in UserProfile.objects.all():
         context_dict['score1'] = row.quest1Score
@@ -187,6 +193,7 @@ def my_account(request):
         context_dict['score3'] = row.quest3Score
         context_dict['score4'] = row.quest4Score
         context_dict['score5'] = row.quest5Score
+
 
     return render(request, 'adventureQuest/my_account.html',context_dict)
 

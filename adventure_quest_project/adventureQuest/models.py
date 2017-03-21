@@ -13,7 +13,8 @@ class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
     user = models.OneToOneField(User)
     # A profile picture for the user
-    picture = models.ImageField(upload_to='profile_images', blank=True)
+    picture = models.ImageField(blank=True)
+   # picture = models.ImageField(upload_to='profile_images', blank=True)
     # Scores for quests the user has completed.
     quest1Score = models.IntegerField(default=0)
     quest2Score = models.IntegerField(default=0)

@@ -13,6 +13,7 @@ class UserForm(forms.ModelForm):
 
 # This form allows us to get a profile picture for a user when they register.
 class UserProfileForm(forms.ModelForm):
+    picture = forms.ImageField(required=False)
 
     class Meta:
         model = UserProfile

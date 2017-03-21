@@ -19,9 +19,15 @@
     City Centre Quest: {{score4}} <br/>
     Kids Quest: {{score5}} <br/>
 
-
+    picture link: {{ pic }}
+    {{ MEDIA_URL }}
+    {{user.picture}}
 
 </div>
+
+    <div>
+        <img src="{{ MEDIA_URL}}{{ pic }}" alt="Picture of user">
+    </div>
 <br/>
 <div>
     See your uploaded posts?
