@@ -32,6 +32,6 @@ urlpatterns = [
 	url(r'^my_account/$', views.my_account, name='my_account'),
 	url(r'^post_list/$', views.post_list, name='post_list'),
 	url(r'^post_form/$', views.post_create, name='post_form'),
-	url(r'^hall_of_fame/$', views.hall_of_fame, name='hall_of_fame'),
+	#url(r'^hall_of_fame/$', views.hall_of_fame, name='hall_of_fame'),
 
 ]
