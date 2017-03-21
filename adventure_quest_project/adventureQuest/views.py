@@ -272,8 +272,11 @@ def hall_of_fame(request):
 
 
 #add login_required
-@login_required
 def post_create(request):
+
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('login'))
+
     form = PostForm(request.POST or None, request.FILES or None)
 
     myHint = None
@@ -295,7 +298,6 @@ def post_create(request):
         # message success
         messages.success(request, "Post was created")
         return HttpResponseRedirect(reverse('post_list'))
-        #return HttpResponseRedirect('adventureQuest:post_form')
 
     context = {
         "form": form,
