@@ -289,6 +289,7 @@ def post_create(request):
     }
     return render(request, 'adventureQuest/post_form.html', context)
 
+
 def post_list(request):
     objects_post = Post.objects.all()
    # print(objects_post[0].title)

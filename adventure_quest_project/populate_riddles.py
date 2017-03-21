@@ -200,7 +200,7 @@ def populate():
 		question="What has a single eye but cannot see?",
 		answer="needle", instruction="Riddle me this!",
 		hint="Doe a dear a female deer...", quest_name="finnieston_quest", question_id=31)
-best r
+
 	add_riddle(
 		question="What is the centre of gravity?",
 		answer="v", instruction="Riddle me this!",
