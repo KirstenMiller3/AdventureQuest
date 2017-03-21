@@ -99,7 +99,7 @@ def kids_about(request):
 # The about page for the ?MyStErY? quest.
 def mystery_about(request):
     context_dict = {}
-    for row in Quest.objects.filter(name="test_quest"):
+    for row in Quest.objects.filter(name="mystery_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
@@ -265,10 +265,23 @@ def hall_of_fame(request):
 @login_required
 def post_create(request):
     form = PostForm(request.POST or None, request.FILES or None)
+
+    myHint = None
+
     if form.is_valid():
         instance = form.save(commit=False)
         instance.user = request.user
+
+        for quest_post in Quest.objects.filter(name=instance.quest):
+            myQuest = quest_post
+
+        for score_row in UserScores.objects.filter(user=request.user, quest=myQuest):
+            myHint = score_row.score
+
+        if myHint != None:
+            instance.hints = myHint
         instance.save()
+
         # message success
         messages.success(request, "Post was created")
         return HttpResponseRedirect(reverse('post_list'))
@@ -298,7 +311,6 @@ def mystery_quest(request):
     else:
         get_current_quest(request)
         return render(request, 'adventureQuest/mystery_quest.html')
-
 
 def finnieston_quest(request):
     if not request.user.is_authenticated:
@@ -346,11 +358,11 @@ def check_url(request):
     request.session['riddleCorrectNo'] = 0
     request.session['numberHint'] = 0
     request.session['questName'] = 0
-    original_path = '/adventureQuest/quest_ajax/'
+    #original_path = '/adventureQuest/quest_ajax/'
 
-    print('This is the url that is compared too' + request.get_full_path(request))
-    if original_path not in request.get_full_path(request):
-        print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+   # print('This is the url that is compared too' + request.get_full_path(request))
+   # if original_path not in request.get_full_path(request):
+     #   print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
 
 
 
