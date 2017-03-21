@@ -77,13 +77,20 @@ class Quest(models.Model):
     def __unicode__(self):
         return self.name
 
+
+class UserScores(models.Model):
+    print("HIYA"+str(UserProfile))
+    user = models.ForeignKey(User)
+    quest = models.ForeignKey(Quest)
+    score = models.IntegerField()
+
+
     def __str__(self):
-        return self.description
+        return self.user
+
 
     def __unicode__(self):
-        return self.name
-
-
+        return self.user
 
 
 # Post to upload images

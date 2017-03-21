@@ -13,7 +13,7 @@ from django.contrib.auth import logout
 from adventureQuest.forms import RiddleForm
 from adventureQuest.models import Quest, Riddle
 from django.shortcuts import redirect
-from adventureQuest.models import Quest, Riddle, UserProfile
+from adventureQuest.models import Quest, Riddle, UserProfile, UserScores
 from django.core.signals import request_finished
 
 
@@ -170,12 +170,17 @@ def my_account(request):
         name = request.user.username
         #pic = request.user.picture
 
-    for row in UserProfile.objects.all():
-        context_dict['score1'] = row.quest1Score
-        context_dict['score2'] = row.quest2Score
-        context_dict['score3'] = row.quest3Score
-        context_dict['score4'] = row.quest4Score
-        context_dict['score5'] = row.quest5Score
+        context_dict['mystery_quest'] = 'n/a'
+        context_dict['finnieston_quest'] = 'n/a'
+        context_dict['glasgow_uni_quest'] = 'n/a'
+        context_dict['southside_quest'] = 'n/a'
+        context_dict['city_centre_quest'] = 'n/a'
+        context_dict['kids_quest'] = 'n/a'
+
+    for row in UserScores.objects.filter(user=request.user):
+        context_dict[row.quest.name] = row.score
+
+
 
     return render(request, 'adventureQuest/my_account.html',context_dict)
 
@@ -380,7 +385,10 @@ def get_current_quest(request):
     quest_name = str(get_server_side_cookie(request, 'questName', trimmed))
     request.session['questName'] = quest_name
 
-
+def add_score(user, quest, score):
+	q=UserScores.objects.get_or_create(user=user, quest=quest, score=score)[0]
+	q.save()
+	return q
 
 import json
 def quest_ajax(request):
@@ -454,6 +462,14 @@ def quest_ajax(request):
             response_data['correct'] = True
             print('This should be True' + str(response_data['correct']))
 
+            #Adding final score to the database
+            if correctNo == numberRiddles:
+                # get quest id
+                id = Quest.objects.filter(name=questName).values('id')[0]['id']
+                for quest_row in Quest.objects.filter(name=questName):
+                    add_score(user=request.user,quest=quest_row, score=request.session['numberHint'])
+
+
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question
                 textAnswer = row.answer
@@ -462,6 +478,11 @@ def quest_ajax(request):
                 print(row.answer)
                 response_data['answer'] = textQuestion
                 response_data['instruction'] = textInstruction
+
+
+
+                        #somehowsave
+
 
 
         # If the user answer is incorrect
