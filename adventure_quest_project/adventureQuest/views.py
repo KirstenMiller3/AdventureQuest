@@ -271,7 +271,8 @@ def post_create(request):
         instance.save()
         # message success
         messages.success(request, "Post was created")
-        return HttpResponseRedirect('adventureQuest:post_form')
+        return HttpResponseRedirect(reverse('post_list'))
+        #return HttpResponseRedirect('adventureQuest:post_form')
 
     context = {
         "form": form,
@@ -280,7 +281,7 @@ def post_create(request):
 
 def post_list(request):
     objects_post = Post.objects.all()
-    print(objects_post[0].title)
+   # print(objects_post[0].title)
 
     context = {
         "object_list": objects_post,
