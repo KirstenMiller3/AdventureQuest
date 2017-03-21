@@ -1,6 +1,6 @@
 from django.contrib import admin
 from adventureQuest.models import UserProfile, Comment
-from adventureQuest.models import UserProfile, Comment, Post,Riddle, Quest
+from adventureQuest.models import UserProfile, Comment, Post,Riddle, Quest, UserScores
 
 
 
@@ -14,5 +14,7 @@ admin.site.register(Riddle)
 admin.site.register(Post)
 
 admin.site.register(Quest)
+admin.site.register(UserScores)
+
 
 
