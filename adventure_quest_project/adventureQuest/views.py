@@ -306,7 +306,7 @@ def post_create(request):
 
 
 def post_list(request):
-    objects_post = Post.objects.all()
+    objects_post = Post.objects.order_by('hints')[:100]
    # print(objects_post[0].title)
 
     context = {
