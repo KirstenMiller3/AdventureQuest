@@ -120,13 +120,13 @@ def congratulations(request):
 def register(request):
     # Tells us if registration was successful or not.
     registered = False
-
     # It's a form so POST
     if request.method == 'POST':
         # Try to get form data from users
-        user_form = UserForm(data=request.POST)
-        profile_form = UserProfileForm(data=request.POST)
-
+        #user_form = UserForm(data=request.POST)
+        #profile_form = UserProfileForm(data=request.POST)
+        user_form = UserForm(request.POST or None, request.FILES or None)
+        profile_form = UserProfileForm(request.POST or None, request.FILES or None)
         # If the two forms are valid:
         if user_form.is_valid() and profile_form.is_valid():
             # Save the user's form data to the database.
@@ -146,8 +146,11 @@ def register(request):
             # Did the user provide a profile picture?
             # If so, we need to get it from the input form and
             # put it in the UserProfile model.
+            print(str(request.FILES))
             if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
+                picture = request.FILES.get('picture', False)
+                print("Entered")
+                profile.picture = picture
 
             # Now we save the UserProfile model instance.
             profile.save()
@@ -174,12 +177,18 @@ def register(request):
 
 
 
-# The view for the users profile page.
+
 def my_account(request):
     context_dict = {}
-    if request.user.is_authenticated():
-        name = request.user.username
-        #pic = request.user.picture
+    user = request.user
+    #if request.user.is_authenticated():
+    #name = request.user.username
+    #pic = request.user.picture
+    for row in UserProfile.objects.filter(user=user):
+        context_dict['user'] = row.picture
+        context_dict['pic'] = str(row.picture)
+
+
 
         context_dict['mystery_quest'] = 'n/a'
         context_dict['finnieston_quest'] = 'n/a'
@@ -190,6 +199,7 @@ def my_account(request):
 
     for row in UserScores.objects.filter(user=request.user):
         context_dict[row.quest.name] = row.score
+
 
 
 

@@ -38,20 +38,21 @@ def populate():
 			   instruction="Riddle me this!", hint="tick tock",
 			   quest_name="kids_quest",
 			   question_id=0)
+
 	add_riddle(
 		question="What is greater than God, more evil than the devil, the poor have it, the rich need it, and if you eat it, you'll die?",
 			   answer="nothing", instruction="This question is just a fun riddle to do while you have your first drink",
 			   hint="abstract", quest_name="finnieston_quest", question_id=0)
 
 	add_riddle(
-		question="What has a head and a tail but no body?",
-		answer="coin", instruction="This question is just a fun riddle to do while you have your first drink",
-		hint="The Queen", quest_name="finnieston_quest", question_id=1)
+		question="Me and my buddies are the most famout guys in here. I'm second from the left. Who am I?",
+		answer="Cloud Water", instruction="This question is just a fun riddle to do while you have your first drink",
+		hint="You might need a ladder!", quest_name="finnieston_quest", question_id=1)
 
 	add_riddle(
-		question="What is behind the woman in the painting of the battle?",
-		answer="lizard", instruction="You will have to explore to find the answer",
-		hint="It's by the bathroom", quest_name="finnieston_quest", question_id=2)
+		question="A red handprint, 'black ink and ___'?",
+		answer="blood", instruction="This question is just a fun riddle to do while you have your first drink",
+		hint="Little girls room", quest_name="finnieston_quest", question_id=2)
 
 	add_riddle(
 		question="What is the tallest mountain in the United Kingdom!",
@@ -59,9 +60,9 @@ def populate():
 		hint="Don't go to the actual mountain you wally!", quest_name="finnieston_quest", question_id=3)
 
 	add_riddle(
-		question="How many mirrors are there in the whole pub?",
-		answer="8", instruction="You will have to explore to find the answer",
-		hint="Don't go to the actual mountain you wally!", quest_name="finnieston_quest", question_id=4)
+		question="How many white-sailed ships are there?",
+		answer="4", instruction="You will have to explore to find the answer",
+		hint="Book", quest_name="finnieston_quest", question_id=4)
 
 	add_riddle(
 		question="Who makes it, has no need of it. Who buys it has no use for it. Who uses it can neither see nor feel it. What is it?",
@@ -69,9 +70,9 @@ def populate():
 		hint="claustrophobics hate these!", quest_name="finnieston_quest", question_id=5)
 
 	add_riddle(
-		question="Count how many people are in the paintings",
-		answer="21", instruction="You will have to explore to find the answer",
-		hint="It's a number", quest_name="finnieston_quest", question_id=6)
+		question="In times of urgency you will come across me,\nfrozen in time, what am I?",
+		answer="finch", instruction="You will have to explore to find the answer",
+		hint="Ask the bar staff", quest_name="finnieston_quest", question_id=6)
 
 
 	add_riddle(
@@ -80,14 +81,14 @@ def populate():
 		hint="Lidl", quest_name="finnieston_quest", question_id=7)
 
 	add_riddle(
-		question="How many rums do they serve here?",
-		answer="30", instruction="Find out the answer",
+		question="I hang around where I'm not wanted, \nPeople call me names like poison and common,\nWhat am I?",
+		answer="ivy", instruction="Find out the answer",
 		hint="Ask the bar staff", quest_name="finnieston_quest", question_id=8)
 
 	add_riddle(
 		question="How old is this bar?",
-		answer="5", instruction="Find out the answer",
-		hint="Ask the bar staff", quest_name="finnieston_quest", question_id=9)
+		answer="12", instruction="Find out the answer",
+		hint="The walls", quest_name="finnieston_quest", question_id=9)
 
 	add_riddle(
 		question="What kind of room has no doors or windows?",
@@ -106,19 +107,19 @@ def populate():
 		hint="Cool Dudes go here", quest_name="finnieston_quest", question_id=12)
 
 	add_riddle(
-		question="'I can't blow that far'",
-		answer="the bunny", instruction="Riddle me this!",
-		hint="Drinks menu", quest_name="finnieston_quest", question_id=13)
+		question="Eureka! A name has just been illuminated to me.",
+		answer="Luca", instruction="You'll have to explore to see this one!",
+		hint="It's an annagram", quest_name="finnieston_quest", question_id=13)
 
 	add_riddle(
-		question="What breaks when its name is spoken?",
-		answer="silence", instruction="Riddle me this!",
+		question="What is so delicate that even saying its name will break it?",
+				 answer="silence", instruction="Riddle me this!",
 		hint="Ssh", quest_name="finnieston_quest", question_id=14)
 
 	add_riddle(
-		question="How many pictures of the Dude are there?",
-		answer="3", instruction="You will have to explore to find the answer",
-		hint="there's some in the toilets", quest_name="finnieston_quest", question_id=15)
+		question="What would a true Scotsman order?",
+		answer="Gutter ball", instruction="You will have to explore to find the answer",
+		hint="Not very good at bowling", quest_name="finnieston_quest", question_id=15)
 
 	add_riddle(
 		question="Shared between two, \nMost often to woo,\nSometimes hot and sometimes cold,\nThe beginning of us all,\nYoung an old.",
@@ -136,9 +137,9 @@ def populate():
 		hint="one of the words stays in the same order", quest_name="finnieston_quest", question_id=18)
 
 	add_riddle(
-		question="How many horses can you find?",
-		answer="5", instruction="You will have to explore to find the answer",
-		hint="Check downstairs", quest_name="finnieston_quest", question_id=19)
+		question="Flying high in the sky,\nI watch over everone,\nWhat am I?",
+		answer="fish", instruction="You will have to explore to find the answer",
+		hint="blub, blub", quest_name="finnieston_quest", question_id=19)
 
 	add_riddle(
 		question="When I am alive you sing, when I die you clap your hands. What am I?",
@@ -161,14 +162,14 @@ def populate():
 		hint="It's an anagram", quest_name="finnieston_quest", question_id=23)
 
 	add_riddle(
-		question="When is 99 more than 100?",
-		answer="microwave", instruction="Riddle me this!",
-		hint="I live in the kitchen", quest_name="finnieston_quest", question_id=24)
+		question="In the company of cards I'm the odd one out. What am I?",
+		answer="horseshoe", instruction="You will have to explore to find the answer",
+		hint="follow the light", quest_name="finnieston_quest", question_id=24)
 
 	add_riddle(
-		question="What asks but never answers?",
-		answer="owl", instruction="Riddle me this!",
-		hint="whoo-whoo", quest_name="finnieston_quest", question_id=25)
+		question="Standing on one leg is old hat for me! What colour is my shirt?",
+		answer="blue", instruction="You will have to explore to find the answer",
+		hint="my pal is a plant", quest_name="finnieston_quest", question_id=25)
 
 	add_riddle(
 		question="Feed me I will survive, give me a drink and I will die",
@@ -187,7 +188,7 @@ def populate():
 
 	add_riddle(
 		question="Find the secret message",
-		answer="i have riddle brain", instruction="You'll have to explore",
+		answer="excalibur", instruction="You'll have to explore",
 		hint="behind the bar", quest_name="finnieston_quest", question_id=29)
 
 	add_riddle(
@@ -199,16 +200,16 @@ def populate():
 		question="What has a single eye but cannot see?",
 		answer="needle", instruction="Riddle me this!",
 		hint="Doe a dear a female deer...", quest_name="finnieston_quest", question_id=31)
-
+best r
 	add_riddle(
 		question="What is the centre of gravity?",
 		answer="v", instruction="Riddle me this!",
 		hint="literal", quest_name="finnieston_quest", question_id=32)
 
 	add_riddle(
-		question="OMG THE BIG FINALE IT SHOULD BE MORE EXCITING",
-		answer="adventurequest", instruction="Riddle me this!",
-		hint="team name", quest_name="finnieston_quest", question_id=33)
+		question="What has no beginning, end, or middle?",
+		answer="doughnut", instruction="Riddle me this!",
+		hint="nom, nom", quest_name="finnieston_quest", question_id=33)
 
 def add_riddle(question, answer, instruction, hint, quest_name, question_id):
 	r=Riddle.objects.get_or_create(question=question, answer=answer, instruction=instruction, hint=hint,  quest_name=quest_name, question_id=question_id)[0]

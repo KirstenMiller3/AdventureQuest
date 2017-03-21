@@ -20,9 +20,15 @@
     City Centre Quest: {{city_centre_quest}} <br/>
     Kids Quest: {{kids_quest}} <br/>
 
-
+    picture link: {{ pic }}
+    {{ MEDIA_URL }}
+    {{user.picture}}
 
 </div>
+
+    <div>
+        <img src="{{ MEDIA_URL}}{{ pic }}" alt="Picture of user">
+    </div>
 <br/>
 <div>
     See your uploaded posts?

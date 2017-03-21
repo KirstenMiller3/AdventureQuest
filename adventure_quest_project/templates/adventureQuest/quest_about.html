@@ -4,11 +4,15 @@
     
    
     
-    <div class="quest_scroll">
+    <div class="quest_scroll w3-display-container">
     <img src="{% static "images/scroll.jpg" %}" style="width:100%"></a>
-    <div class="quest_text">
    
-     <p>Starting point:{{ start }}</p>
+    <div class="w3-display-middle" style="font-size: 18px;">
+        <div class="w3-container">
+            <p>{{descr}}</p>
+            <p>{{comment}}</p>
+        </div>    
+        <p>Starting point:{{ start }}</p>
         <p>Difficulty:{{ difficulty }}</p>
         <p>Minimum age: {{ age_limit }}</p>
         <p>Time to complete:{{ value}}</p>

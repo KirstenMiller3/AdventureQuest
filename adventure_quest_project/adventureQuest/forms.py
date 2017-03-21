@@ -9,14 +9,15 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ['username', 'email', 'password']
 
 # This form allows us to get a profile picture for a user when they register.
 class UserProfileForm(forms.ModelForm):
+    #picture = forms.ImageField(required=False)
 
     class Meta:
         model = UserProfile
-        fields = ('picture',)
+        fields = ['picture',]
 
 
 # Upload pictures to gallery
