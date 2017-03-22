@@ -6,6 +6,7 @@ from django.utils import timezone
 from datetime import datetime
 from django.contrib import auth
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.utils.encoding import force_text
 
 
 # Create your tests here.
@@ -31,17 +32,17 @@ def add_quest(name):
     q.difficulty = 1
     q.age_limit=4
     q.start_point = 'here'
-
+    q.save()
     return q
 
 def add_UserScores(user, quest, score):
     us = UserScores.objects.get_or_create(user,quest)
     us.score = score
-
-
+    us.save()
+    return us
 
 def add_post(u, quest, title,content,hints):
-    p = Post.objects.get_or_create(user=u.user,quest=quest)
+    p = Post.objects.get_or_create(user=u,quest=quest)
     p.title = title
     p.image = SimpleUploadedFile(name='African_elephant_warning_raised_trunk.jpg', content=open('H:\African_elephant_warning_raised_trunk.jpg', 'rb').read(), content_type='image/jpeg')
     p.content = content
@@ -50,7 +51,8 @@ def add_post(u, quest, title,content,hints):
     p.width_field =10
     p.updated = p.DateTimeField(auto_now=True, auto_now_add=False)
     p.timestamp = p.DateTimeField(auto_now=True, auto_now_add=False)
-
+    p.save()
+    return p
 
 def add_riddle():
     r = Riddle.objects.get_or_create(question_id=0, question = "hfdjhfdj", answer= "test", instruction="sdhsj", hint ="flkml", quest_name='city_centre_quest')
@@ -119,17 +121,21 @@ class AdventureQuestTests(TestCase):
 
 
 
+
     def test_win_quest_redirect(self):
         u = add_user('test', 'test@adventurequest.com')
         q = add_quest('city_centre_quest')
         r = add_riddle()
         u = add_user('test', 'test@adventurequest.com')
         # log input
-        self.client.post(reverse('login'), {'username':'test', 'password':'123456'})
-        response = self.client.post(reverse('city_centre_quest'), {'answer': 'test'})
 
-        self.assertJSONEqual(response.content,{'answer': 'test'})
-        self.assertIn('Congratulations'.lower(), response.content.lower())
+
+        response = self.client.post(reverse('quest_ajax'), {'answer': 'test'})
+        self.assertEqual(response.status_code, 200)
+        self.assertJSONEqual(force_text(response),{'status': 'success'})
+
+
+        #self.assertIn('Congratulations'.lower(), response.content.lower())
 
         #self.assertRedirects(response, '../congratulations/')
 

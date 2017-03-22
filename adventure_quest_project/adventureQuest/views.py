@@ -298,7 +298,6 @@ def hall_of_fame(request):
 
 #add login_required
 def post_create(request):
-
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
 
@@ -322,11 +321,13 @@ def post_create(request):
 
         # message success
         messages.success(request, "Post was created")
-        return HttpResponseRedirect(reverse('post_list'))
+        return HttpResponseRedirect(reverse('hall_of_fame'))
 
     context = {
         "form": form,
     }
+
+
     return render(request, 'adventureQuest/post_form.html', context)
 
 
@@ -341,6 +342,84 @@ def post_list(request):
     }
     return render(request, 'adventureQuest/post_list.html', context)
 
+def mystery_quest_hall_of_fame(request):
+    for quest_row in Quest.objects.filter(name='mystery_quest'):
+        myQuest = quest_row
+
+    objects_filter = Post.objects.filter(quest=myQuest)
+    objects_post = objects_filter.order_by('hints')[:100]
+
+    context = {
+        "object_list": objects_post,
+        "title": "List",
+    }
+    return render(request, 'adventureQuest/mystery_quest_post_list.html', context)
+
+
+def finnieston_quest_hall_of_fame(request):
+    for quest_row in Quest.objects.filter(name='finnieston_quest'):
+        myQuest = quest_row
+
+    objects_filter = Post.objects.filter(quest=myQuest)
+    objects_post = objects_filter.order_by('hints')[:100]
+
+    context = {
+        "object_list": objects_post,
+        "title": "List",
+    }
+    return render(request, 'adventureQuest/finnieston_quest_post_list.html', context)
+
+def glasgow_uni_quest_hall_of_fame(request):
+    for quest_row in Quest.objects.filter(name='glasgow_uni_quest'):
+        myQuest = quest_row
+
+    objects_filter = Post.objects.filter(quest=myQuest)
+    objects_post = objects_filter.order_by('hints')[:100]
+
+    context = {
+        "object_list": objects_post,
+        "title": "List",
+    }
+    return render(request, 'adventureQuest/glasgow_uni_quest_post_list.html', context)
+
+def southside_quest_hall_of_fame(request):
+    for quest_row in Quest.objects.filter(name='southside_quest'):
+        myQuest = quest_row
+
+    objects_filter = Post.objects.filter(quest=myQuest)
+    objects_post = objects_filter.order_by('hints')[:100]
+
+    context = {
+        "object_list": objects_post,
+        "title": "List",
+    }
+    return render(request, 'adventureQuest/southside_quest_post_list.html', context)
+
+def city_centre_quest_hall_of_fame(request):
+    for quest_row in Quest.objects.filter(name='city_centre_quest'):
+        myQuest = quest_row
+
+    objects_filter = Post.objects.filter(quest=myQuest)
+    objects_post = objects_filter.order_by('hints')[:100]
+
+    context = {
+        "object_list": objects_post,
+        "title": "List",
+    }
+    return render(request, 'adventureQuest/city_centre_quest_post_list.html', context)
+
+def kids_quest_hall_of_fame(request):
+    for quest_row in Quest.objects.filter(name='kids_quest'):
+        myQuest = quest_row
+
+    objects_filter = Post.objects.filter(quest=myQuest)
+    objects_post = objects_filter.order_by('hints')[:100]
+
+    context = {
+        "object_list": objects_post,
+        "title": "List",
+    }
+    return render(request, 'adventureQuest/kids_quest_post_list.html', context)
 
 # test_Quest view
 def mystery_quest(request):
