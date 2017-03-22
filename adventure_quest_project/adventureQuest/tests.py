@@ -1,18 +1,60 @@
 from django.test import TestCase
-from adventureQuest.models import Post, UserProfile
+from adventureQuest.models import Post, UserProfile, Quest, Riddle, UserScores
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.utils import timezone
+from datetime import datetime
+from django.contrib import auth
+from django.core.files.uploadedfile import SimpleUploadedFile
+
 
 # Create your tests here.
-def add_user(username, email, password):
-    u = UserProfile.create(username=username)
+def add_blah(username, email, password):
+    u = UserProfile.objects.get_or_create(User)
+    u.username = username
     u.email = email
     u.user.set_password(password)
     u.save()
     return u
 
+def add_user(username, email):
+    u = User.objects.get_or_create(username=username, email=email)[0]
+    u.save()
+    u.set_password('123456')
+    u.save()
+    p = UserProfile.objects.get_or_create(user=u)
+    return u
 
-def add_post(user, quest, title, image, )
+def add_quest(name):
+    q = Quest.objects.get_or_create(name=name)[0]
+    q.description = 'this is a test'
+    q.difficulty = 1
+    q.age_limit=4
+    q.start_point = 'here'
+
+    return q
+
+def add_UserScores(user, quest, score):
+    us = UserScores.objects.get_or_create(user,quest)
+    us.score = score
+
+
+
+def add_post(u, quest, title,content,hints):
+    p = Post.objects.get_or_create(user=u.user,quest=quest)
+    p.title = title
+    p.image = SimpleUploadedFile(name='African_elephant_warning_raised_trunk.jpg', content=open('H:\African_elephant_warning_raised_trunk.jpg', 'rb').read(), content_type='image/jpeg')
+    p.content = content
+    p.hints = hints
+    p.height_field = 10
+    p.width_field =10
+    p.updated = p.DateTimeField(auto_now=True, auto_now_add=False)
+    p.timestamp = p.DateTimeField(auto_now=True, auto_now_add=False)
+
+
+def add_riddle():
+    r = Riddle.objects.get_or_create(question_id=0, question = "hfdjhfdj", answer= "test", instruction="sdhsj", hint ="flkml", quest_name='city_centre_quest')
+
 
 class AdventureQuestTests(TestCase):
 
@@ -21,50 +63,78 @@ class AdventureQuestTests(TestCase):
         """
         fsdg
         """
-        u = add_user('test', 'test@adventurequest.com','123456')
-        p = Post(user=u, quest='mystery_quest', title = 'Test', image='', content='Testing' )
-        p.save()
-        self.assertEqual(response.status_code, 200)
+        u = add_user('test','test@adventurequest.com')
+        q = add_quest('mystery_quest')
 
-    def test_pages_while_logged_out(self):
-        gfs
+        p = Post(user=u, quest=q, title = 'Test', content='Testing', hints = 1)
+        p.save()
+
+        l = Post(user=u, quest=q, title = 'BigG', content='Had a great time', hints = 2)
+        l.save()
+
+
+        response = self.client.get(reverse('post_list'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('Test'.lower(), response.content.lower())
+        self.assertIn('BigG'.lower(), response.content.lower())
+        self.assertIn('Testing'.lower(), response.content.lower())
+        self.assertIn('Had a great time'.lower(), response.content.lower())
+        self.assertIn('1'.lower(), response.content.lower())
+        self.assertIn('2'.lower(), response.content.lower())
+
+        #if Post.objects.all().ordered:
+         #   self.assert
 
 
 
     def test_pages_while_logged_in(self):
-        ssgr
+        u = add_user('test', 'test@adventurequest.com')
+        # log input
+        self.client.post(reverse('login'), {'username':'test', 'password':'123456'})
+        self.assertEqual(int(self.client.session['_auth_user_id']), u.pk)
 
-    def test_hall_of_fame(self):
-        add_user('test', 'test@adventureQuest.com', 'testing123')
+        response = self.client.get(reverse('index'))
+        self.assertIn('My Account'.lower(), response.content.lower())
+        self.assertIn('Logout'.lower(), response.content.lower())
 
 
 
-class Post(models.Model):
-    user = models.ForeignKey(User, default=1)
-    quest = models.ForeignKey(Quest)
-    title = models.CharField(max_length=120)
-    image = models.ImageField(upload_to=upload_location,
-                              null=True,
-                              blank=True,
-                              width_field="width_field",
-                              height_field="height_field")
-    height_field = models.IntegerField(default=0)
-    width_field = models.IntegerField(default=0)
-    content = models.TextField()
-    hints = models.IntegerField(default=-1)
-    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    def test_pages_while_logged_out(self):
 
-    def __unicode__(self):
-        return self.title
+        response = self.client.get(reverse('index'))
+        self.assertNotIn('My Account'.lower(), response.content.lower())
+        self.assertNotIn('Logout'.lower(), response.content.lower())
 
-    def __str__(self):
-        return self.title
 
-    #def get_absolute_url(self):
-        #return reverse('post_create', kwargs={"id": self.id})
+    def test_my_account_save_hints(self):
+        u = add_user('test', 'test@adventurequest.com')
+        q = add_quest('city_centre_quest')
+        us = add_UserScores(u,q,5)
 
-    class Meta:
-        ordering = ["-timestamp", "-updated"]
+        self.client.post(reverse('login'), {'username': 'test', 'password': '123456'})
+        response = self.client.get(reverse('my_account'))
+        self.assertIn('5'.lower(), response.content.lower())
+
+
+
+
+
+    def test_win_quest_redirect(self):
+        u = add_user('test', 'test@adventurequest.com')
+        q = add_quest('city_centre_quest')
+        r = add_riddle()
+        u = add_user('test', 'test@adventurequest.com')
+        # log input
+        self.client.post(reverse('login'), {'username':'test', 'password':'123456'})
+        response = self.client.post(reverse('city_centre_quest'), {'answer': 'test'})
+
+        self.assertJSONEqual(response.content,{'answer': 'test'})
+        self.assertIn('Congratulations'.lower(), response.content.lower())
+
+        #self.assertRedirects(response, '../congratulations/')
+
+    #def test_hall_of_fame(self):
+       # add_user('test', 'test@adventureQuest.com', 'testing123')
+
 
 

@@ -40,14 +40,7 @@ class UserProfile(models.Model):
     # A profile picture for the user
     picture = models.ImageField(upload_to='profile_images', blank=True)
     # Scores for quests the user has completed.
-    quest1Score = models.IntegerField(default=0)
-    quest2Score = models.IntegerField(default=0)
-    quest3Score = models.IntegerField(default=0)
-    quest4Score = models.IntegerField(default=0)
-    quest5Score = models.IntegerField(default=0)
-    quest6Score = models.IntegerField(default=0)
-    quest7Score = models.IntegerField(default=0)
-    quest8Score = models.IntegerField(default=0)
+
 
     # Override the __unicode__() method to return out something meaningful.
     # Remember if you use Python 2.7.x, define unicode too!
@@ -63,7 +56,7 @@ class Riddle(models.Model):
     answer = ListField()
     instruction = models.CharField(max_length=128, default='No specific instructions available')
     hint = models.CharField(max_length=128, default='No hint available')
-    question_id = models.IntegerField()
+    question_id = models.IntegerField(default=0)
     quest_name = models.CharField(max_length=128)
 
     def __int__(self):
@@ -80,7 +73,7 @@ class Quest(models.Model):
     name = models.CharField(max_length=200, default='new Quest')
     description = models.TextField()
     difficulty = models.CharField(max_length=120)
-    age_limit = models.IntegerField()
+    age_limit = models.IntegerField(default=0)
     start_point = models.CharField(max_length=120, default = 'here')
 
     # CAN THIS ALL BE DELETED????
@@ -98,7 +91,6 @@ class Quest(models.Model):
 
 
 class UserScores(models.Model):
-    print("HIYA"+str(UserProfile))
     user = models.ForeignKey(User)
     quest = models.ForeignKey(Quest)
     score = models.IntegerField()
