@@ -24,7 +24,7 @@ import re
 def index(request):
     return render(request, 'adventureQuest/index.html')
 
-
+# Quest comments
 def comment(request):
     objects_comment = Comment.objects.all()
     context={
@@ -33,6 +33,7 @@ def comment(request):
 
     return render(request, 'adventureQuest/comment.html', context)
 
+# Adding comments
 def add_comment(request):
     #quest = request.quest
     if request.method == "POST":
@@ -153,7 +154,7 @@ def register(request):
         profile_form = UserProfileForm(request.POST or None, request.FILES or None)
         # If the two forms are valid:
         if user_form.is_valid() and profile_form.is_valid():
-            print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+
             # Save the user's form data to the database.
             user = user_form.save()
 
@@ -171,10 +172,10 @@ def register(request):
             # Did the user provide a profile picture?
             # If so, we need to get it from the input form and
             # put it in the UserProfile model.
-            print('woooo'+str(request.FILES))
+
             if 'picture' in request.FILES:
-                #picture = request.FILES.get('picture', False)
-                #print("Entered")
+
+
                 profile.picture = request.FILES['picture']
 
             # Now we save the UserProfile model instance.
@@ -332,7 +333,6 @@ def post_create(request):
 
 def post_list(request):
     objects_post = Post.objects.order_by('hints')[:100]
-   # print(objects_post[0].title)
 
     context = {
         "object_list": objects_post,
@@ -398,9 +398,7 @@ def check_url(request):
     request.session['questName'] = 0
     #original_path = '/adventureQuest/quest_ajax/'
 
-   # print('This is the url that is compared too' + request.get_full_path(request))
-   # if original_path not in request.get_full_path(request):
-     #   print('TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+
 
 
 
@@ -441,7 +439,6 @@ def get_current_quest(request):
     current_path = request.get_full_path()
     questName ="".join(current_path.split('/')[2:])
     trimmed = questName
-    print("HEEEEEELOOOOOO" + trimmed)
     quest_name = str(get_server_side_cookie(request, 'questName', trimmed))
     request.session['questName'] = quest_name
 
@@ -454,7 +451,7 @@ import json
 def quest_ajax(request):
     response_data = {}
     questName = request.session['questName']
-    print("HEY" + questName)
+
     # Set session variables
     quest_cookies(request, False, False)
     ridQID = request.session['riddleQuestionID']
@@ -467,9 +464,7 @@ def quest_ajax(request):
     listRiddles = list(Riddle.objects.filter(quest_name=questName))
     numberRiddles= len(listRiddles)
     response_data['noRiddles'] = numberRiddles
-    print('This is the number of riddles'+str(numberRiddles))
-    print('This is the question ID' + str(ridQID) + 'This is the answer ID' + str(ridAID))
-    print('this is the quest name: '+questName)
+
 
     # Get the user answer
 
@@ -478,41 +473,38 @@ def quest_ajax(request):
     if input_answer != None:
         user_lower = input_answer.lower()
         user_answer = re.sub('[^A-Za-z0-9]+', '', user_lower)
-        print('this should be the answer in lower case'+user_answer)
+
     else:
         user_answer = '@'
 
     # Set the current question and answer from the database
     for row in Riddle.objects.filter(quest_name=questName, question_id=ridAID):
         textAnswer = row.answer
-        print(row.answer)
+
 
     for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
         textQuestion = row.question
         textHint = row.hint
         textInstruction = row.instruction
-        print(row.question)
+
 
     # Create Response data vairable
 
     # Hint file
     if request.GET.get('click', False):
-        print('testing button')
         response_data['hint'] = textHint
         quest_cookies(request, False, True)
         no_hints = request.session['numberHint']
         response_data['hintNo'] = no_hints
         response_data['hint_available'] = 'false'
-        print(no_hints)
 
-    #response_data['instruction'] = textInstruction
 
 
 
 
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo <= numberRiddles:
-        print('************** '+str(correctNo))
+
         if user_answer in textAnswer:
             response_data['hint'] = 'Your hint will appear here....but remember you will loose 5 points for each hint!'
             quest_cookies(request, True, False)
@@ -521,7 +513,6 @@ def quest_ajax(request):
             response_data['hint_available'] = 'true'
             correctNo = request.session['riddleCorrectNo']
             response_data['correct'] = True
-            print('This should be True' + str(response_data['correct']))
 
             #Adding final score to the database
             if correctNo == numberRiddles:
@@ -535,15 +526,8 @@ def quest_ajax(request):
                 textQuestion = row.question
                 textAnswer = row.answer
                 textInstruction = row.instruction
-                print(row.question)
-                print(row.answer)
                 response_data['answer'] = textQuestion
                 response_data['instruction'] = textInstruction
-
-
-
-                        #somehowsave
-
 
 
         # If the user answer is incorrect
@@ -552,7 +536,6 @@ def quest_ajax(request):
                 textQuestion = row.question
             response_data['answer'] = 'try again: '+textQuestion
             response_data['correct'] = False
-            print('This should be false'+str(response_data['correct']))
 
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 

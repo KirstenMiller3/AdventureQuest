@@ -39,10 +39,11 @@
             </div>    
             
             <li style="float:right">
-                <a href="{% url 'login' %}"><i class="fa fa-user-circle" style="font-size:24px"></i> 
                 {% if user.is_authenticated %}
+                <a href="{% url 'my_account' %}"><i class="fa fa-user-circle" style="font-size:24px"></i>
                 Hello, {{ user.username }}!
                 {% else %}
+                <a href="{% url 'login' %}"><i class="fa fa-user-circle" style="font-size:24px"></i>
                 Login
                 {% endif %}
                 </a> 
