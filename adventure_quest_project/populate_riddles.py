@@ -27,7 +27,7 @@ def populate():
 			   instruction="This is an easy one to get you going!", hint="TV", quest_name="glasgow_uni_quest",question_id=0)
 
 	add_riddle(question="Which plant would you use to cure a bloody nose?", answer=["vinca major"],
-			   instruction="This is an easy one to get you going!", hint="?", quest_name="southside_quest",
+			   instruction="This is an easy one to get you going!", hint="Check the Medicinal and Culinary Courtyard", quest_name="southside_quest",
 			   question_id=0)
 
 	add_riddle(question="I am a boot that wears a hat. When year was I born?", answer=["1769"],
