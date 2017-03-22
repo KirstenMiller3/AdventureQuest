@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from adventureQuest.models import UserProfile, Riddle, Post
+from adventureQuest.models import UserProfile, Riddle, Post, Comment
 
 
 # This is the form to get details when users register.
@@ -31,3 +31,9 @@ class PostForm(forms.ModelForm):
 			"image",
 			"content",
 		]
+
+class CommentForm(forms.ModelForm):
+
+	class Meta:
+		model = Comment
+		fields = ('quest','author','text', )

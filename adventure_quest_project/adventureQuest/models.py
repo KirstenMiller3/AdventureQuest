@@ -6,7 +6,32 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from datetime import datetime
 from django.template.defaultfilters import slugify
+import ast
 
+
+class ListField(models.TextField):
+
+    def __init__(self, *args, **kwargs):
+        super(ListField, self).__init__(*args, **kwargs)
+
+    def to_python(self, value):
+        if not value:
+            value = []
+
+        if isinstance(value, list):
+            return value
+
+        return ast.literal_eval(value)
+
+    def get_prep_value(self, value):
+        if value is None:
+            return value
+
+        return unicode(value)
+
+    def value_to_string(self, obj):
+        value = self._get_val_from_obj(obj)
+        return self.get_db_prep_value(value)
 
 # The UserProfile model stores information about each user.
 class UserProfile(models.Model):
@@ -35,7 +60,7 @@ class UserProfile(models.Model):
 # The Riddle model stores information for each riddle in the quest.
 class Riddle(models.Model):
     question = models.CharField(max_length=128)
-    answer = models.CharField(max_length=128)
+    answer = ListField()
     instruction = models.CharField(max_length=128, default='No specific instructions available')
     hint = models.CharField(max_length=128, default='No hint available')
     question_id = models.IntegerField()
@@ -120,18 +145,20 @@ class Post(models.Model):
 class Comment(models.Model):
 
 	#needs a foreign key
-	#onPage = models.ForeignKey('adventureQuest.Riddle', related_name='comments')
-	author = models.CharField(max_length=128)
-	text = models.TextField()
-	created_date = models.DateTimeField(default=datetime.now)
-	approved_comment = models.BooleanField(default=False)
+	
+    quest = models.ForeignKey(Quest)
+    author = models.CharField(max_length=128)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=datetime.now)
+    approved_comment = models.BooleanField(default=False)
 
-	def approve(self):
-		self.approved_comment = True
-		self.save()
+    def approve(self):
+        self.approved_comment = True
+        self.save()
 
-	def __str__(self):
-		return self.text
+    def __str__(self):
+        return self.text
 
-	def __unicode__(self):
-		return self.text	
+    def __unicode__(self):
+        return self.text
+        	

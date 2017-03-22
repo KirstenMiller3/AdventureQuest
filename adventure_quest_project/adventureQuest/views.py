@@ -14,9 +14,9 @@ from adventureQuest.models import Quest, Riddle
 from django.shortcuts import redirect
 from adventureQuest.models import Quest, Riddle, UserProfile, UserScores
 from django.core.signals import request_finished
-from .forms import PostForm
-from .models import Quest, Riddle, UserProfile, Post
-
+from .forms import PostForm, CommentForm
+from .models import Quest, Riddle, UserProfile, Post, Comment
+import re
 
 # Create your views here.
 
@@ -25,16 +25,39 @@ def index(request):
     return render(request, 'adventureQuest/index.html')
 
 
+def comment(request):
+    objects_comment = Comment.objects.all()
+    context={
+        "comment_list": objects_comment,
+    }
+
+    return render(request, 'adventureQuest/comment.html', context)
+
+def add_comment(request):
+    #quest = request.quest
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            #comment.quest = comment.quest
+            comment.save()
+            return redirect('comment')
+    else:
+        form = CommentForm()
+    return render(request, 'adventureQuest/comment_form.html', {'form': form})
+
+
 # The about page for the Finnieston Quest.
 def finnieston_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(finnieston_quest)
+    context_dict['questmappos'] = "55.868273, -4.292110" 
     for row in Quest.objects.filter(name="finnieston_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(finnieston_quest)
-        context_dict['questmappos'] = "55.868273, -4.292110" 
+
     check_url(request)
     return render(request, 'adventureQuest/finnieston_about.html', context_dict)
 
@@ -42,14 +65,13 @@ def finnieston_about(request):
 # The about page for the Glasgow University quest.
 def glasgow_uni_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(glasgow_uni_quest)
+    context_dict['questmappos'] = "55.871950, -4.288233"
     for row in Quest.objects.filter(name="glasgow_uni_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(glasgow_uni_quest)
-        context_dict['questmappos'] = "55.871950, -4.288233"
-        
     check_url(request)
     return render(request, 'adventureQuest/glasgow_uni_about.html', context_dict)
 
@@ -57,13 +79,13 @@ def glasgow_uni_about(request):
 # The about page for the Southside quest.
 def southside_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(southside_quest)
+    context_dict['questmappos'] = "55.850538, -4.259042"
     for row in Quest.objects.filter(name="southside_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(southside_quest)
-        context_dict['questmappos'] = "55.850538, -4.259042"
     check_url(request)
     return render(request, 'adventureQuest/southside_about.html', context_dict)
 
@@ -71,13 +93,13 @@ def southside_about(request):
 # The about page for the City Centre quest.
 def city_centre_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(city_centre_quest)
+    context_dict['questmappos'] = "55.863422, -4.252970"
     for row in Quest.objects.filter(name="city_centre_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(city_centre_quest)
-        context_dict['questmappos'] = "55.863422, -4.252970"
     check_url(request)
     return render(request, 'adventureQuest/city_centre_about.html', context_dict)
 
@@ -85,13 +107,14 @@ def city_centre_about(request):
 # The about page for the Kids quest.
 def kids_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(kids_quest)
+    context_dict['questmappos'] = "55.868786, -4.290196"
     for row in Quest.objects.filter(name="kids_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(kids_quest)
-        context_dict['questmappos'] = "55.868786, -4.290196"
+        
     check_url(request)
     return render(request, 'adventureQuest/kids_about.html', context_dict)
 
@@ -99,13 +122,14 @@ def kids_about(request):
 # The about page for the ?MyStErY? quest.
 def mystery_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(mystery_quest)
+    context_dict['questmappos'] = "55.874692, -4.292962"
     for row in Quest.objects.filter(name="mystery_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(mystery_quest)
-        context_dict['questmappos'] = "55.874692, -4.292962"
+        
     check_url(request)
     return render(request, 'adventureQuest/mystery_about.html', context_dict)
 
@@ -452,8 +476,10 @@ def quest_ajax(request):
     input_answer = request.GET.get('answer')
 
     if input_answer != None:
-        user_answer = input_answer.lower()
+        user_lower = input_answer.lower()
+        user_answer = re.sub('[^A-Za-z0-9]+', '', user_lower)
         print('this should be the answer in lower case'+user_answer)
+
     else:
         user_answer = ''
 
@@ -488,7 +514,7 @@ def quest_ajax(request):
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo <= numberRiddles:
         print('************** '+str(correctNo))
-        if textAnswer in user_answer:
+        if user_answer in textAnswer:
             response_data['hint'] = 'Your hint will appear here....but remember you will loose 5 points for each hint!'
             quest_cookies(request, True, False)
             ridQID = request.session['riddleQuestionID']

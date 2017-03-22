@@ -1,3 +1,4 @@
+{% extends "adventureQuest/base.html" %}
 {% load staticfiles %}
 <!-- SS and KJ Adding JQuery functionality -->
 
@@ -7,6 +8,8 @@
 {% endblock %}
 
 {% block body_block %}
+<br><br><br><br>
+	<div class="w3-content w3-container w3-padding-64 w3-card-24 w3-round w3-sand">
         <h1>QUEST!!</h1>
 		<div>
 			Type your answer below and press submit:
@@ -15,7 +18,7 @@
 		<div id="instruction">
 			This is just a fun riddle to complete while you have a drink
 		</div>
-		<div id="answer">
+		<div class="w3-large" id="answer">
 			Which famous inventor studied at Glasgow University in 1914?
 		</div>
 		<hr />
@@ -39,7 +42,7 @@
 		<div id="hintNo">
 			0
 		</div>
-
+	</div>
 		<!-- fix this -->
 		<script src="{% static 'js/jquery.min.js' %}"> </script>
 		<script src="{% static 'js/adventureQuest-jquery.js' %}"> </script>

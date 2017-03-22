@@ -33,7 +33,9 @@
             <a href="../#about">About</a> <!-- Slightly hacky way of always going to about-->
             <a href="../#questgallery">Quests</a>
             <a href="{% url 'post_list' %}">Hall of Fame</a>
+                {% if user.is_authenticated %}
             <a href="{% url 'my_account' %}">My Account</a>
+                {% endif %}
             </div>    
             
             <li style="float:right">
@@ -61,9 +63,9 @@
      
 
  <!-- Footer PERSISTENT SO EVERYONE INHERITS THIS-->
-<footer class="w3-container w3-center w3-padding-64 w3-opacity w3-hover-opacity-off">
+<footer class="w3-content w3-center w3-padding-64 w3-opacity w3-hover-opacity-off">
   <a href="#" class="w3-btn w3-padding w3-light-grey w3-hover-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <div class="w3-xlarge w3-section w3-center" style="list-style-type: none">
+  <div class="w3-xlarge w3-section w3-center">
    
     <li class="horizontal"><a href="{% url 'register' %}">Register</a></li>
     <li class="horizontal"><a href="{% url 'login' %}">Login</a></li>
@@ -82,8 +84,9 @@
     {% endif %}
 
   </div>
-  <br>
-    <div class="w3-xlarge w3-section w3-center" style="list-style-type: none">
+  
+    <div class="w3-container w3-xlarge w3-section w3-center" style="list-style-type: none">
+        <br>
         <li>
         <a href=https://www.facebook.com/adventurequestglasgow/><i class="fa fa-facebook-official w3-hover-text-indigo"></i>
         <a href=https://www.instagram.com/adventurequestglasgow/><i class="fa fa-instagram w3-hover-text-purple"></i>
