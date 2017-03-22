@@ -1,40 +1,6 @@
 {% extends 'adventureQuest/base.html' %}
 {% load staticfiles %}
 
-<style>
-    
-.hide{display:none;}
-.btn {
-display: inline-block;
-padding: 4px 12px;
-margin-bottom: 0;
-font-size: 14px;
-line-height: 20px;
-color: #333333;
-text-align: center;
-vertical-align: middle;
-cursor: pointer;
-border: 1px solid #bbbbbb;
-border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-border-bottom-color: #a2a2a2;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
-border-radius: 4px;
-}
-.btn {
-border-color: #c5c5c5;
-border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
-}
-.btn-large {
-padding: 11px 19px;
-font-size: 17.5px;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
-border-radius: 4px;
-}
-
-</style>
 {% block title_block %}
     Register
 {% endblock %}
@@ -50,7 +16,7 @@ border-radius: 4px;
     {% else %}
         <h2>Register Here</h2>
     
-    <form class="w3-container w3-card-4" id="user_form" method="post" action="{% url 'register' %}"
+    <form class="w3-container w3-card-4 w3-hover-questy" id="user_form" method="post" action="{% url 'register' %}"
               enctype="multipart/form-data">
     {% csrf_token %}
     
@@ -78,7 +44,7 @@ border-radius: 4px;
         
     <button class="w3-btn w3-white" type="submit" name="submit" value="Register">Register</button>
     
-</form>
+    </form>
      {% endif %}
     <br/>
 </div>
