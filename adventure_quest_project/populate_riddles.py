@@ -11,7 +11,7 @@ def populate():
 	add_riddle(question="When you have me you want to share me, if you share me you no longer have me.....what am I?",answer=["secret"],instruction="This question is just a fun riddle to do while you have your first drink",hint="You might want to whisper me...",quest_name="mystery_quest",question_id=0)
 
 
-	add_riddle(question="What gets wetter as it dries.....?", answer=["towel"],instruction="This question is just a fun riddle to do while you have your first drink",hint="Starts with 'T'", quest_name="mystery_quest", question_id=1)
+	add_riddle(question="What gets wetter as it dries.....?", answer=["towel", "cloth"],instruction="This question is just a fun riddle to do while you have your first drink",hint="Starts with 'T'", quest_name="mystery_quest", question_id=1)
 
 	add_riddle(question="When I am born, I fly, When I am alive, I lie, When I die I run....what am I?", answer=["snow", 'snowflake'],instruction="This question is just a fun riddle to do while you have your first drink",hint="I usually only seen in the winter",  quest_name="mystery_quest", question_id=2)
 
@@ -46,7 +46,7 @@ def populate():
 
 	add_riddle(
 		question="Me and my buddies are the most famout guys in here. I'm second from the left. Who am I?",
-		answer=["cloud water"], instruction="This question is just a fun riddle to do while you have your first drink",
+		answer=["cloudwater"], instruction="This question is just a fun riddle to do while you have your first drink",
 		hint="You might need a ladder!", quest_name="finnieston_quest", question_id=1)
 
 	add_riddle(
@@ -56,7 +56,7 @@ def populate():
 
 	add_riddle(
 		question="What is the tallest mountain in the United Kingdom!",
-		answer=["ben nevis"], instruction="The answer to this riddle is your next destination",
+		answer=["bennevis"], instruction="The answer to this riddle is your next destination",
 		hint="Don't go to the actual mountain you wally!", quest_name="finnieston_quest", question_id=3)
 
 	add_riddle(
@@ -103,7 +103,7 @@ def populate():
 
 	add_riddle(
 		question="The next bar is a place for 'Big white blokes'",
-		answer=["the big lebowski", "lebowskis"], instruction="It's an annagram!",
+		answer=["thebiglebowski", "lebowskis"], instruction="It's an annagram!",
 		hint="Cool Dudes go here", quest_name="finnieston_quest", question_id=12)
 
 	add_riddle(
@@ -118,7 +118,7 @@ def populate():
 
 	add_riddle(
 		question="What would a true Scotsman order?",
-		answer=["gutter ball"], instruction="You will have to explore to find the answer",
+		answer=["gutterball"], instruction="You will have to explore to find the answer",
 		hint="Not very good at bowling", quest_name="finnieston_quest", question_id=15)
 
 	add_riddle(
@@ -158,7 +158,7 @@ def populate():
 
 	add_riddle(
 		question="Relaxing with 'incense' makes me feel very 'lazy'",
-		answer=["nice n sleazy"], instruction="The answer will tell you your next location",
+		answer=["nicensleazy"], instruction="The answer will tell you your next location",
 		hint="It's an anagram", quest_name="finnieston_quest", question_id=23)
 
 	add_riddle(

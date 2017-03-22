@@ -16,7 +16,7 @@ from adventureQuest.models import Quest, Riddle, UserProfile, UserScores
 from django.core.signals import request_finished
 from .forms import PostForm, CommentForm
 from .models import Quest, Riddle, UserProfile, Post, Comment
-
+import re
 
 # Create your views here.
 
@@ -475,8 +475,10 @@ def quest_ajax(request):
     input_answer = request.GET.get('answer')
 
     if input_answer != None:
-        user_answer = input_answer.lower()
+        user_lower = input_answer.lower()
+        user_answer = re.sub('[^A-Za-z0-9]+', '', user_lower)
         print('this should be the answer in lower case'+user_answer)
+
     else:
         user_answer = ''
 
@@ -511,7 +513,7 @@ def quest_ajax(request):
 # If the users answer is correct then get the next question from the database unless this is the last question
     if correctNo <= numberRiddles:
         print('************** '+str(correctNo))
-        if textAnswer in user_answer:
+        if user_answer in textAnswer:
             response_data['hint'] = 'Your hint will appear here....but remember you will loose 5 points for each hint!'
             quest_cookies(request, True, False)
             ridQID = request.session['riddleQuestionID']
