@@ -3,18 +3,19 @@
 {% block Title %}AdventureQuest Home{% endblock %}
 
  {% block page_style_block %}
-
+    <style>
     .bgimg-1 {
         background-image: url("{% static "images/old_map_of_glasgow.jpg" %}");
         /*margin-top: 48px;*/
         min-height: 100%;
-        }
+    }
         /*  image (Contact) */
     .bgimg-2 {
         background-image: url("{% static "images/old_map_of_glasgow.jpg" %}");
         background-size: auto;
         min-height: 400px;
     }
+   </style> 
 {% endblock %}
 
 
@@ -37,15 +38,13 @@
 <div class="w3-content w3-container w3-padding-64" id="questgallery">
     <h3 class="w3-center">Quest Gallery</h3>
     <br>
-    <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
     <!--   First Row -->
     <div class="w3-row-padding w3-center w3-section">
         <div class="w3-col m4">
             <div class="w3-display-container"> 
             <a href="{% url 'mystery_about' %}">
-            <img src="{% static "images/kg.jpg" %}" style="width:100%" alt=Quest 1"></a>
-                <div class="w3-display-topleft w3-display-hover w3-large">
-                </div>
+            <img src= "{% static "images/kg.jpg" %}" style="width:100%;" alt="Quest 1"></a>
+               
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Mystery Quest
                     <br>Rating: Medium</div>
@@ -54,10 +53,9 @@
         </div>
         <div class="w3-col m4">
             <div class="w3-display-container"> 
-            <a href="{% url 'finnieston_about' %}">
+            <a href="{% url "finnieston_about" %}">
             <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" alt="Finnieston: Quest 2"></a>
-                <div class="w3-display-topleft w3-display-hover w3-large">
-                </div>
+              
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Finnieston Quest
                     <br>Rating: Medium</div>
@@ -68,8 +66,7 @@
             <div class="w3-display-container">
             <a href="{% url 'glasgow_uni_about' %}">
              <img src="{% static "images/glasgow_uni.jpg" %}" style="width:100%" alt="Glasgow Uni: Quest 3"></a>
-                <div class="w3-display-topleft w3-display-hover w3-large">
-                </div>
+                
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Glasgow University Quest
                     <br>Rating: Hard</div>
@@ -83,9 +80,7 @@
             <div class="w3-display-container"> 
             <a href="{% url 'southside_about' %}">
             <img src="{% static "images/southside.jpg" %}" style="width:100%" alt="South Side: Quest 4"></a>
-                <div class="w3-display-topleft w3-display-hover w3-large">
-              
-                </div>
+                
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">South Side Quest
                     <br>Rating: Easy</div>
@@ -96,8 +91,7 @@
             <div class="w3-display-container"> 
             <a href="{% url 'city_centre_about' %}">
             <img src="{% static "images/city.jpg" %}" style="width:100%" alt="City Centre: Quest 5"></a>
-                <div class="w3-display-topleft w3-display-hover w3-large">
-                              </div>
+               
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">City Centre Quest
                     <br>Rating: Hard</div>
@@ -108,9 +102,7 @@
         <a href="{% url 'kids_about' %}">
             <div class="w3-display-container">
             <img src="{% static "images/science.jpg" %}" style="width:100%" alt="Kids Quest: Quest 6"></a>
-                <div class="w3-display-topleft w3-display-hover w3-large">
- 
-                </div>
+               
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Kids Quest
                     <br>Rating: Easy</div>
@@ -123,9 +115,7 @@
         <div class="w3-col m4">
             <div class="w3-display-container"> 
             <img src="{% static "images/lock.jpg" %}" style="width:100%" alt="Quest 7">
-                <div class="w3-display-topleft w3-display-hover w3-large">
-            
-                </div>
+                
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Complete Quests to Unlock!</div>
                 </div>
@@ -133,9 +123,7 @@
         </div>
         <div class="w3-col m4">
             <div class="w3-display-container"> <img src="{% static "images/lock.jpg" %}" style="width:100%" alt="Quest 8"> 
-                <div class="w3-display-topleft w3-display-hover w3-large">
-                
-                </div>
+               
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Complete Quests to Unlock!</div>
                 </div>
@@ -143,9 +131,7 @@
         </div>
         <div class="w3-col m4">
             <div class="w3-display-container"> <img src="{% static "images/lock.jpg" %}" style="width:100%" alt="Quest 9">
-                <div class="w3-display-topleft w3-display-hover w3-large">
-                 
-                </div>
+                
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Complete Quests to Unlock!</div>
                 </div>
@@ -160,14 +146,7 @@
 <br>
 <br>
     
-<!-- Modal/POPUP for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-closebtn w3-text-white w3-opacity w3-hover-opacity-off w3-xxlarge w3-container w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
+
 
 <!-- Hall Of Fame Parallax Image -->
 <div class="bgimg-2 w3-display-container w3-opacity-min">
@@ -209,3 +188,35 @@
     
 {% block footer %}
 {% endblock %}    
+
+{% block js_block %}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Add Google Maps -->
+    <script>
+    function myMap()
+    {
+    myCenter=new google.maps.LatLng(55.8721, -4.2882);
+    var mapOptions= {
+        center:myCenter,
+        zoom:12, scrollwheel: false, draggable: false,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+    var marker = new google.maps.Marker({
+        position: myCenter,
+    });
+    marker.setMap(map);
+    }
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0z8juUZWLKkvKq4p8G9ne4Sr8RzB4hMY&callback=myMap"></script>
+{% endblock %}  
