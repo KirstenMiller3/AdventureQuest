@@ -153,6 +153,7 @@ def register(request):
         profile_form = UserProfileForm(request.POST or None, request.FILES or None)
         # If the two forms are valid:
         if user_form.is_valid() and profile_form.is_valid():
+            print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             # Save the user's form data to the database.
             user = user_form.save()
 
@@ -170,11 +171,11 @@ def register(request):
             # Did the user provide a profile picture?
             # If so, we need to get it from the input form and
             # put it in the UserProfile model.
-            print(str(request.FILES))
+            print('woooo'+str(request.FILES))
             if 'picture' in request.FILES:
-                picture = request.FILES.get('picture', False)
-                print("Entered")
-                profile.picture = picture
+                #picture = request.FILES.get('picture', False)
+                #print("Entered")
+                profile.picture = request.FILES['picture']
 
             # Now we save the UserProfile model instance.
             profile.save()
@@ -478,9 +479,8 @@ def quest_ajax(request):
         user_lower = input_answer.lower()
         user_answer = re.sub('[^A-Za-z0-9]+', '', user_lower)
         print('this should be the answer in lower case'+user_answer)
-
     else:
-        user_answer = ''
+        user_answer = '@'
 
     # Set the current question and answer from the database
     for row in Riddle.objects.filter(quest_name=questName, question_id=ridAID):

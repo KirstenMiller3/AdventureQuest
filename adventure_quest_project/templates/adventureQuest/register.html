@@ -39,7 +39,7 @@
         
             <p><img id="preview" alt="Optionally: Upload a pic" width="100" height="100" /><br/>
                 <label for="id_picture" class="w3-button w3-white w3-hover-red">Upload</label>
-                <input id=id_picture type="file" style="display: none;" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])"></p>
+                <input id=id_picture name="picture" type="file" style="display: none;" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])"></p>
         
         
     <button class="w3-btn w3-white" type="submit" name="submit" value="Register">Register</button>
