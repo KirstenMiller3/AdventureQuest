@@ -124,9 +124,29 @@ li.dropdown {
     .quest_button {
         position:relative;
         float:center;
-        top: -80px;
+        top: 10px;
         
         text-align:center
 }
 .w3-questy,.w3-hover-questy:hover{color:#fff!important;;background-color:#191502!important}
+
+    .Map {
+        position:absolute;
+        float:right;
+        top:100px;
+        left:150px;
+        width:300px;
+    }
+
+    .map_back {
+        position:relative;
+        float:left;
+        top:120px;
+        left:-170px;
+        width:1200px;
+       
+    
+
+    }
+
 
