@@ -52,7 +52,11 @@ $('#questionform').submit(function(e) {
 			{
 				console.log("ENTERED")
 				$(this).unbind('submit').submit()
-				location.href = "http://127.0.0.1:8000/adventureQuest/congratulations/"
+				//location.href = 'adventureQuest/congratulations/'
+				window.location = '../congratulations/'
+					//"http://127.0.0.1:8000/adventureQuest/congratulations/"
+				//location.replace('adventureQuest/congratulations/')
+
 			}
 			//if (questionNo === lastQuestion - 1){
 			//	console.log("!!!!!!!!!!!!!!!!!!!!")
