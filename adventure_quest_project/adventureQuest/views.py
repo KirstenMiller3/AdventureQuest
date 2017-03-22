@@ -80,7 +80,7 @@ def glasgow_uni_about(request):
 def southside_about(request):
     context_dict = {}
     context_dict['questurl'] = reverse(southside_quest)
-    context_dict['questmappos'] = "55.850538, -4.259042"
+    context_dict['questmappos'] = "55.840240, -4.267360"
     for row in Quest.objects.filter(name="southside_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
@@ -94,7 +94,7 @@ def southside_about(request):
 def city_centre_about(request):
     context_dict = {}
     context_dict['questurl'] = reverse(city_centre_quest)
-    context_dict['questmappos'] = "55.863422, -4.252970"
+    context_dict['questmappos'] = "55.859986, -4.252588"
     for row in Quest.objects.filter(name="city_centre_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
