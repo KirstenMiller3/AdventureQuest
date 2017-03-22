@@ -15,7 +15,7 @@ def populate():
 
 	add_riddle(question="When I am born, I fly, When I am alive, I lie, When I die I run....what am I?", answer=["snow", 'snowflake'],instruction="This question is just a fun riddle to do while you have your first drink",hint="I usually only seen in the winter",  quest_name="mystery_quest", question_id=2)
 
-	add_quest(name="mystery_quest", description = "On this quest you could end up anywhere in Glasgow! Only for those feeling especially adventurous", difficulty = 5, age_limit = 10, start_point="Game on" )
+	add_quest(name="mystery_quest", description = "On this Mystery quest you could end up anywhere in Glasgow! Only for those feeling especially adventurous", difficulty = 5, age_limit = 10, start_point="Game on" )
 
 	add_quest(name="finnieston_quest", description="The Finnieston Quest takes adventurers on a tour of this up and coming area of Glasgow, with plenty of cool bars to drink in and landmarks to see!", difficulty=3, age_limit=18, start_point="brew dog")
 	add_quest(name="city_centre_quest",description="The City Centre Quest takes adventurers around some of the most famous and exciting spots in this great urban environment!", difficulty=6, age_limit=18, start_point="Royal Exchange Square")
@@ -27,7 +27,7 @@ def populate():
 			   instruction="This is an easy one to get you going!", hint="TV", quest_name="glasgow_uni_quest",question_id=0)
 
 	add_riddle(question="Which plant would you use to cure a bloody nose?", answer=["vinca major"],
-			   instruction="This is an easy one to get you going!", hint="?", quest_name="southside_quest",
+			   instruction="This is an easy one to get you going!", hint="Check the Medicinal and Culinary Courtyard", quest_name="southside_quest",
 			   question_id=0)
 
 	add_riddle(question="I am a boot that wears a hat. When year was I born?", answer=["1769"],
