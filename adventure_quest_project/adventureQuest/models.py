@@ -99,7 +99,7 @@ class Post(models.Model):
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
     content = models.TextField()
-    hints = models.IntegerField(default=-1)
+    hints = models.IntegerField(default=10000)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
@@ -120,18 +120,20 @@ class Post(models.Model):
 class Comment(models.Model):
 
 	#needs a foreign key
-	#onPage = models.ForeignKey('adventureQuest.Riddle', related_name='comments')
-	author = models.CharField(max_length=128)
-	text = models.TextField()
-	created_date = models.DateTimeField(default=datetime.now)
-	approved_comment = models.BooleanField(default=False)
+	
+    quest = models.ForeignKey(Quest)
+    author = models.CharField(max_length=128)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=datetime.now)
+    approved_comment = models.BooleanField(default=False)
 
-	def approve(self):
-		self.approved_comment = True
-		self.save()
+    def approve(self):
+        self.approved_comment = True
+        self.save()
 
-	def __str__(self):
-		return self.text
+    def __str__(self):
+        return self.text
 
-	def __unicode__(self):
-		return self.text	
+    def __unicode__(self):
+        return self.text
+        	
