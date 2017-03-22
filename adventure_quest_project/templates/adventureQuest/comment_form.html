@@ -5,12 +5,26 @@ Comment
 {% endblock  %}
 
 {% block body_block %}
-<div class = 'w3-content w3-padding-64'>
+<div class = 'w3-content w3-padding-64 w3-center'>
 
 <h1>New comment</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Send</button>
+    <form method="POST" class="post-form w3-container w3-center w3-card-16 w3-hover-questy">
+        {% csrf_token %}
+        <div class="w3-center w3-panel" style="width: 100%; display: inline-block">
+            <p><label for="id_quest">Quest:</label> <select id="id_quest" name="quest">
+            <option value="" selected="selected">Choose a Quest</option>
+            <option value="1">mystery_quest</option>
+            <option value="2">finnieston_quest</option>
+            <option value="3">southside_quest</option>
+            <option value="4">glasgow_uni_quest</option>
+            <option value="5">kids_quest</option>
+            </select></p>
+            <p><label for="id_author">Author:</label> <input id="id_author" maxlength="128" name="author" type="text"></p>
+            <label for="id_text">Your Comment:</label>
+            <p><textarea cols="100" id="id_text" name="text" rows="5"></textarea></p>
+        
+        <button type="submit" class="save btn btn-default">Submit</button>
+        </div>
     </form>
     <div>
        <p> <a href="/adventureQuest/comment/">Return</a> to all Comments</p>
