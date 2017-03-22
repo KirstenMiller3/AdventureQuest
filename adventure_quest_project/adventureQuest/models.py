@@ -93,7 +93,7 @@ class Quest(models.Model):
 class UserScores(models.Model):
     user = models.ForeignKey(User)
     quest = models.ForeignKey(Quest)
-    score = models.IntegerField()
+    score = models.IntegerField(default=1000)
 
     def __str__(self):
         return self.user
