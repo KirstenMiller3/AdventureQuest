@@ -30,9 +30,27 @@ urlpatterns = [
 
 	url(r'^quest_ajax/$', views.quest_ajax, name='quest_ajax'),
 	url(r'^my_account/$', views.my_account, name='my_account'),
-	url(r'^post_list/$', views.post_list, name='post_list'),
 	url(r'^post_form/$', views.post_create, name='post_form'),
-	#url(r'^hall_of_fame/$', views.hall_of_fame, name='hall_of_fame'),
+
+	url(r'^mystery_quest_hall_of_fame/$', views.mystery_quest_hall_of_fame, name='mystery_quest_hall_of_fame'),
+
+
+	url(r'^finnieston_quest_hall_of_fame/$', views.finnieston_quest_hall_of_fame, name='finnieston_quest_hall_of_fame'),
+
+
+	url(r'^glasgow_uni_quest_hall_of_fame/$', views.glasgow_uni_quest_hall_of_fame, name='glasgow_uni_quest_hall_of_fame'),
+
+
+	url(r'^southside_quest_hall_of_fame/$', views.southside_quest_hall_of_fame, name='southside_quest_hall_of_fame'),
+
+
+	url(r'^city_centre_quest_hall_of_fame/$', views.city_centre_quest_hall_of_fame, name='city_centre_quest_hall_of_fame'),
+
+
+	url(r'^kids_quest_hall_of_fame/$', views.kids_quest_hall_of_fame, name='kids_quest_hall_of_fame'),
+
+
+	url(r'^hall_of_fame/$', views.hall_of_fame, name='hall_of_fame'),
 	url(r'^comment/$', views.comment, name='comment'),
 	url(r'^comment_form/$', views.add_comment, name='add_comment'),
 ]

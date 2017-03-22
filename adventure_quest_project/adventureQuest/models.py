@@ -8,7 +8,7 @@ from datetime import datetime
 from django.template.defaultfilters import slugify
 import ast
 
-
+# This is a helper methods to allow list fields for models
 class ListField(models.TextField):
 
     def __init__(self, *args, **kwargs):
@@ -33,22 +33,20 @@ class ListField(models.TextField):
         value = self._get_val_from_obj(obj)
         return self.get_db_prep_value(value)
 
+
 # The UserProfile model stores information about each user.
 class UserProfile(models.Model):
-    # This line is required. Links UserProfile to a User model instance.
+    # This links UserProfile to a User model instance.
     user = models.OneToOneField(User)
     # A profile picture for the user
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    # Scores for quests the user has completed.
 
-
-    # Override the __unicode__() method to return out something meaningful.
-    # Remember if you use Python 2.7.x, define unicode too!
     def __str__(self):
         return self.user.username
 
     def __unicode__(self):
         return self.user.username
+
 
 # The Riddle model stores information for each riddle in the quest.
 class Riddle(models.Model):
@@ -62,26 +60,19 @@ class Riddle(models.Model):
     def __int__(self):
         return self.question_id
 
-# WHAT THE FLIP DOES THIS DO??
+
+# Helper method to create an upload location for image files
 def upload_location(instance, filename):
     return "%s/%s" % (instance.id, filename)
 
 
 # The Quest model stores information about each different quest.
 class Quest(models.Model):
-    #post = models.ForeignKey(Post)    WHAT IS THIS????
     name = models.CharField(max_length=200, default='new Quest')
     description = models.TextField()
     difficulty = models.CharField(max_length=120)
     age_limit = models.IntegerField(default=0)
     start_point = models.CharField(max_length=120, default = 'here')
-
-    # CAN THIS ALL BE DELETED????
-    # slug = models.SlugField(unique=True)
-    # def save(self, *args, **kwargs):
-    #     self.slug = slugify(self.description)
-    #
-    #     super(Quest, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -90,14 +81,14 @@ class Quest(models.Model):
         return self.name
 
 
+# This is a model to represent the user's scores after they've completed a quest
 class UserScores(models.Model):
     user = models.ForeignKey(User)
     quest = models.ForeignKey(Quest)
-    score = models.IntegerField()
+    score = models.IntegerField(default=1000)
 
     def __str__(self):
         return self.user
-
 
     def __unicode__(self):
         return self.user
@@ -126,18 +117,12 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    #def get_absolute_url(self):
-        #return reverse('post_create', kwargs={"id": self.id})
-
     class Meta:
         ordering = ["-timestamp", "-updated"]
 
 
 # Model for comments
 class Comment(models.Model):
-
-	#needs a foreign key
-	
     quest = models.ForeignKey(Quest)
     author = models.CharField(max_length=128)
     text = models.TextField()
@@ -153,4 +138,3 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.text
-        	

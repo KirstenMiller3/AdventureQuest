@@ -6,6 +6,8 @@ from django.utils import timezone
 from datetime import datetime
 from django.contrib import auth
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.utils.encoding import force_text
+import os
 
 
 # Create your tests here.
@@ -31,17 +33,18 @@ def add_quest(name):
     q.difficulty = 1
     q.age_limit=4
     q.start_point = 'here'
+    q.save()
 
     return q
 
 def add_UserScores(user, quest, score):
-    us = UserScores.objects.get_or_create(user,quest)
+    us = UserScores.objects.get_or_create(user=user,quest=quest)[0]
     us.score = score
-
-
+    us.save()
+    return us
 
 def add_post(u, quest, title,content,hints):
-    p = Post.objects.get_or_create(user=u.user,quest=quest)
+    p = Post.objects.get_or_create(user=u,quest=quest)
     p.title = title
     p.image = SimpleUploadedFile(name='African_elephant_warning_raised_trunk.jpg', content=open('H:\African_elephant_warning_raised_trunk.jpg', 'rb').read(), content_type='image/jpeg')
     p.content = content
@@ -50,6 +53,25 @@ def add_post(u, quest, title,content,hints):
     p.width_field =10
     p.updated = p.DateTimeField(auto_now=True, auto_now_add=False)
     p.timestamp = p.DateTimeField(auto_now=True, auto_now_add=False)
+    p.save()
+    return p
+
+
+
+
+def add_post(u, quest, title,content,hints):
+    path = os.path.abspath('cat.jpg')
+    path = path[:3]
+    p = Post.objects.get_or_create(user=u,quest=quest,title = title, image = SimpleUploadedFile(name='cat.jpg', content=open(path+'cat.jpg').read(), content_type='image/jpeg'),content = content, hints = hints,height_field=50,width_field=50, updated = timezone.now(), timestamp = timezone.now())[0]
+    print("**************************"+str(path))
+   # p.content = content
+    #p.hints = hints
+   # p.height_field = 10
+   # p.width_field =10
+   # p.updated = timezone.now()
+    #p.timestamp = timezone.now()
+    p.save()
+    return p
 
 
 def add_riddle():
@@ -66,12 +88,8 @@ class AdventureQuestTests(TestCase):
         u = add_user('test','test@adventurequest.com')
         q = add_quest('mystery_quest')
 
-        p = Post(user=u, quest=q, title = 'Test', content='Testing', hints = 1)
-        p.save()
-
-        l = Post(user=u, quest=q, title = 'BigG', content='Had a great time', hints = 2)
-        l.save()
-
+        pOne = add_post(u, q, "Test", "Testing", 1)
+        pTwo = add_post(u, q, "BigG", "Had a great time", 2)
 
         response = self.client.get(reverse('post_list'))
         self.assertEqual(response.status_code, 200)
@@ -116,7 +134,31 @@ class AdventureQuestTests(TestCase):
         self.assertIn('5'.lower(), response.content.lower())
 
 
+    def test_check_quest_abouts(self):
+        c = add_quest('city_centre_quest')
+        m = add_quest('mystery_quest')
+        f = add_quest('finnieston_quest')
+        s = add_quest('southside_quest')
+        g = add_quest('glasgow_uni_quest')
+        k = add_quest('kids_quest')
 
+        response = self.client.get(reverse('city_centre_about'))
+        self.assertIn('City Centre'.lower(), response.content.lower())
+
+        response = self.client.get(reverse('mystery_about'))
+        self.assertIn('Mystery'.lower(), response.content.lower())
+
+        response = self.client.get(reverse('finnieston_about'))
+        self.assertIn('Finnieston'.lower(), response.content.lower())
+
+        response = self.client.get(reverse('southside_about'))
+        self.assertIn('Southside'.lower(), response.content.lower())
+
+        response = self.client.get(reverse('glasgow_uni_about'))
+        self.assertIn('university'.lower(), response.content.lower())
+
+        response = self.client.get(reverse('kids_about'))
+        self.assertIn('kidz'.lower(), response.content.lower())
 
 
     def test_win_quest_redirect(self):
@@ -125,11 +167,14 @@ class AdventureQuestTests(TestCase):
         r = add_riddle()
         u = add_user('test', 'test@adventurequest.com')
         # log input
-        self.client.post(reverse('login'), {'username':'test', 'password':'123456'})
-        response = self.client.post(reverse('city_centre_quest'), {'answer': 'test'})
 
-        self.assertJSONEqual(response.content,{'answer': 'test'})
-        self.assertIn('Congratulations'.lower(), response.content.lower())
+
+        response = self.client.post(reverse('quest_ajax'), {'answer': 'test'})
+        self.assertEqual(response.status_code, 200)
+        self.assertJSONEqual(force_text(response),{'status': 'success'})
+
+
+        #self.assertIn('Congratulations'.lower(), response.content.lower())
 
         #self.assertRedirects(response, '../congratulations/')
 
