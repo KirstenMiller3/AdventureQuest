@@ -23,6 +23,7 @@ body, html {
 
 li.horizontal{
     float: left;
+    list-style-type: none;
 }
 
 li a, .dropbtn {
@@ -124,6 +125,7 @@ li.dropdown {
         position:relative;
         float:center;
         top: -80px;
-        left: 310px;
+        
+        text-align:center
 }
 

@@ -14,8 +14,8 @@ from adventureQuest.models import Quest, Riddle
 from django.shortcuts import redirect
 from adventureQuest.models import Quest, Riddle, UserProfile, UserScores
 from django.core.signals import request_finished
-from .forms import PostForm
-from .models import Quest, Riddle, UserProfile, Post
+from .forms import PostForm, CommentForm
+from .models import Quest, Riddle, UserProfile, Post, Comment
 
 
 # Create your views here.
@@ -23,6 +23,28 @@ from .models import Quest, Riddle, UserProfile, Post
 # The home page
 def index(request):
     return render(request, 'adventureQuest/index.html')
+
+
+def comment(request):
+    objects_comment = Comment.objects.all()
+    context={
+        "comment_list": objects_comment,
+    }
+
+    return render(request, 'adventureQuest/comment.html', context)
+
+def add_comment(request):
+    #quest = request.quest
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            #comment.quest = comment.quest
+            comment.save()
+            return redirect('comment')
+    else:
+        form = CommentForm()
+    return render(request, 'adventureQuest/comment_form.html', {'form': form})
 
 
 # The about page for the Finnieston Quest.

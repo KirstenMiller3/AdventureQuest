@@ -21,9 +21,16 @@
     </div>
  
          <div class="quest_button">
-         <a class="w3-btn w3-round-large" href="{{questurl}}">Link to begin quest or redirect if not logged in</a>
+            {% if user.is_authenticated %}
+                <a class="w3-btn w3-round-large" href="{{questurl}}">Begin Quest</a>
+            {% else %}
+                <a class="w3-btn w3-round-large" href="{% url 'login' %}">Login before questing!</a>
+            {% endif %}
+         
         </div>
-        <li>Reviews: link to fb comments?</li>
+        <div class="w3-center">
+        <a class="w3-btn w3-round-large w3-white" href="{% url 'comment' %}">See Quest Comments</a>
+        </div>
     </div>
 
 <div class="w3-content w3-container w3-padding-64">
