@@ -36,13 +36,16 @@ $('#questionform').submit(function(e) {
 			//var lastQuestion = response['noRiddles']
 
 			var available = response['hint_available'];
+			console.log("hint it from ajax" + available)
 
 			if (available === 'false'){
+				console.log('false')
 				var button = $('#hintform')
 					button.hide();
 
 			}
 			else if (available === 'true'){
+				console.log('true')
 				var button = $('#hintform')
 					button.show();
 
@@ -87,7 +90,7 @@ $('#hintform').click(function(e) {
 
 
 			var available = response['hint_available'];
-
+			console.log("hint it from click" + available)
 			if (available === 'false'){
 				var button = $('#hintform')
 					button.hide();

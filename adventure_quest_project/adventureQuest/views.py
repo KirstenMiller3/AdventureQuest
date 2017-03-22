@@ -479,9 +479,8 @@ def quest_ajax(request):
         user_lower = input_answer.lower()
         user_answer = re.sub('[^A-Za-z0-9]+', '', user_lower)
         print('this should be the answer in lower case'+user_answer)
-
     else:
-        user_answer = ''
+        user_answer = '@'
 
     # Set the current question and answer from the database
     for row in Riddle.objects.filter(quest_name=questName, question_id=ridAID):
