@@ -5,35 +5,38 @@
 {% endblock %}
 
 {% block body_block %}
+<div class="w3-content w3-container w3-padding-64 w3-card-2 w3-sand" id="comments">
+        {% if user.is_authenticated %}
+            <h3>Hello, {{ user.username }}</h3>
+        {% else %}
+            <a href="{% url 'login' %}">Please Login</a>
+        {% endif %}
+    <div class="w3-center">
+        <h1>Here are your current quest high scores!</h1>
+        <ul class="w3-ul w3-center w3-card-12">
+            <li>Mystery Quest: {{mystery_quest}}</li>
+            <li>Finnieston Quest: {{finnieston_quest}}</li>
+            <li>Glasgow University Quest: {{glasgow_uni_quest}}</li>
+            <li>Southside Quest: {{southside_quest}}</li>
+            <li>City Centre Quest: {{city_centre_quest}}</li>
+            <li>Kids Quest: {{kids_quest}} </li>
+        </ul>
+        
+        <br/>
+        <h3>Your profile picture</h3>
+         {{ pic }}
+        
 
-    {% if user.is_authenticated %}
-              Hello, {{ user.username }}
-    {% else %}
-        redirect
-    {% endif %}
-<div>
-    <h1>Here are your current quest high scores!</h1>
-    Mystery Quest: {{mystery_quest}} <br/>
-    Finnieston Quest: {{finnieston_quest}} <br/>
-    Glasgow University Quest: {{glasgow_uni_quest}} <br/>
-    Southside Quest: {{southside_quest}} <br/>
-    City Centre Quest: {{city_centre_quest}} <br/>
-    Kids Quest: {{kids_quest}} <br/>
-
-    picture link: {{ pic }}
-    {{ MEDIA_URL }}
-    {{user.picture}}
-
-</div>
-
-    <div>
-        <img src="{{ MEDIA_URL}}{{ pic }}" alt="Picture of user"/>
     </div>
-<br/>
-<div>
-    See your uploaded posts?
-</div>
 
+        <div class="w3-center">
+            <img src="{{ MEDIA_URL}}{{ pic }}" alt="Picture of user" class="w3-image" style="width: 50%;"/>
+        </div>
+    <br/>
+    <div>
+        See your uploaded posts?
+    </div>
+</div>    
 
 
 

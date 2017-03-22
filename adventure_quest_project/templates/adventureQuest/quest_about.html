@@ -42,7 +42,24 @@
         <a class="w3-btn w3-round-large w3-white" href="{% url 'comment' %}">See Quest Comments</a>
         </div>
     </div>
+{% block js_block %}
+<script>
+function mapQuest()
+{
+  myCenter=new google.maps.LatLng({{questmappos}});
+  var mapOptions= {
+    center:myCenter,
+    zoom:19, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("Map"),mapOptions);
 
-
-
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0z8juUZWLKkvKq4p8G9ne4Sr8RzB4hMY&callback=mapQuest"></script>
+{% endblock %}
 
