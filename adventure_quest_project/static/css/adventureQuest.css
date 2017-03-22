@@ -113,39 +113,50 @@ li.dropdown {
     position:relative;
     float:center; 
 }
-    .quest_scroll .quest_text {
-    position:absolute;
-    top:100px; 
-    left:150px;
+    .w3-display-middle{
+    position:relative;
+    top:60px; 
+    left:0px;
     width:300px; 
-    font-size: 20px;
+    font-size:20px;
 }
 
     .quest_button {
         position:relative;
         float:center;
-        top: 10px;
-        
+        top: 10px; 
         text-align:center
 }
 .w3-questy,.w3-hover-questy:hover{color:#fff!important;;background-color:#191502!important}
 
-    .Map {
+
+
+  .Map .map {
         position:absolute;
-        float:right;
-        top:100px;
+        float:center;
+        top:-50px;
         left:150px;
         width:300px;
     }
 
-    .map_back {
+    .quest_photo1 {
         position:relative;
-        float:left;
-        top:120px;
-        left:-170px;
-        width:1200px;
-       
-    
+        float:center;
+        top:100px;
+        left:50px;
+        min-width: 40%;
+        max-width: 60%;
+
+    }
+
+    .bg {
+        position: relative;
+        float:center;
+        top:100px;
+        left:0px;
+
+        min-width: 100%;
+        min-height: 100%;
 
     }
 
