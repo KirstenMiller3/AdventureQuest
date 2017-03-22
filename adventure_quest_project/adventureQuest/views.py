@@ -50,13 +50,14 @@ def add_comment(request):
 # The about page for the Finnieston Quest.
 def finnieston_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(finnieston_quest)
+    context_dict['questmappos'] = "55.868273, -4.292110" 
     for row in Quest.objects.filter(name="finnieston_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(finnieston_quest)
-        context_dict['questmappos'] = "55.868273, -4.292110" 
+
     check_url(request)
     return render(request, 'adventureQuest/finnieston_about.html', context_dict)
 
@@ -64,14 +65,13 @@ def finnieston_about(request):
 # The about page for the Glasgow University quest.
 def glasgow_uni_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(glasgow_uni_quest)
+    context_dict['questmappos'] = "55.871950, -4.288233"
     for row in Quest.objects.filter(name="glasgow_uni_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(glasgow_uni_quest)
-        context_dict['questmappos'] = "55.871950, -4.288233"
-        
     check_url(request)
     return render(request, 'adventureQuest/glasgow_uni_about.html', context_dict)
 
@@ -79,13 +79,13 @@ def glasgow_uni_about(request):
 # The about page for the Southside quest.
 def southside_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(southside_quest)
+    context_dict['questmappos'] = "55.850538, -4.259042"
     for row in Quest.objects.filter(name="southside_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(southside_quest)
-        context_dict['questmappos'] = "55.850538, -4.259042"
     check_url(request)
     return render(request, 'adventureQuest/southside_about.html', context_dict)
 
@@ -93,13 +93,13 @@ def southside_about(request):
 # The about page for the City Centre quest.
 def city_centre_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(city_centre_quest)
+    context_dict['questmappos'] = "55.863422, -4.252970"
     for row in Quest.objects.filter(name="city_centre_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(city_centre_quest)
-        context_dict['questmappos'] = "55.863422, -4.252970"
     check_url(request)
     return render(request, 'adventureQuest/city_centre_about.html', context_dict)
 
@@ -107,13 +107,14 @@ def city_centre_about(request):
 # The about page for the Kids quest.
 def kids_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(kids_quest)
+    context_dict['questmappos'] = "55.868786, -4.290196"
     for row in Quest.objects.filter(name="kids_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(kids_quest)
-        context_dict['questmappos'] = "55.868786, -4.290196"
+        
     check_url(request)
     return render(request, 'adventureQuest/kids_about.html', context_dict)
 
@@ -121,13 +122,14 @@ def kids_about(request):
 # The about page for the ?MyStErY? quest.
 def mystery_about(request):
     context_dict = {}
+    context_dict['questurl'] = reverse(mystery_quest)
+    context_dict['questmappos'] = "55.874692, -4.292962"
     for row in Quest.objects.filter(name="mystery_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        context_dict['questurl'] = reverse(mystery_quest)
-        context_dict['questmappos'] = "55.874692, -4.292962"
+        
     check_url(request)
     return render(request, 'adventureQuest/mystery_about.html', context_dict)
 
