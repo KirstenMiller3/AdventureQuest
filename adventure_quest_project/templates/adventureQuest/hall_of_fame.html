@@ -7,10 +7,21 @@
 <div>
     <h1>Hall of Fame</h1>
     <h2>Hall of Fame</h2>
+    <div>
+        Click here to upload your hall of fame photo and add yourself to the leader board
+        <ul>
+            <li><a href="{% url 'post_form' %}">Post to Leader Board</a></li>
+        </ul>
+    </div>
     <h5>Choose a Quest to see the photo gallery and upload your pictures</h5>
     <div>
         <ul>
-            <li><a href="{% url 'post_list' %}">Quest 1</a></li>
+            <li><a href="{% url 'mystery_quest_hall_of_fame' %}">Mystery Quest Leader Board</a></li>
+            <li><a href="{% url 'finnieston_quest_hall_of_fame' %}">Finnieston Quest Leader Board</a></li>
+            <li><a href="{% url 'glasgow_uni_quest_hall_of_fame' %}">Glasgow Uni Quest Leader Board</a></li>
+            <li><a href="{% url 'southside_quest_hall_of_fame' %}">Southside Quest Leader Board</a></li>
+            <li><a href="{% url 'city_centre_quest_hall_of_fame' %}">City Centre Quest Leader Board</a></li>
+            <li><a href="{% url 'kids_quest_hall_of_fame' %}">Kids Quest Leader Board</a></li>
         </ul>
     </div>
 </div>
