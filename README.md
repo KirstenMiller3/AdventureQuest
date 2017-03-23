@@ -1,59 +1,43 @@
-# AdventureQuest
+# Adventure Quest
+MSci 2016-2017 ITech team Project Repo
+
+## Installation
+Install:
+`Python >=2.7`
+
+In a suitable directory. clone the repository
+`$ git clone https://github.com/tomesparon/TangoWithDjango.git`
+
+With a virtual environment setup with pip, install :
+`pip install –r requirements.txt`
+
+Or:
+`pip install Pillow`
+
+`pip install Django`
 
 
+## Usage
 
+Run database migrations:
 
+``python manage.py makemigrations``
 
+``python manage.py migrate``
 
-# Change Log
-All notable changes to this project will be documented in this file.
+Be sure to run the populate script:
 
-The format is loosely based on [Keep a Changelog](http://keepachangelog.com/)
+``python populate_riddles.py``
 
+Then, finally:
 
-## [Tom] - 26-02-2017
-### Added
-- Some static file setup
-- url mappings for index page only
-- simple index view that just renders the template HTML only
-- EXPERIMENTAL: CSS testing for the homepage. Quite complex at the moment but I aim to simplify it so its readable.
+``python manage.py runserver``
 
-### Changed
-- Nothing as yet.
+## Built With
+* [Django](https://docs.djangoproject.com/en/1.10/) - The web framework used
+* [W3.CSS](https://docs.djangoproject.com/en/1.10/) - The web framework used
+* JQuery
+* Ajax
+* Google Maps API
+* Facebook Comments Plugin
 
-
-## [Holly] - 28-02/2017
-
-### Added
-
-- Navigation bar (needs fixing)
-- Dropdown menu (possibly change colour after, been trying to make it transparent like in the design spec)
-
-### Changed
-- Font
-- Took out pinterest and linkedin logos
-- Took out phone number in contact section 
-- Took out W3 schools footer 
-- Changed background to deep brown (not sure if this is better or black, opinions pls)
-
-## [Kirsten] - 01-03-2017
-### Added
-- Views, models, urls for registration, login
-- message to check if login works (can be removed later)
-- logout functionality
-- html pages that goes along side that
-
-### Changed
-- fixed conflict between me and holly's commits
-- changed index to add links
-
-## [Tom] - 03-03-2017
-### Changed
-- started to un-messify the base template
-
-## [Holly] - 09-03-2017
-### Changed
-- nothing
-
-### Added
-- added content to the social media links so they actually go somewhere {dummy fb, twitter, insta pages feat. kazoo kid}
