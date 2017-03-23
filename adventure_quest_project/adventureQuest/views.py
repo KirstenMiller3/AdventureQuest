@@ -201,9 +201,17 @@ def register(request):
 # quests the user has completed and their high scores, their profile picture and
 # any hall of fame posts they have made.
 def my_account(request):
-    context_dict = {}
+
     user = request.user
 
+
+    objects_filter = Post.objects.filter(user=user)
+    objects_post = objects_filter.order_by('hints')[:100]
+
+    context_dict = {
+        "object_list": objects_post,
+        "title": "List",
+    }
     # Initialise each quest so that if they haven't completed the quest n/a will appear.
     context_dict['mystery_quest'] = 'n/a'
     context_dict['finnieston_quest'] = 'n/a'
@@ -217,9 +225,18 @@ def my_account(request):
         context_dict['user'] = row.user
         context_dict['pic'] = str(row.picture)
 
+
     # Get the information for each user scores
     for row in UserScores.objects.filter(user=request.user):
         context_dict[row.quest.name] = row.score
+
+
+    all_scores = UserScores.objects.filter(user=request.user)
+    ordered_scores=all_scores.order_by('-score')
+
+    for row in ordered_scores.filter(user=request.user):
+        context_dict[row.quest.name] = row.score
+
 
     return render(request, 'adventureQuest/my_account.html',context_dict)
 
@@ -338,8 +355,10 @@ def mystery_quest_hall_of_fame(request):
     for quest_row in Quest.objects.filter(name='mystery_quest'):
         myQuest = quest_row
 
+    print('!!!!!!!!!!!!!!'+myQuest.name)
     objects_filter = Post.objects.filter(quest=myQuest)
     objects_post = objects_filter.order_by('hints')[:100]
+
 
     context = {
         "object_list": objects_post,
