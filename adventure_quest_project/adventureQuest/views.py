@@ -456,6 +456,7 @@ def kids_quest(request):
         return render(request, 'adventureQuest/kids_quest.html')
 
 
+<<<<<<< HEAD
 # Helper method that resets the quest if the user leaves half way through
 def check_url(request):
     request.session['riddleQuestionID'] = 0
@@ -511,6 +512,7 @@ def add_score(user, quest, score):
 	q=UserScores.objects.get_or_create(user=user, quest=quest, score=score)[0]
 	q.save()
 	return q
+
 
 def quest_ajax(request):
     response_data = {}
@@ -611,7 +613,63 @@ def quest_ajax(request):
 #   Helper methods   #
 ######################
 
+# Helper method that resets the quest if the user leaves half way through
+def check_url(request):
+    request.session['riddleQuestionID'] = 0
+    request.session['riddleAnswerID'] = 0
+    request.session['riddleCorrectNo'] = 0
+    request.session['riddleCorrectNo'] = 0
+    request.session['numberHint'] = 0
+    request.session['questName'] = 0
 
 
+# Helper method that increments cookies for the quest.
+def quest_cookies(request, inc, hint):
+    riddleQuestionID = int(get_server_side_cookie(request,  'riddleQuestionID', '0'))
+    if inc == True:
+        riddleQuestionID +=1
+    request.session['riddleQuestionID'] = riddleQuestionID
+
+    riddleAnswerID = int(get_server_side_cookie(request, 'riddleAnswerID', '0'))
+    if inc == True:
+        riddleAnswerID += 1
+    request.session['riddleAnswerID'] = riddleAnswerID
+
+    riddleCorrectNo = int(get_server_side_cookie(request, 'riddleCorrectNo', '0'))
+    if inc == True:
+        riddleCorrectNo += 1
+    request.session['riddleCorrectNo'] = riddleCorrectNo
+
+    numberHint = int(get_server_side_cookie(request, 'numberHint', '0'))
+    if hint == True:
+        numberHint += 1
+    request.session['numberHint'] = numberHint
+
+    numberRiddles = int(get_server_side_cookie(request, 'numberRiddles', '0'))
+    request.session['numberRiddles'] = numberRiddles
+
+
+# Helper method that gets cookies.
+def get_server_side_cookie(request, cookie, default_val = None):
+    val = request.session.get(cookie)
+    if not val:
+        val = default_val
+    return val
+
+# Helper method to get the name of the quest the user is on based of the URL of the page they are on.
+# It updates a session variable with the correct name.
+def get_current_quest(request):
+    current_path = request.get_full_path()
+    questName ="".join(current_path.split('/')[2:])
+    trimmed = questName
+    quest_name = str(get_server_side_cookie(request, 'questName', trimmed))
+    request.session['questName'] = quest_name
+
+
+# Helper method tp add a row to UserScore table.
+def add_score(user, quest, score):
+	q=UserScores.objects.get_or_create(user=user, quest=quest, score=score)[0]
+	q.save()
+	return q
 
 
