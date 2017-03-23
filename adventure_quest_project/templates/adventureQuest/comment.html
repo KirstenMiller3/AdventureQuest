@@ -11,13 +11,15 @@
 <div class="w3-content w3-container w3-padding-64 w3-card-2 w3-sand" id="comments">
   <h1 class="w3-center">Comments</h1>
   
-
+<!-- only registered users who are logged in can leave a comment -->
     {% if user.is_authenticated %}
         <a class="w3-btn w3-round-large" href="{% url 'add_comment' %}">Add comment</a>
+ <!-- prompt user to login in order to comment -->
     {% else %}
          <a href="{% url 'login' %}">Login before commenting</a>
     {% endif %}
     <hr>
+    <!-- display list of all comments -->
     {% for comment in comment_list %}
         <div class="w3-container w3-card-2 w3-padding-bottom w3-white ">
             <div class="w3-panel w3-large w3-center">

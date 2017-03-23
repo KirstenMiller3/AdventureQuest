@@ -4,13 +4,16 @@
     My Account
 {% endblock %}
 
+<!-- The user's Account page -->
 {% block body_block %}
 <div class="w3-content w3-container w3-padding-64 w3-card-2 w3-questy" id="my-account">
+<!-- personal greeting displayed for user if he is logged in -->
         {% if user.is_authenticated %}
             <h3>Greetings young quester, {{ user.username }}</h3>
         {% else %}
             <a href="{% url 'login' %}">Please Login</a>
         {% endif %}
+   <!-- summary of the user's activities and the scores achieved -->
     <div class="w3-center">
         <h1>Here are your current quest high scores!</h1>
         <p>The score is the number of hints used on that quest</p>
@@ -24,6 +27,7 @@
         </ul>
         
         <br/>
+        <!-- the user's profile picture is displayed here -->
         <h3>Your profile picture</h3>
     </div>
 
