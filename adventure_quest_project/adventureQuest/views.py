@@ -179,7 +179,6 @@ def register(request):
             # Update variable as registration was successful.
             registered = True
         else:
-            # Invalid form or forms - mistakes or something else?
             # Print problems to the terminal.
             print(user_form.errors, profile_form.errors)
 
@@ -194,35 +193,33 @@ def register(request):
                   'adventureQuest/register.html',
                   {'user_form': user_form,
                    'profile_form': profile_form,
-                   'registered': registered, 'user_errors':str(user_form.errors), 'profile_errors':str(profile_form.errors)})
+                   'registered': registered, })
 
 
 
-# The My Account page view.
+# The My Account page view. This view allows information to be displayed about the
+# quests the user has completed and their high scores, their profile picture and
+# any hall of fame posts they have made.
 def my_account(request):
     context_dict = {}
     user = request.user
-    #if request.user.is_authenticated():
-    #name = request.user.username
-    #pic = request.user.picture
+
+    # Initialise each quest so that if they haven't completed the quest n/a will appear.
+    context_dict['mystery_quest'] = 'n/a'
+    context_dict['finnieston_quest'] = 'n/a'
+    context_dict['glasgow_uni_quest'] = 'n/a'
+    context_dict['southside_quest'] = 'n/a'
+    context_dict['city_centre_quest'] = 'n/a'
+    context_dict['kids_quest'] = 'n/a'
+
+    # Get the user information to be displayed on the page.
     for row in UserProfile.objects.filter(user=user):
         context_dict['user'] = row.user
         context_dict['pic'] = str(row.picture)
 
-
-
-        context_dict['mystery_quest'] = 'n/a'
-        context_dict['finnieston_quest'] = 'n/a'
-        context_dict['glasgow_uni_quest'] = 'n/a'
-        context_dict['southside_quest'] = 'n/a'
-        context_dict['city_centre_quest'] = 'n/a'
-        context_dict['kids_quest'] = 'n/a'
-
+    # Get the information for each user scores
     for row in UserScores.objects.filter(user=request.user):
         context_dict[row.quest.name] = row.score
-
-
-
 
     return render(request, 'adventureQuest/my_account.html',context_dict)
 
