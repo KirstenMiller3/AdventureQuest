@@ -10,14 +10,22 @@
 {% endblock %}
 
 {% block body_block %}
+<div id="bg">
+  <img src="{% static "images/mapbg.jpg" %}" alt="">
+</div>
 <br><br><br><br>
-	<div class="w3-content w3-container w3-padding-64 w3-card-24 w3-round w3-sand">
-        <h1>QUEST!!</h1>
+<div class="w3-content w3-container w3-padding-64" id="aboutquest">
+    <div class="quest_scroll w3-display-container">
+        <img src="{% static "images/scroll.png" %}" style="width:100%"></a>
+    
+        <div class="w3-display-middle w3-text-black" style="font-size: 18px;">
+            <div class="w3-container">
+               <h1>QUEST!!</h1>
 		<div id="instruction">
 			This is just a fun riddle to complete while you have a drink
 		</div>
 		<div class="w3-large" id="answer">
-			What is greater than God, more evil than the devil, the poor have it, the rich need it, and if you eat it, you'll die?
+			<p>What is greater than God, more evil than the devil, the poor have it, the rich need it, and if you eat it, you'll die?</p>
 		</div>
 		<hr />
         <div>
@@ -42,7 +50,11 @@
 		<div id="hintNo">
 			0
 		</div>
+    </div>    
+            
+        
 	</div>
+</div>
 		<!-- fix this -->
 		<script src="{% static 'js/jquery.min.js' %}"> </script>
 		<script src="{% static 'js/adventureQuest-jquery.js' %}"> </script>

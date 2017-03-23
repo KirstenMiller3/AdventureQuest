@@ -8,41 +8,53 @@
 {% endblock %}
 
 {% block body_block %}
+<div id="bg">
+  <img src="{% static "images/mapbg.jpg" %}" alt="">
+</div>
 <br><br><br><br>
-	<div class="w3-content w3-container w3-padding-64 w3-card-24 w3-round w3-sand">
-        <h1>QUEST!!</h1>
-		<div>
-			Type your answer below and press submit:
-		</div>
-		<br/>
-		<div id="instruction">
-			This is just a fun riddle to complete while you have a drink
-		</div>
-		<div class="w3-large" id="answer">
-			When you have me you want to share me, if you share me you no longer have me.....what am I?
-		</div>
-		<hr />
-        <div>
-            <form id="questionform">
-				<input id="question" />
-				<input type="submit" />
-			</form>
-        </div>
-		<div id="hint">
-			Your hint will appear here....but remember you will loose 5 points for each hint!
-		</div>
-        <div>
-            <form id="hintform">
-				<input type="button" id = "hint_button" value = "Hint"/>
-			</form>
-        </div>
-        <div>
-          	Number of hints used:
-        </div>
-		<div id="hintNo">
-			0
-		</div>
+<div class="w3-content w3-container w3-padding-64" id="aboutquest">
+    <div class="quest_scroll w3-display-container">
+        <img src="{% static "images/scroll.png" %}" style="width:100%"></a>
+    
+        <div class="w3-display-middle w3-text-black" style="font-size: 18px;">
+            <div class="w3-container">
+              <h1>QUEST!!</h1>
+				<div>
+					Type your answer below and press submit:
+				</div>
+				<br/>
+				<div id="instruction">
+					This is just a fun riddle to complete while you have a drink
+				</div>
+				<div class="w3-large" id="answer">
+					When you have me you want to share me, if you share me you no longer have me.....what am I?
+				</div>
+				<hr />
+				<div>
+					<form id="questionform">
+						<input id="question" />
+						<input type="submit" />
+					</form>
+				</div>
+				<div id="hint">
+					Your hint will appear here....but remember you will loose 5 points for each hint!
+				</div>
+				<div>
+					<form id="hintform">
+						<input type="button" id = "hint_button" value = "Hint"/>
+					</form>
+				</div>
+				<div>
+					Number of hints used:
+				</div>
+				<div id="hintNo">
+					0
+				</div>
+			</div>
+            
+        
 	</div>
+</div>
 		<!-- fix this -->
 		<script src="{% static 'js/jquery.min.js' %}"> </script>
 		<script src="{% static 'js/adventureQuest-jquery.js' %}"> </script>
