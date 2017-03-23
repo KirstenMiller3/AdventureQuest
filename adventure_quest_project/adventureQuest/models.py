@@ -15,7 +15,7 @@ import ast
 ######################
 
 
-# This is a helper methods to allow list fields for models
+# This is a helper class to allow list fields for models
 class ListField(models.TextField):
 
     def __init__(self, *args, **kwargs):

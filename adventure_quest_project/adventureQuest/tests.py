@@ -58,6 +58,7 @@ def add_post(u, quest, title, content, hints):
     return p
 
 
+# Helper method to add a riddle to the database.
 def add_riddle():
     r = Riddle.objects.get_or_create(question_id=0)[0]
     r.question = "hfdjhfdj"
