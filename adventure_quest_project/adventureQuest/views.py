@@ -205,8 +205,20 @@ def register(request):
 
 
 def my_account(request):
-    context_dict = {}
+
     user = request.user
+
+
+    objects_filter = Post.objects.filter(user=user)
+    objects_post = objects_filter.order_by('hints')[:100]
+
+
+    context_dict = {
+        "object_list": objects_post,
+        "title": "List",
+    }
+
+
     #if request.user.is_authenticated():
     #name = request.user.username
     #pic = request.user.picture
@@ -223,10 +235,11 @@ def my_account(request):
         context_dict['city_centre_quest'] = 'n/a'
         context_dict['kids_quest'] = 'n/a'
 
-    for row in UserScores.objects.filter(user=request.user):
+    all_scores = UserScores.objects.filter(user=request.user)
+    ordered_scores=all_scores.order_by('-score')
+
+    for row in ordered_scores.filter(user=request.user):
         context_dict[row.quest.name] = row.score
-
-
 
 
     return render(request, 'adventureQuest/my_account.html',context_dict)
@@ -346,8 +359,10 @@ def mystery_quest_hall_of_fame(request):
     for quest_row in Quest.objects.filter(name='mystery_quest'):
         myQuest = quest_row
 
+    print('!!!!!!!!!!!!!!'+myQuest.name)
     objects_filter = Post.objects.filter(quest=myQuest)
     objects_post = objects_filter.order_by('hints')[:100]
+
 
     context = {
         "object_list": objects_post,

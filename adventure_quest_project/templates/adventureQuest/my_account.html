@@ -24,20 +24,36 @@
         
         <br/>
         <h3>Your profile picture</h3>
-         {{ pic }}
-        
-
     </div>
 
         <div class="w3-center">
             <img src="{{ MEDIA_URL}}{{ pic }}" alt="Picture of user" class="w3-image" style="width: 50%;"/>
         </div>
     <br/>
-    <div>
-        See your uploaded posts?
+    <div class="w3-center">
+        <h3>Your Hall of Fame Posts</h3>
     </div>
+     </div>
+    {% for obj in object_list %}
+        {% if obj.image %}
+        <div class = 'w3-content w3-center'>
+            <div style="display:inline; text-align:left;"><img src='{{ obj.image.url }}' class='img-responsive'/></div>
+            <div style="float: right"><ul>
+               <ul>Title: {{obj.title}}</ul>
+                   <ul>Uploaded by: {{obj.user}}</ul>
+                   <ul>Comment: {{obj.content}}</ul>
+                   <ul>Quest: {{obj.quest}}</ul>
+                   <ul>Date: {{obj.timestamp}}</ul>
+                {% if obj.hints != 10000 %}
+                    <ul>Hints used:{{obj.hints}}</ul>
+                {% else %}
+                    <ul>{{obj.user}} is still to conquer this quest!</ul>
+                {% endif %}
+            </ul></div>
+            <br><br><br><br>
+        </div>
+        {% endif %}
+{% endfor %}
 </div>    
-
-
 
 {% endblock %}
