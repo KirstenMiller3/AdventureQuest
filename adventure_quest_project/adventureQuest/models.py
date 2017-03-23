@@ -8,6 +8,13 @@ from datetime import datetime
 from django.template.defaultfilters import slugify
 import ast
 
+
+
+######################
+#   Helper methods   #
+######################
+
+
 # This is a helper methods to allow list fields for models
 class ListField(models.TextField):
 
@@ -32,6 +39,16 @@ class ListField(models.TextField):
     def value_to_string(self, obj):
         value = self._get_val_from_obj(obj)
         return self.get_db_prep_value(value)
+
+
+# Helper method to create an upload location for image files
+def upload_location(instance, filename):
+    return "%s/%s" % (instance.id, filename)
+
+
+##############################################
+#   This is our models for Adventure Quest   #
+##############################################
 
 
 # The UserProfile model stores information about each user.
@@ -59,11 +76,6 @@ class Riddle(models.Model):
 
     def __int__(self):
         return self.question_id
-
-
-# Helper method to create an upload location for image files
-def upload_location(instance, filename):
-    return "%s/%s" % (instance.id, filename)
 
 
 # The Quest model stores information about each different quest.
@@ -138,3 +150,5 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.text
+
+

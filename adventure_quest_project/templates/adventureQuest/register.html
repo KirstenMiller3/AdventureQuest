@@ -1,13 +1,10 @@
 {% extends 'adventureQuest/base.html' %}
 {% load staticfiles %}
-
 {% block title_block %}
     Register
 {% endblock %}
-
 <!-- lets users register for the site -->
 {% block body_block %}
-
 <div class="w3-content w3-container w3-padding-64 w3-center">
     <!-- checks if user is already registered and provides link back to homepage -->
     {% if registered %}
@@ -22,32 +19,19 @@
     <form class="w3-container w3-card-4 w3-hover-questy" id="user_form" method="post" action="{% url 'register' %}"
               enctype="multipart/form-data">
     {% csrf_token %}
-    
        <!-- Display each form -->
         <!-- User is prompted for following information -->
             <p><label for="id_username" class="w3-tooltip">Username:
                 <span class="w3-text">Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.</span></label> 
                 <input id="id_username" class="w3-input w3-border" maxlength="30" name="username" type="text"></p>
-  
-        
         <p><label for="id_email">Email address:</label> 
             <input id="id_email" class="w3-input w3-border" maxlength="254" name="email" type="email"></p>
-        
         <p><label for="id_password">Password:</label> 
             <input id="id_password" class="w3-input w3-border" name="password" type="password"></p>
-            
-
-            <!--<p><label for="id_picture" class="w3-btn w3-white w3-circle">Add a picture</label> 
-                
-                <input id="id_picture" name="picture" type="file" style="display: none;"></p>--><!-- Provide a *proper* button to click to submit the form. -->
-        
             <p><img id="preview" alt="Optionally: Upload a pic" width="100" height="100" /><br/>
                 <label for="id_picture" class="w3-button w3-white w3-hover-red">Upload</label>
                 <input id=id_picture name="picture" type="file" style="display: none;" onchange="document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])"></p>
-        
-        
     <button class="w3-btn w3-white" type="submit" name="submit" value="Register">Register</button>
-
     </form>
     <br/>
 </div>

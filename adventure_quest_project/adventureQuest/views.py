@@ -131,7 +131,7 @@ def kids_about(request):
 def mystery_about(request):
     context_dict = {}
     context_dict['questurl'] = reverse(mystery_quest)
-    context_dict['questmappos'] = "55.874692, -4.292962"
+    context_dict['questmappos'] = "55.856908, -4.246374"
     for row in Quest.objects.filter(name="mystery_quest"):
         context_dict['descr'] = row.description
         context_dict['age_limit'] = row.age_limit
