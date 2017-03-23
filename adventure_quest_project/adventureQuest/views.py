@@ -15,6 +15,7 @@ from django.core.signals import request_finished
 from .forms import PostForm, CommentForm
 from .models import Quest, Riddle, UserProfile, Post, Comment
 import re
+import json
 
 #############################################
 #   This is the views for Adventure Quest   #
@@ -511,7 +512,6 @@ def add_score(user, quest, score):
 	q.save()
 	return q
 
-import json
 def quest_ajax(request):
     response_data = {}
     questName = request.session['questName']
