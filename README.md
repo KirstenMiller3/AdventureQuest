@@ -35,7 +35,7 @@ Then, finally:
 
 ## Built With
 * [Django](https://docs.djangoproject.com/en/1.10/) - The web framework used
-* [W3.CSS](https://docs.djangoproject.com/en/1.10/) - The web framework used
+* [W3.CSS](https://www.w3schools.com/w3css/default.asp) - The CSS framework used
 * JQuery
 * Ajax
 * Google Maps API
