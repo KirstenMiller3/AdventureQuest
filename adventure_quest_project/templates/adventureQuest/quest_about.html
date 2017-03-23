@@ -1,22 +1,21 @@
 {% load staticfiles %}
 
-<div class="w3-content w3-container w3-padding-64" id="aboutquest">
-    
-  
+
+        <div class="bg">
+       <img src="{% static "images/mapbg.jpg" %}" style="width:100%"></a>
+        </div>
 
 
-    <div class="map_back">
-    <img src="{% static "images/mapbg.jpg" %}" style="width:110%"></a>
-    </div>
-    
-
-     <div class="w3-content w3-container w3-padding-64">
+        <div class="w3-content w3-container w3-padding-64" id="aboutquest">
+        
+        
         <!-- Add Google Maps -->
-        <div id="Map" class="w3-round-large w3-greyscale" style="width:70%;height:350px;"></div>
+        <div id="Map" class="w3-round-large w3-greyscale" style="width:50%;height:350px;"></div>
+
 
    
-    <div class="w3-display-middle w3-text-black" style="font-size: 18px;">
-        <div class="w3-container">
+    <div class="w3-display-middle w3-text-white" style="font-size: 18px;">
+        <div class="text">
             <p>{{descr}}</p>
             <p>{{comment}}</p>
         </div>    
