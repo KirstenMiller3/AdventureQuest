@@ -7,12 +7,13 @@
 {% block body_block %}
 <div class="w3-content w3-container w3-padding-64 w3-card-2 w3-questy" id="my-account">
         {% if user.is_authenticated %}
-            <h3>Hello, {{ user.username }}</h3>
+            <h3>Greetings young quester, {{ user.username }}</h3>
         {% else %}
             <a href="{% url 'login' %}">Please Login</a>
         {% endif %}
     <div class="w3-center">
         <h1>Here are your current quest high scores!</h1>
+        <p>The score is the number of hints used on that quest</p>
         <ul class="w3-ul w3-center w3-card-12 w3-sand">
             <li>Mystery Quest: {{mystery_quest}}</li>
             <li>Finnieston Quest: {{finnieston_quest}}</li>
@@ -24,20 +25,36 @@
         
         <br/>
         <h3>Your profile picture</h3>
-         {{ pic }}
-        
-
     </div>
 
         <div class="w3-center">
             <img src="{{ MEDIA_URL}}{{ pic }}" alt="Picture of user" class="w3-image" style="width: 50%;"/>
         </div>
     <br/>
-    <div>
-        See your uploaded posts?
+    <div class="w3-center">
+        <h3>Your Hall of Fame Posts</h3>
     </div>
+     </div>
+    {% for obj in object_list %}
+        {% if obj.image %}
+        <div class = 'w3-content w3-center'>
+            <div style="display:inline; text-align:left;"><img src='{{ obj.image.url }}' class='img-responsive'/></div>
+            <div style="float: right"><ul>
+               <ul>Title: {{obj.title}}</ul>
+                   <ul>Uploaded by: {{obj.user}}</ul>
+                   <ul>Comment: {{obj.content}}</ul>
+                   <ul>Quest: {{obj.quest}}</ul>
+                   <ul>Date: {{obj.timestamp}}</ul>
+                {% if obj.hints != 10000 %}
+                    <ul>Hints used:{{obj.hints}}</ul>
+                {% else %}
+                    <ul>{{obj.user}} is still to conquer this quest!</ul>
+                {% endif %}
+            </ul></div>
+            <br><br><br><br>
+        </div>
+        {% endif %}
+{% endfor %}
 </div>    
-
-
 
 {% endblock %}

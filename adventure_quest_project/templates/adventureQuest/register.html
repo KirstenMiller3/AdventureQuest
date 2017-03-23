@@ -14,8 +14,9 @@
         </h2>    
         <br/>
     {% else %}
+         Sorry there was a problem, please try again
         <h2>Register Here</h2>
-    
+    {% endif %}
     <form class="w3-container w3-card-4 w3-hover-questy" id="user_form" method="post" action="{% url 'register' %}"
               enctype="multipart/form-data">
     {% csrf_token %}
@@ -43,9 +44,8 @@
         
         
     <button class="w3-btn w3-white" type="submit" name="submit" value="Register">Register</button>
-    
+
     </form>
-     {% endif %}
     <br/>
 </div>
 {% endblock %}

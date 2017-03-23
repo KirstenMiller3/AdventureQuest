@@ -1,7 +1,5 @@
-
 from django.shortcuts import render, render_to_response, redirect
 from django.http import HttpResponse
-
 from django.shortcuts import render
 from adventureQuest.forms import UserForm, UserProfileForm
 from django.contrib import messages
@@ -18,11 +16,16 @@ from .forms import PostForm, CommentForm
 from .models import Quest, Riddle, UserProfile, Post, Comment
 import re
 
-# Create your views here.
+#############################################
+#   This is the views for Adventure Quest   #
+#############################################
 
-# The home page
+
+# The home page, has info about Adventure Quest and links to the other
+# parts of the application.
 def index(request):
     return render(request, 'adventureQuest/index.html')
+
 
 # Quest comments
 def comment(request):
@@ -30,17 +33,15 @@ def comment(request):
     context={
         "comment_list": objects_comment,
     }
-
     return render(request, 'adventureQuest/comment.html', context)
+
 
 # Adding comments
 def add_comment(request):
-    #quest = request.quest
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            #comment.quest = comment.quest
             comment.save()
             return redirect('comment')
     else:
@@ -48,7 +49,8 @@ def add_comment(request):
     return render(request, 'adventureQuest/comment_form.html', {'form': form})
 
 
-# The about page for the Finnieston Quest.
+# The about page for the Finnieston Quest displays information about the
+# Quest, a map of the starting location and a link to begin the quest.
 def finnieston_about(request):
     context_dict = {}
     context_dict['questurl'] = reverse(finnieston_quest)
@@ -63,7 +65,8 @@ def finnieston_about(request):
     return render(request, 'adventureQuest/finnieston_about.html', context_dict)
 
 
-# The about page for the Glasgow University quest.
+# The about page for the Glasgow University Quest displays information about the
+# Quest, a map of the starting location and a link to begin the quest.
 def glasgow_uni_about(request):
     context_dict = {}
     context_dict['questurl'] = reverse(glasgow_uni_quest)
@@ -77,7 +80,8 @@ def glasgow_uni_about(request):
     return render(request, 'adventureQuest/glasgow_uni_about.html', context_dict)
 
 
-# The about page for the Southside quest.
+# The about page for the Southside Quest displays information about the
+# Quest, a map of the starting location and a link to begin the quest.
 def southside_about(request):
     context_dict = {}
     context_dict['questurl'] = reverse(southside_quest)
@@ -91,7 +95,8 @@ def southside_about(request):
     return render(request, 'adventureQuest/southside_about.html', context_dict)
 
 
-# The about page for the City Centre quest.
+# The about page for the City Centre Quest displays information about the
+# Quest, a map of the starting location and a link to begin the quest.
 def city_centre_about(request):
     context_dict = {}
     context_dict['questurl'] = reverse(city_centre_quest)
@@ -105,7 +110,8 @@ def city_centre_about(request):
     return render(request, 'adventureQuest/city_centre_about.html', context_dict)
 
 
-# The about page for the Kids quest.
+# The about page for the Kids Quest displays information about the
+# Quest, a map of the starting location and a link to begin the quest.
 def kids_about(request):
     context_dict = {}
     context_dict['questurl'] = reverse(kids_quest)
@@ -115,12 +121,12 @@ def kids_about(request):
         context_dict['age_limit'] = row.age_limit
         context_dict['difficulty'] = row.difficulty
         context_dict['start'] = row.start_point
-        
     check_url(request)
     return render(request, 'adventureQuest/kids_about.html', context_dict)
 
 
-# The about page for the ?MyStErY? quest.
+# The about page for the Mystery Quest displays information about the
+# Quest, a map of the starting location and a link to begin the quest.
 def mystery_about(request):
     context_dict = {}
     context_dict['questurl'] = reverse(mystery_quest)
@@ -137,19 +143,16 @@ def mystery_about(request):
 
 # The view for the congratulations page
 def congratulations(request):
-    # In this view we need to add their high score to the correct user field!!
     return render(request, 'adventureQuest/congratulations.html')
 
 
-# The view for the registration page.
+# The view for the registration page. Allows users to register with a username,
+# email and password and an optional profile pciture.
 def register(request):
     # Tells us if registration was successful or not.
     registered = False
-    # It's a form so POST
+    # Try and get form info with POST.
     if request.method == 'POST':
-        # Try to get form data from users
-        #user_form = UserForm(data=request.POST)
-        #profile_form = UserProfileForm(data=request.POST)
         user_form = UserForm(request.POST or None, request.FILES or None)
         profile_form = UserProfileForm(request.POST or None, request.FILES or None)
         # If the two forms are valid:
@@ -162,32 +165,24 @@ def register(request):
             user.set_password(user.password)
             user.save()
 
-            # Now sort out the UserProfile instance.
-            # Since we need to set the user attribute ourselves,
-            # we set commit=False. This delays saving the model
-            # until we're ready to avoid integrity problems.
+            # Set commit=False to avoid integrity problems.
             profile = profile_form.save(commit=False)
             profile.user = user
 
-            # Did the user provide a profile picture?
-            # If so, we need to get it from the input form and
-            # put it in the UserProfile model.
-
+            # Check if user uploaded a profile picture.
             if 'picture' in request.FILES:
-
-
                 profile.picture = request.FILES['picture']
 
             # Now we save the UserProfile model instance.
             profile.save()
 
-            # Update our variable to indicate that the template
-            # registration was successful.
+            # Update variable as registration was successful.
             registered = True
         else:
             # Invalid form or forms - mistakes or something else?
             # Print problems to the terminal.
             print(user_form.errors, profile_form.errors)
+
     else:
         # Not a HTTP POST, so we render our form using two ModelForm instances.
         # These forms will be blank, ready for user input.
@@ -199,19 +194,31 @@ def register(request):
                   'adventureQuest/register.html',
                   {'user_form': user_form,
                    'profile_form': profile_form,
-                   'registered': registered})
+                   'registered': registered, 'user_errors':str(user_form.errors), 'profile_errors':str(profile_form.errors)})
 
 
 
-
+# The My Account page view.
 def my_account(request):
-    context_dict = {}
+
     user = request.user
+
+
+    objects_filter = Post.objects.filter(user=user)
+    objects_post = objects_filter.order_by('hints')[:100]
+
+
+    context_dict = {
+        "object_list": objects_post,
+        "title": "List",
+    }
+
+
     #if request.user.is_authenticated():
     #name = request.user.username
     #pic = request.user.picture
     for row in UserProfile.objects.filter(user=user):
-        context_dict['user'] = row.picture
+        context_dict['user'] = row.user
         context_dict['pic'] = str(row.picture)
 
 
@@ -223,10 +230,11 @@ def my_account(request):
         context_dict['city_centre_quest'] = 'n/a'
         context_dict['kids_quest'] = 'n/a'
 
-    for row in UserScores.objects.filter(user=request.user):
+    all_scores = UserScores.objects.filter(user=request.user)
+    ordered_scores=all_scores.order_by('-score')
+
+    for row in ordered_scores.filter(user=request.user):
         context_dict[row.quest.name] = row.score
-
-
 
 
     return render(request, 'adventureQuest/my_account.html',context_dict)
@@ -346,8 +354,10 @@ def mystery_quest_hall_of_fame(request):
     for quest_row in Quest.objects.filter(name='mystery_quest'):
         myQuest = quest_row
 
+    print('!!!!!!!!!!!!!!'+myQuest.name)
     objects_filter = Post.objects.filter(quest=myQuest)
     objects_post = objects_filter.order_by('hints')[:100]
+
 
     context = {
         "object_list": objects_post,

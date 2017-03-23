@@ -53,18 +53,19 @@
             <!-- Links on right -->
             <li style="float:right">
                 {% if user.is_authenticated %}
-                <a href="{% url 'my_account' %}">
-                <img src="http://www.diaglobal.org/_Images/member/Generic_Image_Missing-Profile.jpg" class="w3-left w3-circle w3-margin-right" style="width:25px"><!--{{ MEDIA_URL}}{{ pic }}wont work as pic needs passed -->
+                <a href="{% url 'my_account' %}"><i class="fa fa-user-circle" style="font-size:24px"></i>
                 Hello, {{ user.username }}!
+                </a>
                 {% else %}
                 <a href="{% url 'login' %}"><i class="fa fa-user-circle" style="font-size:24px"></i>
                 Login
+                </a>
                 {% endif %}
-                </a> 
-            <a href=https://www.facebook.com/adventurequestglasgow/><i class="fa fa-facebook-official w3-hover-text-indigo"style="font-size:24px"></i>
-            <a href=https://www.instagram.com/adventurequestglasgow/><i class="fa fa-instagram w3-hover-text-purple" style="font-size:24px"></i>
-            <a href=https://www.snapchat.com/add/aqgla/><i class="fa fa-snapchat w3-hover-text-yellow" style="font-size:24px"></i>
-            <a href=https://twitter.com/AQ_GLA><i class="fa fa-twitter w3-hover-text-light-blue" style="font-size:24px"></i></a>
+                 
+            <a href="https://www.facebook.com/adventurequestglasgow"><i class="fa fa-facebook-official w3-hover-text-indigo" style="font-size:24px"></i></a>
+            <a href="https://www.instagram.com/adventurequestglasgow"><i class="fa fa-instagram w3-hover-text-purple" style="font-size:24px"></i></a>
+            <a href="https://www.snapchat.com/add/aqgla"><i class="fa fa-snapchat w3-hover-text-yellow" style="font-size:24px"></i></a>
+            <a href="https://twitter.com/AQ_GLA"><i class="fa fa-twitter w3-hover-text-light-blue" style="font-size:24px"></i></a>
             </li>
         </div>
         </div> 
@@ -94,10 +95,10 @@
     <div class="w3-container w3-xlarge w3-section w3-center" style="list-style-type: none">
         <br>
         <li>
-        <a href=https://www.facebook.com/adventurequestglasgow/><i class="fa fa-facebook-official w3-hover-text-indigo"></i>
-        <a href=https://www.instagram.com/adventurequestglasgow/><i class="fa fa-instagram w3-hover-text-purple"></i>
-        <a href=https://www.snapchat.com/add/aqgla/><i class="fa fa-snapchat w3-hover-text-yellow"></i>
-        <a href=https://twitter.com/AQ_GLA><i class="fa fa-twitter w3-hover-text-light-blue"></i>
+        <a href="https://www.facebook.com/adventurequestglasgow"><i class="fa fa-facebook-official w3-hover-text-indigo"></i></a>
+        <a href="https://www.instagram.com/adventurequestglasgow"><i class="fa fa-instagram w3-hover-text-purple"></i></a>
+        <a href="https://www.snapchat.com/add/aqgla"><i class="fa fa-snapchat w3-hover-text-yellow"></i></a>
+        <a href="https://twitter.com/AQ_GLA"><i class="fa fa-twitter w3-hover-text-light-blue"></i></a>
         </li>
     </div>
 </footer>
