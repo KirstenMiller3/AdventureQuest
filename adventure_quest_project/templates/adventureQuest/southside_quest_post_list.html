@@ -4,6 +4,7 @@
 Photo Gallery
 {% endblock  %}
 
+<!-- Southside Quest Hall of Fame -->
 {% block body_block %}
 
 <div class = 'w3-content w3-center'>
@@ -11,6 +12,7 @@ Photo Gallery
         <h1>Southside Quest Hall of Fame</h1>
     </div>
  </div>
+    <!-- displays all entries for the Southside Quest Hall of Fame -->
     {% for obj in object_list %}
         {% if obj.image %}
         <div class = 'w3-content w3-center'>

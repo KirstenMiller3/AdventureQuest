@@ -5,12 +5,13 @@ Photo Gallery
 {% endblock  %}
 
 {% block body_block %}
-
+<!-- Glasgow Uni specific Hall of Fame -->
 <div class = 'w3-content w3-center'>
     <div>
         <h1>Glasgow Uni Quest Hall of Fame</h1>
     </div>
  </div>
+       <!-- display all entries for the City Centre Hall of Fame -->
     {% for obj in object_list %}
         {% if obj.image %}
         <div class = 'w3-content w3-center'>
