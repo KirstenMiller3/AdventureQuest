@@ -27,7 +27,7 @@ Run database migrations:
 
 Be sure to run the populate script:
 
-``python populate_riddles.py``
+``python population_script.py``
 
 Then, finally:
 
