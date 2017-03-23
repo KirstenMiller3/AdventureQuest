@@ -53,7 +53,8 @@
             <!-- Links on right -->
             <li style="float:right">
                 {% if user.is_authenticated %}
-                <a href="{% url 'my_account' %}"><i class="fa fa-user-circle" style="font-size:24px"></i>
+                <a href="{% url 'my_account' %}">
+                <img src="http://www.diaglobal.org/_Images/member/Generic_Image_Missing-Profile.jpg" class="w3-left w3-circle w3-margin-right" style="width:25px"><!--{{ MEDIA_URL}}{{ pic }}wont work as pic needs passed -->
                 Hello, {{ user.username }}!
                 {% else %}
                 <a href="{% url 'login' %}"><i class="fa fa-user-circle" style="font-size:24px"></i>

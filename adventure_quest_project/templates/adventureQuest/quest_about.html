@@ -1,47 +1,48 @@
 {% load staticfiles %}
 
 
-        <div class="bg">
-       <img src="{% static "images/mapbg.jpg" %}" style="width:100%"></a>
-        </div>
-
-
-        <div class="w3-content w3-container w3-padding-64" id="aboutquest">
-        
-        
-        <!-- Add Google Maps -->
-        <div id="Map" class="w3-round-large w3-greyscale" style="width:50%;height:350px;"></div>
-
-
+<div class="w3-content w3-container w3-padding-64" id="aboutquest">
+    
    
-    <div class="w3-display-middle w3-text-white" style="font-size: 18px;">
-        <div class="text">
-            <p>{{descr}}</p>
-            <p>{{comment}}</p>
-        </div>    
-        <p>Starting point:{{ start }}</p>
-        <p>Difficulty:{{ difficulty }}</p>
-        <p>Minimum age: {{ age_limit }}</p>
-        <p>Time to complete:{{ value}}</p>
-        <p>Reviews:  link here?{{ value}}</p>
-    </div>
-    </div>
-
-
+    
+    <div class="quest_scroll w3-display-container">
+        <img src="{% static "images/scroll.png" %}" style="width:100%"></a>
+    
+        <div class="w3-display-middle w3-text-black" style="font-size: 18px;">
+            <div class="w3-container">
+                <p>{{descr}}</p>
+                <p>{{comment}}</p>
+            </div>    
+            <p>Starting point:{{ start }}</p>
+            <p>Difficulty:{{ difficulty }}</p>
+            <p>Minimum age: {{ age_limit }}</p>
+            <p>Time to complete:{{ value}}</p>
+        
+    
  
-         <div class="quest_button">
-            {% if user.is_authenticated %}
-                <a class="w3-btn w3-round-large" href="{{questurl}}">Begin Quest</a>
-            {% else %}
-                <a class="w3-btn w3-round-large" href="{% url 'login' %}">Login before questing!</a>
-            {% endif %}
-         
+            <div class="quest_button">
+                {% if user.is_authenticated %}
+                    <a class="w3-btn w3-round-large" href="{{questurl}}">Begin Quest</a>
+                {% else %}
+                    <a class="w3-btn w3-round-large" href="{% url 'login' %}">Login before questing!</a>
+                {% endif %}
+                
+            </div>
         </div>
+
         <div class="w3-center">
         <a class="w3-btn w3-round-large w3-white" href="{% url 'comment' %}">See Quest Comments</a>
         </div>
     </div>
+
+<div class="w3-content w3-container w3-padding-64">
+        <!-- Add Google Maps -->
+        <div id="Map" class="w3-round-large w3-greyscale" style="width:100%;height:400px;"></div>
+</div>
+</div>
+
 {% block js_block %}
+
 <script>
 function mapQuest()
 {

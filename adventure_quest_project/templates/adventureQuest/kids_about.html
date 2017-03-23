@@ -2,7 +2,9 @@
 {% load staticfiles %}
 {% block title_block %}Kidz Quest About{% endblock %}
 {% block body_block %}  
-
+<div id="bg">
+  <img src="{% static "images/mapbg.jpg" %}" alt="">
+</div>
 {% include "adventureQuest/quest_about.html" %}
 
 {% endblock %}
