@@ -4,12 +4,14 @@
 Comment
 {% endblock  %}
 
+<!-- allows users to add comments to a selected quest -->
 {% block body_block %}
 <div class = 'w3-content w3-padding-64 w3-center'>
 
 <h1>New comment</h1>
     <form method="POST" class="post-form w3-container w3-center w3-card-16 w3-hover-questy">
         {% csrf_token %}
+        <!-- drop-down menu to choose a quest -->
         <div class="w3-center w3-panel" style="width: 100%; display: inline-block">
             <p><label for="id_quest">Quest:</label> <select id="id_quest" name="quest">
             <option value="" selected="selected">Choose a Quest</option>
@@ -21,13 +23,15 @@ Comment
             </select></p>
             <p><label for="id_author">Author:</label> <input id="id_author" maxlength="128" name="author" type="text"></p>
             <label for="id_text">Your Comment:</label>
+            <!-- enter your comment here -->
             <p><textarea cols="100" id="id_text" name="text" rows="5"></textarea></p>
         
         <button type="submit" class="save btn btn-default">Submit</button>
         </div>
     </form>
     <div>
-       <p> <a href="/adventureQuest/comment/">Return</a> to all Comments</p>
+       <!-- links back to comment page where all comments are displayed -->
+        <p> <a href="/adventureQuest/comment/">Return</a> to all Comments</p>
     </div>
 </div>
 {% endblock  %}

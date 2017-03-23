@@ -179,7 +179,6 @@ def register(request):
             # Update variable as registration was successful.
             registered = True
         else:
-            # Invalid form or forms - mistakes or something else?
             # Print problems to the terminal.
             print(user_form.errors, profile_form.errors)
 
@@ -194,102 +193,78 @@ def register(request):
                   'adventureQuest/register.html',
                   {'user_form': user_form,
                    'profile_form': profile_form,
-                   'registered': registered, 'user_errors':str(user_form.errors), 'profile_errors':str(profile_form.errors)})
+                   'registered': registered, })
 
 
 
-# The My Account page view.
+# The My Account page view. This view allows information to be displayed about the
+# quests the user has completed and their high scores, their profile picture and
+# any hall of fame posts they have made.
 def my_account(request):
-
+    # Get current user.
     user = request.user
 
-
+    # Get all the hall of fame posts made by user and order them by number of hints used low-high.
     objects_filter = Post.objects.filter(user=user)
     objects_post = objects_filter.order_by('hints')[:100]
 
+    # Add the posts to the context dictionary.
+    context_dict = {"object_list": objects_post,}
 
-    context_dict = {
-        "object_list": objects_post,
-        "title": "List",
-    }
+    # Initialise each quest so that if they haven't completed the quest n/a will appear.
+    context_dict['mystery_quest'] = 'n/a'
+    context_dict['finnieston_quest'] = 'n/a'
+    context_dict['glasgow_uni_quest'] = 'n/a'
+    context_dict['southside_quest'] = 'n/a'
+    context_dict['city_centre_quest'] = 'n/a'
+    context_dict['kids_quest'] = 'n/a'
 
-
-    #if request.user.is_authenticated():
-    #name = request.user.username
-    #pic = request.user.picture
+    # Get the user information to be displayed on the page.
     for row in UserProfile.objects.filter(user=user):
         context_dict['user'] = row.user
         context_dict['pic'] = str(row.picture)
 
-
-
-        context_dict['mystery_quest'] = 'n/a'
-        context_dict['finnieston_quest'] = 'n/a'
-        context_dict['glasgow_uni_quest'] = 'n/a'
-        context_dict['southside_quest'] = 'n/a'
-        context_dict['city_centre_quest'] = 'n/a'
-        context_dict['kids_quest'] = 'n/a'
-
+    # Order the number of hints so that best scores are at the top.
     all_scores = UserScores.objects.filter(user=request.user)
-    ordered_scores=all_scores.order_by('-score')
+    ordered_scores = all_scores.order_by('-score')
 
+    # Get the least amount of hints used for each quest and update context dictionary.
     for row in ordered_scores.filter(user=request.user):
         context_dict[row.quest.name] = row.score
-
 
     return render(request, 'adventureQuest/my_account.html',context_dict)
 
 
-# The view for login page.
+# The view for login page. Authenticates users who provide valid log in details.
 def user_login(request):
     context_dict = {}
-    # If the request is a HTTP POST, try to pull out the relevant information.
+    # If the request is a POST, try to get the information.
     if request.method == 'POST':
-        # Gather the username and password provided by the user.
-        # This information is obtained from the login form.
-        # We use request.POST.get('<variable>') as opposed
-        # to request.POST['<variable>'], because the
-        # request.POST.get('<variable>') returns None if the
-        # value does not exist, while request.POST['<variable>']
-        # will raise a KeyError exception.
+        # Get the username and password provided by the user.
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        # Use Django's machinery to attempt to see if the username/password
-        # combination is valid - a User object is returned if it is.
+        # Check if the username/password combination is valid,
+        # a User object is returned if it is.
         user = authenticate(username=username, password=password)
 
-        # If we have a User object, the details are correct.
-        # If None (Python's way of representing the absence of a value), no user
-        # with matching credentials was found.
+        # Check if a User object was returned.
         if user:
-            # Is the account active? It could have been disabled.
+            # Check user hasn't been disabled.
             if user.is_active:
-                # If the account is valid and active, we can log the user in.
-                # We'll send the user back to the homepage.
+                # log user in and redirect them to the homepage
                 login(request, user)
                 return HttpResponseRedirect(reverse('index'))
             else:
-                # An inactive account was used - no loggin in!
+                # Account has been disabled so don't log them in.
                 return HttpResponse("Your adventureQuest account is disabled.")
         else:
-            # Bad login details were provided. So we can't log the user in.
+            # User object wasn't returned so user details weren't authenticated.
             print("Invalid login details: {0}, {1}".format(username, password))
             context_dict['invalid_deets'] = True
             return render(request, 'adventureQuest/login.html', context_dict)
-
-    # The request is not a HTTP POST, so display the login form.
-    # This scenario would most likely be a HTTP GET.
     else:
-        # No context variables to pass the template system, hence the
-        # blank dictionary object...
         return render(request, 'adventureQuest/login.html', {})
-
-
-# THINK THIS CAN BE DELETED
-@login_required
-def restricted(request):
-    return render(request, 'adventureQuest/restricted.html')
 
 
 # Use the login_required() decorator to ensure only those logged in can access the view
@@ -300,184 +275,187 @@ def user_logout(request):
     # Take the user back to the homepage.
     return HttpResponseRedirect(reverse('index'))
 
+
 #Hall of Fame view from which quest can be selected
 def hall_of_fame(request):
     return render(request, 'adventureQuest/hall_of_fame.html')
 
-
-#add login_required
+# This allows users to create a post in the Hall of Fame.
 def post_create(request):
+    # If user is not authenticated, redirect them to login.
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
 
+    # Try and get the information from the POST
     form = PostForm(request.POST or None, request.FILES or None)
 
-    myHint = None
+    # Initalise hints as None.
+    my_hint = None
 
+    # If form is valid
     if form.is_valid():
+        # Set commit=False to avoid integrity problems.
         instance = form.save(commit=False)
+        # Save the post user.
         instance.user = request.user
-
+        # Save the quest the post is associated with.
         for quest_post in Quest.objects.filter(name=instance.quest):
-            myQuest = quest_post
-
-        for score_row in UserScores.objects.filter(user=request.user, quest=myQuest):
-            myHint = score_row.score
-
-        if myHint != None:
-            instance.hints = myHint
+            my_quest = quest_post
+        # Save the score the user got for that quest.
+        for score_row in UserScores.objects.filter(user=request.user, quest=my_quest):
+            my_hint = score_row.score
+        # If they have completed the quest update the number of hints used.
+        if my_hint != None:
+            instance.hints = my_hint
+        # Now save the post.
         instance.save()
 
-        # message success
+        # The post was a success!
         messages.success(request, "Post was created")
         return HttpResponseRedirect(reverse('hall_of_fame'))
 
-    context = {
-        "form": form,
-    }
-
+    # Else the post wasn't successful so return form.
+    context = {"form": form,}
 
     return render(request, 'adventureQuest/post_form.html', context)
 
 
-def post_list(request):
-    objects_post = Post.objects.order_by('hints')[:100]
-
-    context = {
-        "object_list": objects_post,
-        "title": "List",
-       # "page_request_var": page_request_var
-    }
-    return render(request, 'adventureQuest/post_list.html', context)
-
+# This is the view for the mystery quest hall of fame. Posts from that quest will
+# be displayed here in order of number of hints used low-high.
 def mystery_quest_hall_of_fame(request):
-    for quest_row in Quest.objects.filter(name='mystery_quest'):
-        myQuest = quest_row
 
-    print('!!!!!!!!!!!!!!'+myQuest.name)
-    objects_filter = Post.objects.filter(quest=myQuest)
-    objects_post = objects_filter.order_by('hints')[:100]
+    context = hall_of_fame_helper("mystery_quest")
 
-
-    context = {
-        "object_list": objects_post,
-        "title": "List",
-    }
     return render(request, 'adventureQuest/mystery_quest_post_list.html', context)
 
 
+# This is the view for the finnieston quest hall of fame. Posts from that quest will
+# be displayed here in order of number of hints used low-high.
 def finnieston_quest_hall_of_fame(request):
-    for quest_row in Quest.objects.filter(name='finnieston_quest'):
-        myQuest = quest_row
 
-    objects_filter = Post.objects.filter(quest=myQuest)
-    objects_post = objects_filter.order_by('hints')[:100]
+    context = hall_of_fame_helper("finnieston_quest")
 
-    context = {
-        "object_list": objects_post,
-        "title": "List",
-    }
     return render(request, 'adventureQuest/finnieston_quest_post_list.html', context)
 
+
+# This is the view for the Glasgow University quest hall of fame. Posts from that quest will
+# be displayed here in order of number of hints used low-high.
 def glasgow_uni_quest_hall_of_fame(request):
-    for quest_row in Quest.objects.filter(name='glasgow_uni_quest'):
-        myQuest = quest_row
 
-    objects_filter = Post.objects.filter(quest=myQuest)
-    objects_post = objects_filter.order_by('hints')[:100]
+    context = hall_of_fame_helper("glasgow_uni_quest")
 
-    context = {
-        "object_list": objects_post,
-        "title": "List",
-    }
     return render(request, 'adventureQuest/glasgow_uni_quest_post_list.html', context)
 
+
+# This is the view for the Southside University quest hall of fame. Posts from that quest will
+# be displayed here in order of number of hints used low-high.
 def southside_quest_hall_of_fame(request):
-    for quest_row in Quest.objects.filter(name='southside_quest'):
-        myQuest = quest_row
 
-    objects_filter = Post.objects.filter(quest=myQuest)
-    objects_post = objects_filter.order_by('hints')[:100]
+    context = hall_of_fame_helper("southside_quest")
 
-    context = {
-        "object_list": objects_post,
-        "title": "List",
-    }
     return render(request, 'adventureQuest/southside_quest_post_list.html', context)
 
+
+# This is the view for the City Centre University quest hall of fame. Posts from that quest will
+# be displayed here in order of number of hints used low-high.
 def city_centre_quest_hall_of_fame(request):
-    for quest_row in Quest.objects.filter(name='city_centre_quest'):
-        myQuest = quest_row
 
-    objects_filter = Post.objects.filter(quest=myQuest)
-    objects_post = objects_filter.order_by('hints')[:100]
+    context = hall_of_fame_helper("city_centre_quest")
 
-    context = {
-        "object_list": objects_post,
-        "title": "List",
-    }
     return render(request, 'adventureQuest/city_centre_quest_post_list.html', context)
 
+
+# This is the view for the Kids University quest hall of fame. Posts from that quest will
+# be displayed here in order of number of hints used low-high.
 def kids_quest_hall_of_fame(request):
-    for quest_row in Quest.objects.filter(name='kids_quest'):
-        myQuest = quest_row
 
-    objects_filter = Post.objects.filter(quest=myQuest)
-    objects_post = objects_filter.order_by('hints')[:100]
+    context = hall_of_fame_helper("kids_quest")
 
-    context = {
-        "object_list": objects_post,
-        "title": "List",
-    }
     return render(request, 'adventureQuest/kids_quest_post_list.html', context)
 
-# test_Quest view
+
+# Helper method for Hall Of Fame posts that gets the posts associated with said quest.
+def hall_of_fame_helper(quest_name):
+    # Get the quest object
+    for quest_row in Quest.objects.filter(name=quest_name):
+        my_quest = quest_row
+    # Get all the hall of fame posts associated with that quest.
+    objects_filter = Post.objects.filter(quest=my_quest)
+    # Order them by hints used low-high.
+    objects_post = objects_filter.order_by('hints')[:100]
+    # Add the posts to a dictionary.
+    context = {"object_list": objects_post,}
+    # return the dictionary of posts.
+    return context
+
+
+# This is the view for the mystery quest. This is where riddles for that quest are shown.
 def mystery_quest(request):
+    # Redirected if not logged in as only users can play quests.
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     else:
+        # helper method which gets the quest name and adds it as a session variable.
         get_current_quest(request)
         return render(request, 'adventureQuest/mystery_quest.html')
 
+
+# This is the view for the finnieston quest. This is where riddles for that quest are shown.
 def finnieston_quest(request):
+    # Redirected if not logged in as only users can play quests.
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     else:
+        # helper method which gets the quest name and adds it as a session variable.
         get_current_quest(request)
         return render(request, 'adventureQuest/finnieston_quest.html')
 
+
+# This is the view for the Glasgow uni quest. This is where riddles for that quest are shown.
 def glasgow_uni_quest(request):
+    # Redirected if not logged in as only users can play quests.
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     else:
+        # helper method which gets the quest name and adds it as a session variable.
         get_current_quest(request)
         return render(request, 'adventureQuest/glasgow_uni_quest.html')
 
 
+# This is the view for the southside quest. This is where riddles for that quest are shown.
 def southside_quest(request):
+    # Redirected if not logged in as only users can play quests.
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     else:
+        # helper method which gets the quest name and adds it as a session variable.
         get_current_quest(request)
         return render(request, 'adventureQuest/southside_quest.html')
 
 
+# This is the view for the city centre quest. This is where riddles for that quest are shown.
 def city_centre_quest(request):
+    # Redirected if not logged in as only users can play quests.
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     else:
+        # helper method which gets the quest name and adds it as a session variable.
         get_current_quest(request)
         return render(request, 'adventureQuest/city_centre_quest.html')
 
 
+# This is the view for the kids quest. This is where riddles for that quest are shown.
 def kids_quest(request):
+    # Redirected if not logged in as only users can play quests.
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
     else:
+        # helper method which gets the quest name and adds it as a session variable.
         get_current_quest(request)
         return render(request, 'adventureQuest/kids_quest.html')
 
-# Method that would reset the quest if the user leaves half way through...not working, maybe need a quit button
+
+# Helper method that resets the quest if the user leaves half way through
 def check_url(request):
     request.session['riddleQuestionID'] = 0
     request.session['riddleAnswerID'] = 0
@@ -485,13 +463,9 @@ def check_url(request):
     request.session['riddleCorrectNo'] = 0
     request.session['numberHint'] = 0
     request.session['questName'] = 0
-    #original_path = '/adventureQuest/quest_ajax/'
 
 
-
-
-
-# incrementors
+# Helper method that increments cookies for the quest.
 def quest_cookies(request, inc, hint):
     riddleQuestionID = int(get_server_side_cookie(request,  'riddleQuestionID', '0'))
     if inc == True:
@@ -516,14 +490,15 @@ def quest_cookies(request, inc, hint):
     numberRiddles = int(get_server_side_cookie(request, 'numberRiddles', '0'))
     request.session['numberRiddles'] = numberRiddles
 
-# server side cookie
+
+# Helper method that gets cookies.
 def get_server_side_cookie(request, cookie, default_val = None):
     val = request.session.get(cookie)
     if not val:
         val = default_val
     return val
 
-
+# Helper method
 def get_current_quest(request):
     current_path = request.get_full_path()
     questName ="".join(current_path.split('/')[2:])
@@ -632,7 +607,9 @@ def quest_ajax(request):
 
 
 
-
+######################
+#   Helper methods   #
+######################
 
 
 

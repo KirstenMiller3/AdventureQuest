@@ -5,9 +5,11 @@
     Register
 {% endblock %}
 
+<!-- lets users register for the site -->
 {% block body_block %}
 
 <div class="w3-content w3-container w3-padding-64 w3-center">
+    <!-- checks if user is already registered and provides link back to homepage -->
     {% if registered %}
         <h2>Thank You!
         <a href="{% url 'index' %}">Return to the homepage.</a>
@@ -22,6 +24,7 @@
     {% csrf_token %}
     
        <!-- Display each form -->
+        <!-- User is prompted for following information -->
             <p><label for="id_username" class="w3-tooltip">Username:
                 <span class="w3-text">Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.</span></label> 
                 <input id="id_username" class="w3-input w3-border" maxlength="30" name="username" type="text"></p>
