@@ -7,6 +7,7 @@ from datetime import datetime
 from django.contrib import auth
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.utils.encoding import force_text
+
 import os
 
 #############################################
@@ -45,13 +46,13 @@ def add_user_scores(user, quest, score):
 
 # Helper method to add a post to database.
 def add_post(u, quest, title, content, hints):
-    path = os.path.abspath('cat.jpg')
-    path = path[:3]
-    p = Post.objects.get_or_create(user=u,quest=quest,title = title, image = SimpleUploadedFile(name='cat.jpg', content=open(path+'cat.jpg').read()))[0]
+    path = os.path.abspath('')
+    mediapath =  os.path.join(path, 'media')
+    d = os.path.join(mediapath, 'test_images')
+    e = os.path.join(d, 'pic.jpg')
+    p = Post.objects.get_or_create(user=u,quest=quest,title = title, image = SimpleUploadedFile(name='cat.jpg', content=open(e).read()), height_field = 100, width_field = 100)[0]
     p.content = content
     p.hints = hints
-    p.height_field = 10
-    p.width_field = 10
     p.updated = timezone.now()
     p.timestamp = timezone.now()
     p.save()
