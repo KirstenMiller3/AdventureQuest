@@ -595,7 +595,7 @@ def quest_ajax(request):
     if correctNo <= numberRiddles:
 
         if user_answer in textAnswer:
-            response_data['hint'] = 'Your hint will appear here....but remember you will loose 5 points for each hint!'
+            response_data['hint'] = 'Remember the number of hints you use will be recorded!'
             quest_cookies(request, True, False)
             ridQID = request.session['riddleQuestionID']
             ridAID = request.session['riddleAnswerID']
