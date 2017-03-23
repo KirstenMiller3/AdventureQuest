@@ -1,7 +1,6 @@
 {% extends "adventureQuest/base.html" %}
 {% load staticfiles %}
 {% block Title %}AdventureQuest Home{% endblock %}
-
  {% block page_style_block %}
     <style>
     .bgimg-1 {
@@ -17,8 +16,6 @@
     }
    </style> 
 {% endblock %}
-
-
 {% block body_block %}  
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
@@ -26,14 +23,11 @@
     <span class="w3-center w3-padding-xlarge w3-black w3-jumbo w3-wide w3-text-sand w3-hover-opacity w3-hover-shadow">Adventure Quest </span> 
   </div>
 </div>
-
 <!-- Container (About Section) -->
 <div class="w3-content w3-container w3-padding-64" id="about">
   <h3 class="w3-center">About Us</h3>
   <p class="w3-center w3-xlarge"> Adventure Quest is an interactive treasure hunt game. It allows people to explore the city while also learning and having fun. Each quest has its own unique theme and will take you on a magical journey through the city. The quests are composed of multiple riddles and challenges. Players must solve each clue in order to be given the next riddle and location. This will allow players to discover the hidden gems away from the beaten path.</p>
   <p class="w3-center w3-large"><em>“The perfect combination of problem solving and the great outdoors” - The Guardian</em></p>
-
-
 <!-- Container (Quest Gallery Section) -->
 <div class="w3-content w3-container w3-padding-64" id="questgallery">
     <h3 class="w3-center">Quest Gallery</h3>
@@ -44,7 +38,6 @@
             <div class="w3-display-container"> 
             <a href="{% url 'mystery_about' %}">
             <img src= "{% static "images/kg.jpg" %}" style="width:100%;" alt="Quest 1"></a>
-               
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Mystery Quest
                     <br>Rating: Medium</div>
@@ -55,7 +48,6 @@
             <div class="w3-display-container"> 
             <a href="{% url "finnieston_about" %}">
             <img src="{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%" alt="Finnieston: Quest 2"></a>
-              
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Finnieston Quest
                     <br>Rating: Medium</div>
@@ -66,7 +58,6 @@
             <div class="w3-display-container">
             <a href="{% url 'glasgow_uni_about' %}">
              <img src="{% static "images/glasgow_uni.jpg" %}" style="width:100%" alt="Glasgow Uni: Quest 3"></a>
-                
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Glasgow University Quest
                     <br>Rating: Hard</div>
@@ -80,7 +71,6 @@
             <div class="w3-display-container"> 
             <a href="{% url 'southside_about' %}">
             <img src="{% static "images/southside.jpg" %}" style="width:100%" alt="South Side: Quest 4"></a>
-                
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">South Side Quest
                     <br>Rating: Easy</div>
@@ -91,7 +81,6 @@
             <div class="w3-display-container"> 
             <a href="{% url 'city_centre_about' %}">
             <img src="{% static "images/city.jpg" %}" style="width:100%" alt="City Centre: Quest 5"></a>
-               
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">City Centre Quest
                     <br>Rating: Hard</div>
@@ -102,7 +91,6 @@
         <a href="{% url 'kids_about' %}">
             <div class="w3-display-container">
             <img src="{% static "images/science.jpg" %}" style="width:100%" alt="Kids Quest: Quest 6"></a>
-               
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Kids Quest
                     <br>Rating: Easy</div>
@@ -115,7 +103,6 @@
         <div class="w3-col m4">
             <div class="w3-display-container"> 
             <img src="{% static "images/lock.jpg" %}" style="width:100%" alt="Quest 7">
-                
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Complete Quests to Unlock!</div>
                 </div>
@@ -123,7 +110,6 @@
         </div>
         <div class="w3-col m4">
             <div class="w3-display-container"> <img src="{% static "images/lock.jpg" %}" style="width:100%" alt="Quest 8"> 
-               
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Complete Quests to Unlock!</div>
                 </div>
@@ -131,7 +117,6 @@
         </div>
         <div class="w3-col m4">
             <div class="w3-display-container"> <img src="{% static "images/lock.jpg" %}" style="width:100%" alt="Quest 9">
-                
                 <div class="w3-display-middle w3-display-hover w3-large w3-text-white">
                     <div class="w3-padding w3-animate-opacity">Complete Quests to Unlock!</div>
                 </div>
@@ -145,27 +130,22 @@
 <br>
 <br>
 <br>
-    
-
-
 <!-- Hall Of Fame Parallax Image -->
 <div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle" style="white-space:nowrap;">
     <span class="w3-center w3-padding-xlarge w3-black w3-xlarge w3-wide w3-text-sand w3-animate-opacity"><a href="{% url 'hall_of_fame' %}">Hall of Fame</a></span>
   </div>
 </div>
-
-<!-- Container (Contact Section) -->
+<!-- Section describing the project -->
 <div class="w3-content w3-container w3-padding-64" id="contact">
   <h3 class="w3-center">About The Team</h3>
-  
   <p class="w3-center w3-large">Adventure Quest was created at the University of Glasgow by students of MSc Software Development, as part of a project for the Internet Technology course. The students involved were Tom Esparon, Holly Maxwell Pringle, Kirsten Miller, Susie Smart and Hannah Pankow.
   The site is built using Python, HTML, CSS, Ajax and JavaScript and the aim was for us to create a site using the Django framework. Ideally this project would work best as an app and if given the opportunity to develop it, we think it could be quite successful.
   </p>
-
+<!--Section for map of where the team is based-->
   <div class="w3-row w3-padding-32 w3-section">
     <div class="w3-half m4 w3-container">
-      <!-- Add Google Maps -->
+      <!-- Add Google Maps API -->
       <div id="googleMap" class="w3-round-large w3-greyscale" style="width:100%;height:400px;"></div>
     </div>
     <div class="w3-half m8 w3-container w3-section">
@@ -173,22 +153,17 @@
         <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i>Room 1028,<br>  Boyd Orr Building,<br>       175 University Avenue,<br>  Glasgow G12 8PW,<br><br>
         <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: 1102394m@student.gla.ac.uk<br>
       </div>
-     
     </div>
   </div>
 </div>
-        <!--    FB COMMENTS-->
+<!--Facebook COMMENTS section-->
 <div class="w3-content w3-center" style="max-width:600px">
     <div class=" w3-card-4 w3-white">
         <div class="fb-comments" data-href="https://www.facebook.com/pg/adventurequestglasgow/posts/?ref=page_internal" data-numposts="5"></div>
     </div>    
 </div>    
-
 {% endblock %}
-    
-{% block footer %}
-{% endblock %}    
-
+<!--A block for Javascript that is used on the index page: Facebook and Google Maps-->
 {% block js_block %}
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
@@ -209,14 +184,11 @@
         mapTypeId:google.maps.MapTypeId.ROADMAP
     };
     var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
-
     var marker = new google.maps.Marker({
         position: myCenter,
     });
     marker.setMap(map);
     }
-
-
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0z8juUZWLKkvKq4p8G9ne4Sr8RzB4hMY&callback=myMap"></script>
 {% endblock %}  
