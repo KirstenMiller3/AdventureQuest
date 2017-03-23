@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 from adventureQuest.models import UserProfile, Post, Comment
 
 
+#############################################
+#   This is our forms for Adventure Quest   #
+#############################################
+
+
 # This is the form to get details when users register.
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -20,7 +25,7 @@ class UserProfileForm(forms.ModelForm):
         fields = ['picture',]
 
 
-# Upload pictures to gallery
+# This form allows us to upload pictures to the hall of fame
 class PostForm(forms.ModelForm):
 
     class Meta:
@@ -28,7 +33,7 @@ class PostForm(forms.ModelForm):
         fields = ["user","quest","title","image", "content",]
 
 
-# Post a comment
+# This form allows us to post a comment
 class CommentForm(forms.ModelForm):
 
     class Meta:

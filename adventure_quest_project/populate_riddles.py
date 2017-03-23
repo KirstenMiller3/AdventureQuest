@@ -2,9 +2,14 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'adventure_quest_project.settings')
 import django
 django.setup()
-from adventureQuest.models import Riddle
-from adventureQuest.models import Quest
+from adventureQuest.models import Riddle, Quest
 
+
+#########################################################
+#   This is the population script for Adventure Quest   #
+#########################################################
+
+# Here we add all the quests and the riddles necessary to make the page work
 def populate():
 
 	# Test_Quest Riddle
@@ -211,19 +216,22 @@ def populate():
 		answer=["doughnut"], instruction="Riddle me this!",
 		hint="nom, nom", quest_name="finnieston_quest", question_id=33)
 
+
+# Helper method to add a riddle to the database.
 def add_riddle(question, answer, instruction, hint, quest_name, question_id):
 	r=Riddle.objects.get_or_create(question=question, answer=answer, instruction=instruction, hint=hint,  quest_name=quest_name, question_id=question_id)[0]
 	r.save()
 	return r
 	
-	
+
+# Helper method to add a quest to the database.
 def add_quest(name, description, difficulty, age_limit, start_point):
 	q=Quest.objects.get_or_create(name=name, description=description, difficulty=difficulty, age_limit=age_limit, start_point=start_point)[0]
 	q.save()
 	return q
 
 
-	
+
 # Start Execution
 if __name__ == '__main__':
 	print("Starting AdventureQuest population script...")
