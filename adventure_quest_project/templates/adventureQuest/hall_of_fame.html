@@ -1,28 +1,71 @@
 {% extends 'adventureQuest/base.html' %}
+{% load staticfiles %}
 {% block title_block %}
    Hall of Fame
 {% endblock %}
 
 {% block body_block %}
-<div>
+<div class="w3-content w3-container w3-padding-64 w3-card-2 w3-questy w3-center">
     <h1>Hall of Fame</h1>
-    <h2>Hall of Fame</h2>
     <div>
-        Click here to upload your hall of fame photo and add yourself to the leader board
-        <ul>
-            <li><a href="{% url 'post_form' %}">Post to Leader Board</a></li>
-        </ul>
+        <a class="w3-btn w3-round-large" href="{% url 'post_form' %}" title="Click here to upload your hall of fame photo and add yourself to the leader board">Post to Leader Board</a>
     </div>
-    <h5>Choose a Quest to see the photo gallery and upload your pictures</h5>
-    <div>
-        <ul>
-            <li><a href="{% url 'mystery_quest_hall_of_fame' %}">Mystery Quest Leader Board</a></li>
-            <li><a href="{% url 'finnieston_quest_hall_of_fame' %}">Finnieston Quest Leader Board</a></li>
-            <li><a href="{% url 'glasgow_uni_quest_hall_of_fame' %}">Glasgow Uni Quest Leader Board</a></li>
-            <li><a href="{% url 'southside_quest_hall_of_fame' %}">Southside Quest Leader Board</a></li>
-            <li><a href="{% url 'city_centre_quest_hall_of_fame' %}">City Centre Quest Leader Board</a></li>
-            <li><a href="{% url 'kids_quest_hall_of_fame' %}">Kids Quest Leader Board</a></li>
-        </ul>
+    <h5>Choose a Quest Leader Board to see the photo gallery and upload your pictures</h5>
+    
+    
+    <div class="w3-row-padding w3-center w3-section w3-text-sand">
+        <div class="w3-col m4">
+            <div class="w3-display-container"> 
+            <img src= "{% static "images/kg.jpg" %}" style="width:100%;" alt="Quest 1"></a>
+                <div class="w3-container">
+                    <a href="{% url 'mystery_quest_hall_of_fame' %}">Mystery Quest Leader Board</a>
+                </div>
+            </div>
+        </div>
+        <div class="w3-col m4">
+            <div class="w3-display-container"> 
+            <img src= "{% static "images/glasgow_skyline_at_night.jpg" %}" style="width:100%;" alt="Quest 1"></a>
+                <div class="w3-container">
+                    <a href="{% url 'finnieston_quest_hall_of_fame' %}">Finnieston Quest Leader Board</a>
+                </div>
+            </div>
+        </div>
+        <div class="w3-col m4">
+            <div class="w3-display-container"> 
+            <img src= "{% static "images/glasgow_uni.jpg" %}" style="width:100%;" alt="Quest 1"></a>
+                <div class="w3-container">
+                    <a href="{% url 'glasgow_uni_quest_hall_of_fame' %}">Glasgow Uni Quest Leader Board</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--   Second Row -->
+     <div class="w3-row-padding w3-center w3-section">
+        <div class="w3-col m4">
+            <div class="w3-display-container"> 
+            <img src="{% static "images/southside.jpg" %}" style="width:100%" alt="South Side: Quest 4"></a>
+                
+                <div class="w3-container">
+                    <a href="{% url 'southside_quest_hall_of_fame' %}">Southside Quest Leader Board</a>
+                </div>
+            </div>
+        </div>
+        <div class="w3-col m4">
+            <div class="w3-display-container"> 
+            <img src="{% static "images/city.jpg" %}" style="width:100%" alt="City Centre: Quest 5"></a>
+                <div class="w3-container">
+                    <a href="{% url 'city_centre_quest_hall_of_fame' %}">City Centre Quest Leader Board</a>
+                </div>
+            </div>
+        </div>
+        <div class="w3-col m4">
+            <div class="w3-display-container">
+            <img src="{% static "images/science.jpg" %}" style="width:100%" alt="Kids Quest: Quest 6"></a>
+                <div class="w3-container">
+                    <a href="{% url 'kids_quest_hall_of_fame' %}">Kids Quest Leader Board</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}}
