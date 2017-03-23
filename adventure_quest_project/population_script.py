@@ -4,7 +4,6 @@ import django
 django.setup()
 from adventureQuest.models import Riddle, Quest
 
-
 #########################################################
 #   This is the population script for Adventure Quest   #
 #########################################################
@@ -20,13 +19,13 @@ def populate():
 
 	add_riddle(question="When I am born, I fly, When I am alive, I lie, When I die I run....what am I?", answer=["snow", 'snowflake'],instruction="This question is just a fun riddle to do while you have your first drink",hint="I usually only seen in the winter",  quest_name="mystery_quest", question_id=2)
 
-	add_quest(name="mystery_quest", description = "On this Mystery quest you could end up anywhere in Glasgow! Only for those feeling especially adventurous", difficulty = 5, age_limit = 18, start_point="Super Bario" )
+	mystery = add_quest(name="mystery_quest", description = "On this Mystery quest you could end up anywhere in Glasgow! Only for those feeling especially adventurous", difficulty = 5, age_limit = 18, start_point="Super Bario" )
 
-	add_quest(name="finnieston_quest", description="The Finnieston Quest takes adventurers on a tour of this up and coming area of Glasgow, with plenty of cool bars to drink in and landmarks to see!", difficulty=3, age_limit=18, start_point="brew dog")
-	add_quest(name="city_centre_quest",description="The City Centre Quest takes adventurers around some of the most famous and exciting spots in this great urban environment!", difficulty=6, age_limit=18, start_point="Royal Exchange Square")
-	add_quest(name="southside_quest", description="The Southside quest will take you to some of Mackintosh's most famous buildings and to some of the best bars in Glasgow. If you enjoy puzzles, culture and drinking this is the quest for you!", difficulty=6, age_limit=18, start_point='The hidden gardens')
-	add_quest(name="glasgow_uni_quest", description="A real university challenge around some of the most historic buildings in Glasgow", difficulty=9, age_limit=16, start_point="Glasgow University Main Building")
-	add_quest(name='kids_quest', description="A fun, child friendly quest with suitable questions", difficulty=3, age_limit=8, start_point="Kelvingrove Museum")
+	finnie = add_quest(name="finnieston_quest", description="The Finnieston Quest takes adventurers on a tour of this up and coming area of Glasgow, with plenty of cool bars to drink in and landmarks to see!", difficulty=3, age_limit=18, start_point="brew dog")
+	cc = add_quest(name="city_centre_quest",description="The City Centre Quest takes adventurers around some of the most famous and exciting spots in this great urban environment!", difficulty=6, age_limit=18, start_point="Royal Exchange Square")
+	south = add_quest(name="southside_quest", description="The Southside quest will take you to some of Mackintosh's most famous buildings and to some of the best bars in Glasgow. If you enjoy puzzles, culture and drinking this is the quest for you!", difficulty=6, age_limit=18, start_point='The hidden gardens')
+	gu = add_quest(name="glasgow_uni_quest", description="A real university challenge around some of the most historic buildings in Glasgow", difficulty=9, age_limit=16, start_point="Glasgow University Main Building")
+	kid = add_quest(name='kids_quest', description="A fun, child friendly quest with suitable questions", difficulty=3, age_limit=8, start_point="Kelvingrove Museum")
 
 	add_riddle(question="Which famous inventor studied at Glasgow University in 1914?", answer=["john logie baird"],
 			   instruction="This is an easy one to get you going!", hint="TV", quest_name="glasgow_uni_quest",question_id=0)
@@ -215,6 +214,7 @@ def populate():
 		question="What has no beginning, end, or middle?",
 		answer=["doughnut"], instruction="Riddle me this!",
 		hint="nom, nom", quest_name="finnieston_quest", question_id=33)
+
 
 
 # Helper method to add a riddle to the database.
