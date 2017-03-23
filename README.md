@@ -6,7 +6,7 @@ Install:
 `Python >=2.7`
 
 In a suitable directory. clone the repository
-`$ git clone https://github.com/tomesparon/TangoWithDjango.git`
+`$ git clone https://github.com/KirstenMiller3/AdventureQuest.git`
 
 With a virtual environment setup with pip, install :
 `pip install –r requirements.txt`
