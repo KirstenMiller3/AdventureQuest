@@ -15,6 +15,7 @@ from django.core.signals import request_finished
 from .forms import PostForm, CommentForm
 from .models import Quest, Riddle, UserProfile, Post, Comment
 import re
+import json
 
 #############################################
 #   This is the views for Adventure Quest   #
@@ -455,81 +456,82 @@ def kids_quest(request):
         return render(request, 'adventureQuest/kids_quest.html')
 
 
-import json
+
+
+# This is the ajax request method which deals with the submission of users answers
+# during a quest and also deals with updating the hints and instructions
 def quest_ajax(request):
+
+    # Initialise response data dictionary
     response_data = {}
+
+    # Get the current quest name
     questName = request.session['questName']
 
     # Set session variables
     quest_cookies(request, False, False)
     ridQID = request.session['riddleQuestionID']
-    ridAID = request.session['riddleAnswerID']
     correctNo = request.session['riddleCorrectNo']
 
+    # Set response data currentQ to the current quesiton id
     response_data['currentQ'] = ridQID
 
-    # count how many riddles in this quest
+    # Get the count of the number of riddles in the current quest
     listRiddles = list(Riddle.objects.filter(quest_name=questName))
     numberRiddles= len(listRiddles)
     response_data['noRiddles'] = numberRiddles
 
 
-    # Get the user answer
-
+    # Get the answer that the user inputs into the submission box
     input_answer = request.GET.get('answer')
-
+    # if the answer is non None then convert the string to remove
+    # all special characters and make it lower case
     if input_answer != None:
         user_lower = input_answer.lower()
         user_answer = re.sub('[^A-Za-z0-9]+', '', user_lower)
-
+    # Otherwisre the input is non as the hint button was pressed
+    # set this to a special character so that no errors occurr
     else:
         user_answer = '@'
 
-    # Set the current question and answer from the database
-    for row in Riddle.objects.filter(quest_name=questName, question_id=ridAID):
-        textAnswer = row.answer
-
-
+    # Set the current question, answer, hint and instruction from the database
     for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
         textQuestion = row.question
         textHint = row.hint
+        textAnswer = row.answer
         textInstruction = row.instruction
 
-
-    # Create Response data vairable
-
-    # Hint file
+    # Check if the hint button has been selected
     if request.GET.get('click', False):
+        # Set the hint text
         response_data['hint'] = textHint
+        # Update the number of hints
         quest_cookies(request, False, True)
         no_hints = request.session['numberHint']
         response_data['hintNo'] = no_hints
         response_data['hint_available'] = 'false'
 
-
-
-
-
-# If the users answer is correct then get the next question from the database unless this is the last question
+# Check that current question is not the last one
     if correctNo <= numberRiddles:
-
+        # Check if the users answer is in the list of database answers
         if user_answer in textAnswer:
+            # update hint text
             response_data['hint'] = 'Remember the number of hints you use will be recorded!'
+            # Update the session variables
             quest_cookies(request, True, False)
             ridQID = request.session['riddleQuestionID']
-            ridAID = request.session['riddleAnswerID']
             response_data['hint_available'] = 'true'
             correctNo = request.session['riddleCorrectNo']
             response_data['correct'] = True
 
-            #Adding final score to the database
+            #Adding final score to the database if this is the last question
             if correctNo == numberRiddles:
-                # get quest id
+                # Get the quest ID
                 id = Quest.objects.filter(name=questName).values('id')[0]['id']
                 for quest_row in Quest.objects.filter(name=questName):
                     add_score(user=request.user,quest=quest_row, score=request.session['numberHint'])
 
-
+            # Reset all the session variables to the next question and answer
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question
                 textAnswer = row.answer
@@ -537,8 +539,8 @@ def quest_ajax(request):
                 response_data['answer'] = textQuestion
                 response_data['instruction'] = textInstruction
 
-
-        # If the user answer is incorrect
+        # If the answer was wrong then do not move onto the next question and answer
+        # Display a try again message
         else:
             for row in Riddle.objects.filter(quest_name=questName, question_id=ridQID):
                 textQuestion = row.question
@@ -571,11 +573,6 @@ def quest_cookies(request, inc, hint):
     if inc == True:
         riddleQuestionID +=1
     request.session['riddleQuestionID'] = riddleQuestionID
-
-    riddleAnswerID = int(get_server_side_cookie(request, 'riddleAnswerID', '0'))
-    if inc == True:
-        riddleAnswerID += 1
-    request.session['riddleAnswerID'] = riddleAnswerID
 
     riddleCorrectNo = int(get_server_side_cookie(request, 'riddleCorrectNo', '0'))
     if inc == True:

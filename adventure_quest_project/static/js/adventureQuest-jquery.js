@@ -2,10 +2,10 @@
 /* Ajax Riddle Submit Query */
 $('#questionform').submit(function(e) {
 
-	// Prevent form submission
+// Prevent form submission
 	e.preventDefault();
 
-	// Create question box and value
+// Create question box and value
 	var questionBox = $('#question');
 	var answerValue = questionBox[0].value;
 
@@ -16,25 +16,24 @@ $('#questionform').submit(function(e) {
 		data: {'answer': answerValue},
 		success: function(response) {
 
+		// Update question and clear answer
 			var answerDiv = $('#answer');
 			var answerFromServer = response['answer'];
-
-			// Update question and clear answer
 			answerDiv.text(answerFromServer);
 			questionBox.val('');
 
+		// Update hint text
 			var hintDiv = $('#hint');
 			var hintFromServer = response['hint'];
-			//Update hint text
 			hintDiv.text(hintFromServer);
 
+		// Update instruction text
 			var instNoDiv = $('#instruction');
 			var y = response['instruction'];
-			// Update instruction text
 			instNoDiv.text(y);
 
-			var available = response['hint_available'];
-			// Check if a hint is available and if not hide the hint button
+		// Check if a hint is available and if not hide the hint button
+				var available = response['hint_available'];
 			if (available === 'false'){
 				var button = $('#hintform')
 					button.hide();
@@ -44,11 +43,11 @@ $('#questionform').submit(function(e) {
 					button.show();
 			}
 
+		// Check if the question is the last one and it was correct. If so
+		// then redirect the user to the last page
 			var lastQ = response['noRiddles']
 			var currentQ = response['currentQ']
 			var end = response['correct']
-			// Check if the question is the last one and it was correct. If so
-			// then redirect the user to the last page
 			if(currentQ === lastQ-1 && end)
 			{
 				$(this).unbind('submit').submit()
@@ -63,42 +62,38 @@ $('#questionform').submit(function(e) {
 /* Ajax Hint Submit Query */
 $('#hintform').click(function(e) {
 
-	// Prevent form submission
+// Prevent form submission
 	e.preventDefault();
 
-	// Set up ajax request
+// Set up ajax request
 	$.ajax({
 		type: 'GET',
 		url: '/adventureQuest/quest_ajax/',
 		data: {click: true},
 		success: function(response) {
 
+		// Update the hint text
 			var hintDiv = $('#hint');
 			var hintFromServer = response['hint'];
-			// Update the hint text
 			hintDiv.text(hintFromServer);
 
+		// Update the number of hints displayed
 			var hintNoDiv = $('#hintNo');
 			var x = response['hintNo'];
 			hintNoDiv.text(x);
 
-
+		// Check if hint is available and then either show or hide the hint button
 			var available = response['hint_available'];
-			console.log("hint it from click" + available)
 			if (available === 'false'){
 				var button = $('#hintform')
 					button.hide();
-				console.log('testing if', available);
 			}
 			else if (available === 'true'){
 				var button = $('#hintform')
 					button.show();
-				console.log('testing if', available);
 			}
-
 		},
 	});
-
 });
 
 
